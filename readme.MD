@@ -2,7 +2,7 @@
 
 #### To start the application for the first time
 - First run `bower install`.
-- Then run a local server with either `live-server --port=<port-num>` or `python -m SimpleHTTPServer <port-num>`.
+- Then run a local server with either `live-server --port=<port-num>` or `python -m SimpleHTTPServer <port-num>`. For now, use port 3000 as the email verification link redirects to that port.
 
 #### Project Structure and Naming Conventions
 - The name of controllers, services should be kept as `*.controller.js` or `*.service.js` etc and should be kept along with its `.html` file.
