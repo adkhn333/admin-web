@@ -1,0 +1,11 @@
+<md-subheader class="md-no-sticky">Activity Log</md-subheader>
+<md-list ng-controller="ActivityLogCtrl">
+    <md-list-item class="md-3-line layout-wrap" ng-repeat="item in todos" md-on-demand ng-click="null">
+        <div class="md-list-item-text" flex-wrap>
+            <h3>{{ item.who }}</h3>
+            <h4>{{ item.what }}</h4>
+            <p>{{ item.notes }}</p>
+        </div>
+    </md-list-item>
+    <md-divider></md-divider>
+</md-list>

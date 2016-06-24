@@ -1,0 +1,24 @@
+<md-sidenav class="md-sidenav-left" md-component-id="left" md-disable-backdrop md-whiteframe="4">
+   <md-toolbar class="md-tall md-hue-2">
+      <span flex></span>
+      <div layout="column" class="md-toolbar-tools-bottom inset" layout-align="center center">
+         <user-avatar></user-avatar>
+         <!-- <div class="md-body-1">Firstname Lastname</div> -->
+         <div class="md-body-1">{{emailid}}</div>
+      </div>
+   </md-toolbar>
+   <md-list>
+      <md-item ng-repeat="item in menu">
+         <a href="{{item.link}}">
+            <md-item-content md-ink-ripple layout="row" layout-align="start center">
+               <div class="inset">
+                  <md-icon>{{item.icon}}</md-icon>
+               </div>
+               <div class="inset md-body-1">{{item.title}}
+               </div>
+            </md-item-content>
+         </a>
+      </md-item>
+      <md-divider></md-divider>
+   </md-list>
+</md-sidenav>

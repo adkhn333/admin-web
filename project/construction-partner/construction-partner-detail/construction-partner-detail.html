@@ -1,0 +1,36 @@
+<br>
+<form name="constructionpartnerupdateform" novalidate>
+   <md-card layout-padding style="width:60%;margin:auto">
+      <md-card-title>
+         <md-card-title-text>
+            <span class="md-headline" layout="row" layout-align="center center">Update Construction Partner Details</span>
+         </md-card-title-text>
+      </md-card-title>
+      <md-card-content>
+
+         <md-input-container class="md-block">
+            <label>Company Name</label>
+            <input name="companyname" type="text" ng-model="partner.name" readonly="true">
+         </md-input-container>
+
+         <md-input-container class="md-block">
+            <label>Select Company Type</label>
+            <md-select ng-model="partner.company_type">
+               <md-option ng-repeat="type in compTypeList" value="{{type.name}}">
+                  {{type.name}}
+               </md-option>
+            </md-select>
+         </md-input-container>
+         <br>
+         <md-input-container class="md-block">
+            <label>Website</label>
+            <input name="website" type="text" ng-model="partner.website">
+         </md-input-container>
+
+         <section layout="row" layout-align="space-around start">
+            <md-button type="submit" class="md-raised md-primary" ng-click="updatePartner(constructionpartnerupdateform)">Update</md-button>
+            <md-button type="submit" class="md-raised md-primary" ui-sref="constructionpartner.list">Cancel</md-button>
+         </section>
+      </md-card-content>
+   </md-card>
+</form>

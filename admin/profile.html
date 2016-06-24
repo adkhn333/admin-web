@@ -1,0 +1,66 @@
+<div ng-include="'navigation/header.html'"></div>
+<form name="profileForm" novalidate>
+   <md-card layout-padding>
+      <md-content>
+         <div layout="row">
+            <md-input-container flex>
+               <label>First Name</label>
+               <input type="text" ng-model="admin.fname" ng-disabled="true">
+            </md-input-container>
+            <md-input-container flex>
+               <label>Last Name</label>
+               <input type="text" ng-model="admin.lname" ng-disabled="true">
+            </md-input-container>
+            <md-input-container flex>
+               <label>Email Address</label>
+               <input type="email" ng-model="admin.email" ng-disabled="true">
+            </md-input-container>
+         </div>
+         <div layout="row">
+            <md-input-container flex>
+               <label>Team Assigned To</label>
+               <input type="text" ng-model="admin.team" ng-disabled="true">
+            </md-input-container>
+            <md-input-container flex>
+               <label>Reporting Manager</label>
+               <input type="text" ng-model="admin.marketing_manager" ng-disabled="true">
+            </md-input-container>
+            <md-input-container flex>
+               <label>Data Validation Manager</label>
+               <input type="text" ng-model="admin.validation_manager" ng-disabled="true">
+            </md-input-container>
+         </div>
+         <p>Gender:</p>
+         <md-radio-group ng-model="admin.gender" md-placeholder="Gender">
+            <md-radio-button value="male" class="md-primary">Male</md-radio-button>
+            <md-radio-button value="female" class="md-primary">Female</md-radio-button>
+         </md-radio-group>
+         <div layout="row">
+            <md-input-container flex>
+               <label>Address</label>
+               <input type="text" ng-model="admin.address">
+            </md-input-container>
+         </div>
+         <div layout="row" layout-align="center center">
+            <md-input-container flex>
+               <label>City</label>
+               <input type="text" ng-model="admin.city">
+            </md-input-container>
+            <md-datepicker ng-model="admin.dob" md-placeholder="Enter date"></md-datepicker>
+         </div>
+         <div layout="row">
+            <md-input-container flex>
+               <label>Primary Contact</label>
+               <input type="text" ng-model="admin.mobile">
+            </md-input-container>
+            <md-input-container flex>
+               <label>Alternate Contact</label>
+               <input type="text" ng-model="admin.alt_mob">
+            </md-input-container><br>
+         </div>
+         <section>
+            <md-button class="md-raised md-primary" type="submit" ng-click="updateDetails()">Update</md-button>
+         </section>
+      </md-content>
+   </md-card>
+</form>

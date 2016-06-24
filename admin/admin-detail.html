@@ -1,0 +1,137 @@
+<div ng-include="'navigation/header.html'"></div>
+<md-button type="submit" class="md-raised md-primary" ui-sref="adminmaster">Go Back</md-button>
+
+<form name="updateadmindetailsform" novalidate>
+   <md-card layout-padding>
+      <md-card-title-text>
+         <span class="md-headline" layout="row" layout-align="center center">Admin Details</span>
+      </md-card-title-text>
+      <md-card-content>
+         <div layout="row">
+            <md-input-container flex>
+               <label>First Name</label>
+               <input type="text" ng-model="admin.fname" ng-disabled='true'>
+            </md-input-container>
+            <md-input-container flex>
+               <label>Last Name</label>
+               <input type="text" ng-model="admin.lname" ng-disabled='true'>
+            </md-input-container>
+            <md-input-container flex>
+               <label>Email Address</label>
+               <input type="email" ng-model="admin.email" ng-disabled='true'>
+            </md-input-container>
+         </div>
+         <strong>Status:</strong> {{admin.status}}
+         <md-button ng-show="admin.status == 'Active' || admin.status == 'Inactive'" ng-model="admin.status" ng-click="statusUpdate()" class="md-raised md-warn">Block</md-button>
+         <md-button ng-show="admin.status == 'Blocked'" ng-model="admin.status" ng-click="statusUpdate()" class="md-raised md-warn">Unblock</md-button>
+         <div layout="row">
+            <md-input-container>
+               <label>Employee Number</label>
+               <input name="employee_number" type="text" ng-model="admin.employee_number" required> <!-- TODO: add required validation -->
+            </md-input-container>
+         </div>
+         <div layout="row">
+            <md-input-container flex>
+               <label>Team Assigned to</label>
+               <!-- <input name="team" type="text" ng-model="admin.team"> -->
+               <md-select ng-model="admin.team">
+                  <md-option value="Marketing">Marketing</md-option>
+                  <md-option value="Technical">Technical</md-option>
+                  <md-option value="Operations">Operations</md-option>
+               </md-select>
+            </md-input-container>
+            <md-input-container flex>
+               <label>Select Marketing Manager</label>
+               <md-select ng-model="admin.marketing_manager">
+                  <md-option ng-repeat="admin in alladminlist" value="{{admin.admin_id}}">
+                     {{admin.fname}} {{admin.lname}}
+                  </md-option>
+               </md-select>
+            </md-input-container>
+            <md-input-container flex>
+               <label>Select Data Validation Manager</label>
+               <md-select ng-model="admin.validation_manager">
+                  <md-option ng-repeat="admin in alladminlist" value="{{admin.admin_id}}">
+                     {{admin.fname}} {{admin.lname}}
+                  </md-option>
+               </md-select>
+            </md-input-container>
+         </div>
+         <div layout="row">
+            <md-input-container flex>
+               <label>Select Designation</label>
+               <md-select ng-model="admin.designation">
+                  <md-option ng-repeat="designation in allDesignationsList" value="{{designation}}">
+                     {{designation}}
+                  </md-option>
+               </md-select>
+            </md-input-container>
+            <md-input-container flex>
+               <label>Add New Designation</label>
+               <input name="designation" type="text" ng-model="admin.designation">
+            </md-input-container>
+            <md-input-container flex>
+               <label>Select Current City</label>
+               <md-select ng-model="admin.current_city">
+                  <md-option ng-repeat="cur_city in allCities" value="{{cur_city.city_id}}">
+                     {{cur_city.cityName}}
+                  </md-option>
+               </md-select>
+            </md-input-container>
+         </div>
+         <section layout="row" layout-align="space-around start">
+            <md-button type="submit" class="md-raised md-primary" ng-click="enterAdminPostionDetails()">Update</md-button>
+         </section>
+      </md-card-content>
+   </md-card>
+</form>
+
+<!-- <md-card>
+   <md-card-title-text>
+      <span class="md-headline" layout="row" layout-align="center center">Grant Access to Admin for an Event</span>
+   </md-card-title-text>
+   <md-content layout-padding>
+
+      <md-input-container>
+         <label>Select Category</label><br>
+         <select ng-options="site as site.categoryName for site in arr" ng-model="selectedCategory" ng-change="selectedPages = selectedCategory.pages[0]"></select>
+      </md-input-container>
+      <md-input-container>
+         <label>Select Page</label><br>
+         <select ng-options="ds as ds.pageName for ds in selectedCategory.pages" ng-model="selectedPages" ng-change="selectedEvents = selectPages.events[0]"></select>
+      </md-input-container>
+      <md-input-container>
+         <label>Select Event</label><br>
+         <select ng-options="pg as pg.eventName for pg in selectedPages.events" ng-model="selectedEvents"></select>
+      </md-input-container>
+      <section layout="row" layout-align="space-around start">
+         <md-button type="submit" class="md-raised md-primary" ng-click="giveAccess()">Give Access</md-button>
+      </section>
+   </md-content>
+</md-card>
+
+
+<md-card>
+   <md-card-content>
+      <md-card-title-text>
+         <span class="md-headline" layout="row" layout-align="center center">All accessable events to {{admin.fname}} {{admin.lname}}</span>
+      </md-card-title-text>
+      <h3 ng-show="eventDetails.length == 0">This admin does not have access to any events yet.</h3>
+      <ul>
+         <li ng-repeat="category in eventDetails">
+            {{category.categoryName}}
+            <ul>
+               <li ng-repeat="page in category.pages">
+                  {{page.pageName}}
+                  <ul>
+                     <li ng-repeat="event in page.events">
+                     {{event.event_id}} {{event.eventName}}
+                     <md-button type="submit" ng-click="removeAccess(event.event_id)" class="md-raised md-primary">Remove Access</md-button>
+                     </li>
+                  </ul>
+               </li>
+            </ul>
+         </li>
+      </ul>
+   </md-card-content>
+</md-card> -->

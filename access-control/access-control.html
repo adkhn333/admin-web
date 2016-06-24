@@ -1,0 +1,45 @@
+<md-card layout-padding>
+   <section layout="row" layout-align="center center">
+      <div flex>
+         <md-button class="md-raised md-primary" ng-click="getObjects()">Get Objects</md-button>
+      </div>
+      <div flex>
+         <md-button class="md-raised md-primary" ng-click="getAdmins()">Get Admins</md-button>
+      </div>
+      <div flex>
+         <md-button class="md-raised md-primary" ng-click="saveAccess()">Save Access</md-button>
+      </div>
+   </section>
+
+   <div ng-show="flag" class="md-padding" ng-cloak>
+      <div>
+         <div style="margin-left: 10%; float: left; width: 20%;">
+            <h1 class="md-title">Pick an object: </h1>
+         </div>
+         <div style="margin-left: 20%; float: left; width: 50%;" layout="row">
+            <md-input-container>
+               <!-- <label>Objects</label> -->
+               <md-select ng-model="selectedObject" style="min-width: 200px;" md-selected-text="selectObject(selectedObject)" aria-label="just_to_avoid_warning">
+                  <md-optgroup label="Choose..">
+                     <md-option ng-value="object.data.name" ng-repeat="object in objects">{{object.data.name}}</md-option>
+                  </md-optgroup>
+               </md-select>
+            </md-input-container>
+         </div>
+      </div>
+   </div>
+
+   <div ng-show="flag1">
+      <div ng-repeat="admin in admins">
+         <div style="text-align: left; margin-left: 15%;">
+            <div style="min-width: 30%; float: left;">
+               <strong>{{admin.fname}} {{admin.lname}}:</strong>
+            </div>
+            <div style="min-width: 55%; float: left;">
+               <md-checkbox style="margin-left: 17%;" ng-checked="exists(admin.uid, selectedReaders)" ng-disabled="exists(admin.uid, selectedWriters)" ng-click="exists(admin.uid, selectedWriters) || toggle(admin.uid, selectedReaders)">Read</md-checkbox>
+               <md-checkbox style="margin-left: 17%;" ng-checked="exists(admin.uid, selectedWriters)" ng-click="toggle(admin.uid, selectedWriters)">Write</md-checkbox>
+            </div>
+         </div>
+      </div>
+   </div>
+</md-card>

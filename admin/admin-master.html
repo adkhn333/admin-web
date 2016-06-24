@@ -1,0 +1,89 @@
+<div ng-include="'navigation/header.html'"></div>
+<md-card>
+   <form name="addAdminForm" ng-submit="AddNewAdmin()">
+      <md-card-title>Add New Admin</md-card-title>
+      <md-card-content layout-padding>
+         <div layout="row">
+            <md-input-container flex>
+               <label>First Name</label>
+               <input name="firstname" type="text" ng-model="firstname" required>
+               <div ng-messages="addAdminForm.firstname.$error">
+                  <div ng-message="required">This is required.</div>
+               </div>
+            </md-input-container>
+            <md-input-container flex>
+               <label>Last Name</label>
+               <input name="lastname" type="text" ng-model="lastname" required>
+               <div ng-messages="addAdminForm.lastname.$error">
+                  <div ng-message="required">This is required.</div>
+               </div>
+            </md-input-container>
+            <md-input-container flex>
+               <label>Email Address</label>
+               <input name="email" required type="email" ng-model="email">
+               <div ng-messages="addAdminForm.email.$error">
+                  <div ng-message="required">This is required.</div>
+               </div>
+            </md-input-container>
+         </div>
+         <section layout="row" layout-align="space-around start">
+            <md-button class="md-raised md-primary" type="submit">Add Admin</md-button>
+         </section>
+      </md-card-content>
+   </form>
+</md-card>
+
+<md-card layout-padding>
+   <md-input-container class="md-block">
+      <input placeholder="Search Admins here" type="text" ng-model="searchtext">
+   </md-input-container>
+   <table class="admintable">
+      <thead>
+         <th>NAME</th>
+         <th>EMAIL</th>
+         <th>DESIGNATION</th>
+         <th>TEAM</th>
+         <th>
+            <md-input-container class="md-block">
+               <label>Status</label>
+               <md-select placeholder="Status" ng-model="status_ans" ng-change="setStatusFilter(status_ans)">
+                  <md-option value="All"> All
+                  </md-option>
+                  <md-option value="Active"> Active
+                  </md-option>
+                  <md-option value="Inactive"> Inactive
+                  </md-option>
+                  <md-option value="Blocked"> Blocked
+                  </md-option>
+               </md-select>
+            </md-input-container>
+         </th>
+      </thead>
+      <tbody>
+         <tr ng-repeat="admin in adminlist|filter:statusFilter | filter:searchtext">
+            <td>
+               <a href="#/admindetail/{{admin.admin_id}}">
+                  {{ admin.fname }} {{admin.lname}}
+               </a>
+            </td>
+            <td>{{admin.email}}</td>
+            <td>{{admin.designation}}</td>
+            <td>{{admin.team}}</td>
+            <td>{{admin.status}}</td>
+         </tr>
+      </tbody>
+   </table>
+
+   <!-- <md-list ng-cloak>
+      <md-list-item ng-repeat="admin in adminlist|filter:statusFilter | filter:searchtext">
+         <a href="#/admindetail/{{admin.admin_id}}">
+            {{ admin.fname }} {{admin.lname}}
+         </a>
+         {{admin.email}}
+         {{admin.designation}}
+         {{admin.team}}
+         {{admin.status}}
+      </md-list-item>
+   </md-list> -->
+
+</md-card>

@@ -1,0 +1,49 @@
+<md-button type="submit" class="md-raised md-primary" ui-sref="teammaster">Go Back</md-button>
+
+<md-card>
+   <md-card-content>
+      <md-card-title-text>
+         <span class="md-headline" layout="row" layout-align="center center">All {{team_name}} Team Members - {{adminlist.length}}</span>
+      </md-card-title-text>
+      <md-input-container class="md-block">
+         <input placeholder="Search Team Members here" type="text" ng-model="searchMembers">
+      </md-input-container>
+      <table class="admintable">
+         <thead>
+            <!-- <th></th> -->
+            <th>NAME</th>
+            <th>EMAIL</th>
+            <th>DESIGNATION</th>
+            <th>
+               <md-input-container class="md-block">
+                  <label>Status</label>
+                  <md-select placeholder="Status" ng-model="status_ans" ng-change="setStatusFilter(status_ans)">
+                     <md-option value="All"> All
+                     </md-option>
+                     <md-option value="Active"> Active
+                     </md-option>
+                     <md-option value="Inactive"> Inactive
+                     </md-option>
+                     <md-option value="Blocked"> Blocked
+                     </md-option>
+                  </md-select>
+               </md-input-container>
+            </th>
+            <th>DETAILS</th>
+
+         </thead>
+         <tbody>
+            <tr ng-repeat="admin in adminlist|filter:statusFilter | filter:searchMembers">
+               <td>{{admin.fname}} {{admin.lname}}</td>
+               <td>{{admin.email}}</td>
+               <td>{{admin.designation}}</td>
+               <td>{{admin.status}}</td>
+               <td>
+                  <a href="#/admindetail/{{admin.admin_id}}" class="md-button md-raised md-primary">View Details</a>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+
+   </md-card-content>
+</md-card>

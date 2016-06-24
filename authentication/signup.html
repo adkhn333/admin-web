@@ -1,0 +1,36 @@
+<div layout="row" layout-align="center center">
+   <md-card flex="33">
+      <md-toolbar>
+         <div class="md-toolbar-tool">
+            <h2>
+               <span layout="row" layout-align="center">SIGNUP</span>
+            </h2>
+         </div>
+      </md-toolbar>
+      <md-content layout-padding>
+         <form name="signupForm" novalidate>
+            <md-input-container class="md-block">
+               <input placeholder="Email Address" type="email" ng-model="emailid" name="userEmail" required readonly="true">
+            </md-input-container>
+            <md-input-container class="md-block">
+               <input placeholder="Password" type="password" ng-model="userPassword" name="userPassword" required ng-pattern="/^((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20})$/" class="md-block" >
+               <div ng-messages="signupForm.userPassword.$error" ng-show="signupForm.userPassword.$touched || notouchlogin">
+                  <div ng-message="required">This is required</div>
+                  <p ng-message="pattern">Password should be 6-20 characters long and should atleast contain one number,one uppercase and one lowercase letter.</p>
+               </div>
+            </md-input-container>
+            <md-input-container class="md-block">
+               <input placeholder="Confirm Password" type="password" ng-model="userPassword_verify" name="userPassword_verify" required ng-pattern="/^((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20})$/" class="md-block">
+               <div ng-messages="signupForm.userPassword_verify.$error" ng-show="signupForm.userPassword_verify.$touched || notouchlogin">
+                  <div ng-message="required">This is required</div>
+                  <div ng-message="pattern">Password should be 6-20 characters long and should atleast contain one number,one uppercase and one lowercase letter.</div>
+               </div>
+            </md-input-container>
+            <section layout="row" layout-align="space-around start">
+               <md-button type="submit" class="md-raised md-primary" ng-click="signup(signupForm)">Signup</md-button>
+               <md-button md-no-ink ui-sref="login" class="md-raised" >Cancel</md-button>
+            </section>
+         </form>
+      </md-content>
+   </md-card>
+</div>

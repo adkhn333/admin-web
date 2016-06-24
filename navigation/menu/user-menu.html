@@ -1,0 +1,28 @@
+<md-menu md-offset="100 55">
+    <md-button ng-click="openMenu($mdOpenMenu, $event)">
+        <md-icon class="material-icons md-light md-48">account_circle</md-icon>
+        {{emailid}}
+        <!-- <md-icon class="material-icons md-light md-48"> more_vert</md-icon> -->
+    </md-button>
+    <md-menu-content width="4">
+        <md-menu-item>
+            <md-button ng-click="settings()">
+                <md-icon class="material-icons md-light md-48">settings</md-icon>
+                Settings
+            </md-button>
+        </md-menu-item>
+        <md-menu-item>
+            <md-button ng-click="myLog()">
+                <md-icon class="material-icons md-light md-48">list</md-icon>
+                Activity Log
+            </md-button>
+        </md-menu-item>
+        <md-menu-divider></md-menu-divider>
+        <md-menu-item>
+            <md-button ng-click="toggleNotifications()">
+                <md-icon class="material-icons md-light md-48">exit_to_app</md-icon>
+                <a href="#/login">Logout</a>
+            </md-button>
+        </md-menu-item>
+    </md-menu-content>
+</md-menu>

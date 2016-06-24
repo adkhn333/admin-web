@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+   <title>Roofpik Admin Application</title>
+   <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
+   <link rel="stylesheet" href="stylesheets/style.css">
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   <link href="bower_components/angular-material-data-table/dist/md-data-table.min.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body ng-app="Fab2uAdmin" ng-controller="MenuCtrl">
+   <div class="main" layout="column" layout-fill>
+      <md-content class="main-content">
+         <div ui-view></div>
+      </md-content>
+   </div>
+
+   <script src="bower_components/angular/angular.min.js"></script>
+   <script src="bower_components/angular-aria/angular-aria.min.js"></script>
+   <script src="bower_components/angular-messages/angular-messages.min.js"></script>
+   <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+   <script src="bower_components/hammerjs/hammer.min.js"></script>
+   <script src="bower_components/angular-material/angular-material.min.js"></script>
+   <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+   <script src="bower_components/ngstorage/ngStorage.min.js"></script>
+   <script src="https://code.highcharts.com/highcharts.js"></script>
+
+   <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+   <script src="https://cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min.js"></script>
+   <script>
+      // Initialize Firebase
+      var config = {
+         apiKey: "AIzaSyD_4bPp5HKryXDzaQwfRhqAU5SsSAdDIJ0",
+         authDomain: "roofpik-948d0.firebaseapp.com",
+         databaseURL: "https://roofpik-948d0.firebaseio.com",
+         storageBucket: "roofpik-948d0.appspot.com",
+      };
+      firebase.initializeApp(config);
+   </script>
+
+   <!-- App -->
+   <script src="javascripts/app.js"></script>
+   <script src="javascripts/config.js"></script>
+
+   <!-- Controllers -->
+   <script src="navigation/menu/menu.controller.js"></script>
+
+   <script src="access-control/access-control.controller.js"></script>
+
+   <!-- Authentication Controllers -->
+   <script src="authentication/authentication.service.js"></script>
+   <script src="authentication/signup.controller.js"></script>
+   <script src="authentication/login.controller.js"></script>
+   <script src="authentication/forgot-password.controller.js"></script>
+
+   <!-- Admin Controllers -->
+   <script src="admin/admin.service.js"></script>
+   <script src="admin/admin-master.controller.js"></script>
+   <script src="admin/admin-detail.controller.js"></script>
+   <script src="admin/profile.controller.js"></script>
+
+   <!-- Dashboard Controllers-->
+   <script src="dashboard/activity-log-widget/activity-log.js"></script>
+   <script src="dashboard/vendor-widget/vendor.js"></script>
+   <script src="dashboard/customer-widget/customer.js"></script>
+   <script src="dashboard/referrals-widget/referrals.js"></script>
+   <script src="dashboard/transactions-widget/transactions.js"></script>
+   <script src="dashboard/appointments-widget/appointments.js"></script>
+   <script src="dashboard/team-widget/team.js"></script>
+   <script src="dashboard/team-activity-widget/team-activity.js"></script>
+
+   <!-- Project Construction Partners Controllers -->
+   <script src="project/construction-partner/construction-partner.service.js"></script>
+   <script src="project/construction-partner/construction-partner.controller.js"></script>
+   <script src="project/construction-partner/construction-partner-add/construction-partner-add.controller.js"></script>
+   <script src="project/construction-partner/construction-partner-detail/construction-partner-detail.controller.js"></script>
+   <script src="project/construction-partner/construction-partner-list/construction-partner-list.controller.js"></script>
+
+   <!-- Project Developers Controllers -->
+   <script src="project/developer/developer.service.js"></script>
+   <script src="project/developer/developer.controller.js"></script>
+   <script src="project/developer/developer-add/developer-add.controller.js"></script>
+   <script src="project/developer/developer-detail/developer-detail.controller.js"></script>
+   <script src="project/developer/developer-list/developer-list.controller.js"></script>
+
+   <!-- Team Controllers -->
+   <script src="team/team-master.controller.js"></script>
+   <script src="team/team-detail.controller.js"></script>
+
+   <!-- Directives -->
+   <script src="navigation/menu/userAvatar.js"></script>
+</body>
+
+</html>

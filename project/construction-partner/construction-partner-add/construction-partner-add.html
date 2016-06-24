@@ -1,0 +1,34 @@
+<br><form name="constructionpartneraddform" novalidate>
+   <md-card layout-padding style="width:60%;margin:auto">
+      <md-card-title>
+         <md-card-title-text>
+            <span class="md-headline" layout="row" layout-align="center center">Add New Construction Partner</span>
+         </md-card-title-text>
+      </md-card-title>
+      <md-card-content>
+         <!-- TODO: validations -->
+         <md-input-container class="md-block">
+            <label>Company Name</label>
+            <input name="companyname" type="text" ng-model="companyname">
+         </md-input-container>
+
+         <md-input-container class="md-block">
+            <label>Select Company Type</label>
+            <md-select ng-model="selectedCompType">
+               <md-option ng-repeat="type in compTypeList" value="{{type.name}}">
+                  {{type.name}}
+               </md-option>
+            </md-select>
+         </md-input-container>
+         <br>
+         <md-input-container class="md-block">
+            <label>Website</label>
+            <input name="website" type="text" ng-model="website">
+         </md-input-container>
+         <section layout="row" layout-align="space-around start">
+            <md-button type="submit" class="md-raised md-primary" ng-click="submitPartnerMaster()">Submit</md-button>
+            <md-button type="submit" class="md-raised md-primary" ui-sref="constructionpartner.list">Cancel</md-button>
+         </section>
+      </md-card-content>
+   </md-card>
+</form>

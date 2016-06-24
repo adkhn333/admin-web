@@ -1,0 +1,33 @@
+<div layout="row" layout-align="center center">
+   <md-card flex="33">
+      <md-toolbar>
+         <div class="md-toolbar-tool">
+            <h2>
+               <span layout="row" layout-align="center">LOGIN</span>
+            </h2>
+         </div>
+      </md-toolbar>
+      <md-content layout-padding>
+         <form name="loginForm" novalidate>
+            <md-input-container class="md-block">
+               <input placeholder="Email Address" type="email" ng-model="newUser.userEmail" name="userEmail" required>
+               <div ng-messages="loginForm.userEmail.$error" ng-show="loginForm.userEmail.$touched || notouchlogin">
+                  <div ng-message="required">This field is required</div>
+                  <div ng-message="email">Enter valid email</div>
+               </div>
+            </md-input-container>
+            <md-input-container class="md-block">
+               <input placeholder="Password" type="password" ng-model="newUser.userPassword" name="userPassword" required ng-pattern="/^((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20})$/" class="md-block" >
+               <div ng-messages="loginForm.userPassword.$error" ng-show="loginForm.userPassword.$touched || notouchlogin">
+                  <div ng-message="required">This is required</div>
+                  <p ng-message="pattern">Password should be 6-20 characters long and should atleast contain one number,one uppercase and one lowercase letter.</p>
+               </div>
+            </md-input-container>
+            <section layout="row" layout-align="space-around start">
+               <md-button type="submit" class="md-raised md-primary" ng-click="Login(loginForm)">Login</md-button>
+               <md-button md-no-ink ui-sref="forgot" class="md-raised" >Reset Password</md-button>
+            </section>
+         </form>
+      </md-content>
+   </md-card>
+</div>

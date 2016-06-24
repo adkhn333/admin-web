@@ -1,0 +1,19 @@
+<md-card layout-padding>
+   <md-input-container class="md-block">
+      <input placeholder="Search Teams here" type="text" ng-model="searchTeam">
+   </md-input-container>
+   <table class="teamtable">
+      <thead>
+         <th>NAME</th>
+         <th>DETAILS</th>
+      </thead>
+      <tbody>
+         <tr ng-repeat="team in teamList | filter:searchTeam">
+            <td>{{team.name}}</td>
+            <td>
+               <a href="#/teamdetail/{{team.name}}" class="md-button md-raised md-primary">View Details</a>
+            </td>
+         </tr>
+      </tbody>
+   </table>
+</md-card>

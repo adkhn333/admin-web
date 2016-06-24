@@ -1,0 +1,32 @@
+
+<md-button class="md-raised md-primary" aria-label="Add Construction Partner" ui-sref="constructionpartner.add">Add Construction Partner</md-button>
+<md-card>
+   <md-card-title>
+      <md-card-title-text>
+         <span class="md-headline" layout="row" layout-align="center center">All Construction Partners - {{partnerList.length}}</span>
+      </md-card-title-text>
+   </md-card-title>
+   <md-card-content>
+      <md-input-container class="md-block">
+         <input placeholder="Search Construction Partners here" type="text" ng-model="searchPartners">
+      </md-input-container>
+      <table class="admintable">
+         <thead>
+            <th>NAME</th>
+            <th>COMPANY TYPE</th>
+            <th>WEBSITE</th>
+            <th>DETAILS</th>
+         </thead>
+         <tbody>
+            <tr ng-repeat="partner in partnerList | filter: searchPartners">
+               <td>{{partner.name}}</td>
+               <td>{{partner.company_type}}</td>
+               <td>{{partner.website}}</td>
+               <td>
+                  <a href="#/constructionpartner/detail/{{partner.partner_id}}">View Details</a>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+   </md-card-content>
+</md-card>

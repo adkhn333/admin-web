@@ -1,0 +1,33 @@
+<div ng-include="'navigation/header.html'"></div>
+<div ng-controller="homeCtrl" layout="row" class="home-screen">
+   <md-content flex="75" layout="row" class="home-content md-background md-hue-1 md-default-theme ps-theme-default" layout-padding>
+      <div layout="row" flex layout-wrap layout-padding>
+         <div flex="50">
+            <div ng-include="'../dashboard/vendor-widget/vendor.html'"></div>
+         </div>
+         <div flex="50">
+            <div ng-include="'../dashboard/customer-widget/customer.html'"></div>
+         </div>
+         <div flex="33">
+            <div ng-include="'../dashboard/referrals-widget/referrals.html'"></div>
+         </div>
+         <div flex="66">
+            <div ng-include="'../dashboard/transactions-widget/transactions.html'"></div>
+         </div>
+         <div flex="100">
+            <div ng-include="'../dashboard/appointments-widget/appointments.html'"></div>
+         </div>
+         <div flex="66">
+            <div ng-include="'../dashboard/team-activity-widget/team-activity.html'"></div>
+         </div>
+         <div flex="33">
+            <div ng-include="'../dashboard/team-widget/team.html'"></div>
+         </div>
+      </div>
+   </md-content>
+   <md-content flex style="margin-left:5px;" >
+      <div style="position:fixed; overflow-y: hidden; max-height: 100%; width:100%" >
+         <div ng-include="'../dashboard/activity-log-widget/activity-log.html'"></div>
+      </div>
+   </md-content>
+</div>

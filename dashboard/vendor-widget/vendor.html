@@ -1,0 +1,36 @@
+<md-card ng-controller="VendorWidgetCtrl">
+    <md-card-header>
+        <md-card-header-text>
+            <span class="md-title">Vendors</span>
+            <span class="md-subhead">Total Vendors</span>
+        </md-card-header-text>
+        <span flex></span>
+        <md-card-actions layout="row" layout-align="end end">
+            <md-input-container>
+                <label>City</label>
+                <md-select ng-model="selectedUser" ng-model-options="{trackBy: '$value.id'}">
+                    <md-option ng-value="user" ng-repeat="user in users">{{ user.name }}</md-option>
+                </md-select>
+            </md-input-container>
+            </md-card-icon-actions>
+        </md-card-actions>
+    </md-card-header>
+    <md-card-content>
+        <p>
+            The titles of Washed Out's breakthrough song and the first single from Paracosm share the two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+        </p>
+    </md-card-content>
+    <md-divider></md-divider>
+    <md-card-footer>
+        <div layout="row" flex="100" layout-align="start center" layout-wrap>
+            <div layout="column" layout-align="center center" flex="50">
+                <span class="font-size-32">594</span>
+                <h4>Task Added</h4>
+            </div>
+            <div layout="column" layout-align="center center" flex="50">
+                <span class="font-size-32">594</span>
+                <h4>Task Added</h4>
+            </div>
+        </div>
+    </md-card-footer>
+</md-card>

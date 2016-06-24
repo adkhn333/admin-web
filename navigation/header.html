@@ -1,0 +1,16 @@
+<div>
+   <div ng-include="'navigation/menu/main-menu.html'"></div>
+   <div ng-include="'navigation/menu/quick-tools.html'"></div>
+
+   <md-toolbar flex="none">
+       <div class="md-toolbar-tools">
+           <md-button ng-click="toggleLeft()">
+               <md-icon class="material-icons md-light"> menu </md-icon> Menu
+           </md-button>
+           <!-- fill up the space between left and right area -->
+           <span flex></span>
+           <div ng-include="'navigation/menu/user-menu.html'"></div>
+           <md-icon class="material-icons md-light md-48" ng-click="toggleRight()"> apps</md-icon>
+       </div>
+   </md-toolbar>
+</div>
