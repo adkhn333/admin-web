@@ -33,7 +33,6 @@ app.controller("accessControlCtrl", ['$scope', '$http', '$mdToast', '$mdDialog',
 			$scope.$apply(function(){
 				$scope.admins = snapshot.val();
 				delete $scope.admins[$localStorage.currentUser.uid];
-				delete $scope.admins['bhptnfQoq1eEytRBbjjGDrv40oC2'];
 				$scope.flag1 = true;
 			});
 		}).catch(function(err){
