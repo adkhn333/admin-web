@@ -9,23 +9,12 @@ app.controller("adminDetailCtrl", ['$scope', '$stateParams', '$http', '$location
 
    // get data of the particular admin
    var ref = db.ref().child("admins").child($scope.id);
-   ref.on("value", function(snapshot){
+   ref.once("value", function(snapshot){
       $scope.admin = snapshot.val();
       console.log($scope.admin);
-      console.log($scope.admin.marketing_manager, $scope.admin.validation_manager);
-
-      // TODO: important resolve bug, value changes to false if no modification made
-      if($scope.admin.marketing_manager != undefined){
-         var marketing_updates = {};
-         marketing_updates['/admins/' + $scope.admin.marketing_manager + '/reportedBy/marketing/' + $scope.id] = false;
-         db.ref().update(marketing_updates);
-      }
-
-      if($scope.admin.validation_manager != undefined){
-         var data_validation_updates = {};
-         data_validation_updates['/admins/' + $scope.admin.validation_manager + '/reportedBy/dataValidation/' + $scope.id] = false;
-         db.ref().update(data_validation_updates);
-      }
+      old_marketing = $scope.admin.marketing_manager;
+      old_dataValidation = $scope.admin.validation_manager;
+      console.log(old_marketing, old_dataValidation);
    }, function(errorObject){
       console.log(errorObject);
    });
@@ -47,6 +36,21 @@ app.controller("adminDetailCtrl", ['$scope', '$stateParams', '$http', '$location
    });
 
    $scope.enterAdminPostionDetails = function(){
+      console.log(old_marketing, old_dataValidation);
+
+      if(old_marketing != undefined){
+         var old_marketing_updates = {};
+         old_marketing_updates['/admins/' + old_marketing + '/reportedBy/marketing/' + $scope.id] = false;
+         db.ref().update(old_marketing_updates);
+      }
+
+      if(old_dataValidation != undefined){
+         var old_data_validation_updates = {};
+         old_data_validation_updates['/admins/' + old_dataValidation + '/reportedBy/dataValidation/' + $scope.id] = false;
+         db.ref().update(old_data_validation_updates);
+      }
+
+
       var posObject = {
          admin_id: $scope.id,
          team: $scope.admin.team,
