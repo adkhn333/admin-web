@@ -50,7 +50,6 @@ app.controller("adminDetailCtrl", ['$scope', '$stateParams', '$http', '$location
          db.ref().update(old_data_validation_updates);
       }
 
-
       var posObject = {
          admin_id: $scope.id,
          team: $scope.admin.team,
