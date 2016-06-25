@@ -40,6 +40,7 @@ app.controller("signupCtrl", ['$scope', '$http', '$rootScope', '$location', '$md
                         .success(function(response){
                            console.log("success");
                            console.log(response);
+                           $location.path("/login");
                         })
                         .error(function(response){
                            console.log("error");
