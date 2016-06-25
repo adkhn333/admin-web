@@ -81,7 +81,7 @@ app.controller("adminDetailCtrl", ['$scope', '$stateParams', '$http', '$location
    // function getAllCities(){
    //    $http({
    //       method: 'GET',
-   //       url: 'http://139.162.44.67/api/getLocationDetails'
+   //       url: 'http://139.162.3.205/api/getLocationDetails'
    //    })
    //    .then(function successCallback(response){
    //       if(response.data.StatusCode == '200'){

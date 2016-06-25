@@ -35,7 +35,7 @@ app.controller("adminMasterCtrl", ['$scope', '$location', '$http', '$mdToast', '
          console.log(adminObject);
 
          // add status to admin object
-         $http.post("http://139.162.44.67/api/addNewAdmin", adminObject)
+         $http.post("http://139.162.3.205/api/addNewAdmin", adminObject)
             .success(function(data){
                console.log(data);
                if(data.StatusCode == '200'){

@@ -25,7 +25,7 @@ app.controller("signupCtrl", ['$scope', '$http', '$rootScope', '$location', '$md
             opt: paramList[3]
          };
          console.log(signupObject);
-         $http.post("http://139.162.44.67/api/verifyAdmin", signupObject)
+         $http.post("http://139.162.3.205/api/verifyAdmin", signupObject)
             .success(function(response){
                console.log(response);
                if(response == true){
@@ -36,7 +36,7 @@ app.controller("signupCtrl", ['$scope', '$http', '$rootScope', '$location', '$md
                         id: paramList[0],
                         uid: user.uid
                      }
-                     $http.post("http://139.162.44.67/api/createAdmin", createObject)
+                     $http.post("http://139.162.3.205/api/createAdmin", createObject)
                         .success(function(response){
                            console.log("success");
                            console.log(response);
