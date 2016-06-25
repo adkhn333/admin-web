@@ -6,22 +6,22 @@
     </md-button>
     <md-menu-content width="4">
         <md-menu-item>
-            <md-button ng-click="settings()">
+            <md-button>
                 <md-icon class="material-icons md-light md-48">settings</md-icon>
                 Settings
             </md-button>
         </md-menu-item>
         <md-menu-item>
-            <md-button ng-click="myLog()">
+            <md-button>
                 <md-icon class="material-icons md-light md-48">list</md-icon>
                 Activity Log
             </md-button>
         </md-menu-item>
         <md-menu-divider></md-menu-divider>
-        <md-menu-item>
-            <md-button ng-click="toggleNotifications()">
+        <md-menu-item ui-sref="login">
+            <md-button>
                 <md-icon class="material-icons md-light md-48">exit_to_app</md-icon>
-                <a href="#/login">Logout</a>
+                Logout
             </md-button>
         </md-menu-item>
     </md-menu-content>
