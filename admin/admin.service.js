@@ -27,14 +27,6 @@ app.factory("AdminService", ['$http', '$rootScope', '$localStorage', '$mdToast',
             deferred.resolve(adminlist);
       }, function(errorObject){
          console.log(errorObject);
-         $mdDialog.show(
-            $mdDialog.alert()
-            .clickOutsideToClose(false)
-            .title('Something went wrong!')
-            .textContent('Please refresh the page.')
-            .ariaLabel('Something went wrong.')
-            .ok('OK!')
-         );
       });
 
       // even slower method but provides realtime view update capabilities

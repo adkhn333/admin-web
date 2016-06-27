@@ -22,14 +22,6 @@ app.factory("ConstructionPartnerService", ['$http', '$localStorage', '$mdToast',
          deferred.resolve(partnerList);
       }, function(errorObject){
          console.log("error");
-         $mdDialog.show(
-            $mdDialog.alert()
-            .clickOutsideToClose(false)
-            .title('Something went wrong!')
-            .textContent('Please refresh the page.')
-            .ariaLabel('Something went wrong.')
-            .ok('OK!')
-         );
       });
       return deferred.promise;
    }
