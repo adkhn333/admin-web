@@ -1,15 +1,15 @@
-app.factory("DeveloperService", ['$http', '$rootScope', '$localStorage', '$mdToast', '$mdDialog', '$q', '$firebaseArray', function($http, $rootScope, $localStorage, $mdToast, $mdDialog, $q, $firebaseArray){
+app.factory("BuilderService", ['$http', '$rootScope', '$localStorage', '$mdToast', '$mdDialog', '$q', '$firebaseArray', function($http, $rootScope, $localStorage, $mdToast, $mdDialog, $q, $firebaseArray){
    var service = {};
 
-   service.getAllDevelopersRequest = getAllDevelopersRequest;
+   service.getAllBuildersRequest = getAllBuildersRequest;
 
    return service;
 
-   function getAllDevelopersRequest(){
+   function getAllBuildersRequest(){
 
       var deferred = $q.defer();
 
-      var ref = db.ref().child("developers");
+      var ref = db.ref().child("builders");
 
       // devList = $firebaseArray(ref);
       // $rootScope.$watch('devList');
@@ -19,12 +19,12 @@ app.factory("DeveloperService", ['$http', '$rootScope', '$localStorage', '$mdToa
       ref.on('value', function(snapshot){
          var devList = [];
          angular.forEach(snapshot.val(), function(value, key){
-            value.developer_id = key;
+            value.builder_id = key;
             devList.push(value);
          });
          $mdToast.show(
             $mdToast.simple()
-              .textContent("Developers Data fetched Successfully")
+              .textContent("Builders Data fetched Successfully")
               .hideDelay(3000)
          );
          deferred.resolve(devList);

@@ -1,7 +1,7 @@
-app.controller("addDeveloperCtrl", ['$scope', '$http','$mdToast', '$location', '$localStorage', '$mdDialog', '$timeout', function($scope, $http, $mdToast, $location, $localStorage, $mdDialog, $timeout){
+app.controller("addBuilderCtrl", ['$scope', '$http','$mdToast', '$location', '$localStorage', '$mdDialog', '$timeout', function($scope, $http, $mdToast, $location, $localStorage, $mdDialog, $timeout){
 
-   $scope.submitDeveloper = function(form){
-      $scope.noTouchDeveloper = true;
+   $scope.submitBuilder = function(form){
+      $scope.noTouchBuilder = true;
       if(form.$invalid){
          return;
       }
@@ -25,15 +25,15 @@ app.controller("addDeveloperCtrl", ['$scope', '$http','$mdToast', '$location', '
       }
       console.log(devObject);
 
-      var ref = db.ref().child("developers");
+      var ref = db.ref().child("builders");
       ref.push(devObject).then(function(data){
          console.log(data);
          console.log(data.key);
          ref.child(data.key).update({
-            developer_id: data.key
+            builder_id: data.key
          });
          $timeout(function () {
-            $location.path("/developer/list");
+            $location.path("/builder/list");
          },0);
       });
    }

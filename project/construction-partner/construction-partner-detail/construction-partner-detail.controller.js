@@ -26,7 +26,7 @@ app.controller("detailConstructionPartnerCtrl", ['$scope', '$http', '$stateParam
    });
 
    $scope.updatePartner = function(form){
-      $scope.noTouchDeveloper = true;
+      $scope.noTouchBuilder = true;
       if(form.$invalid){
          return;
       }

@@ -1,44 +1,44 @@
-<md-button type="submit" class="md-raised md-primary" ui-sref="developer.list">Cancel</md-button>
-<form name="developerform" novalidate>
+<md-button type="submit" class="md-raised md-primary" ui-sref="builder.list">Cancel</md-button>
+<form name="builderform" novalidate>
    <md-card layout-padding style="width:60%; margin: auto">
       <md-card-title>
           <md-card-title-text>
-            <span class="md-headline" layout="row" layout-align="center center">Add New Developer</span>
+            <span class="md-headline" layout="row" layout-align="center center">Add New Builder</span>
           </md-card-title-text>
         </md-card-title>
       <md-card-content>
          <md-input-container class="md-block">
             <label>Full Name</label>
             <input name="fullname" type="text" ng-model="fullname" required>
-            <div ng-messages="developerform.fullname.$error" ng-show="developerform.fullname.$touched || noTouchDeveloper">
+            <div ng-messages="builderform.fullname.$error" ng-show="builderform.fullname.$touched || noTouchBuilder">
                <div ng-message="required">This field is required</div>
             </div>
          </md-input-container>
          <md-input-container class="md-block">
             <label>Address Line 1</label>
             <input name="address1" type="text" ng-model="address1" required>
-            <div ng-messages="developerform.address1.$error" ng-show="developerform.address1.$touched || noTouchDeveloper">
+            <div ng-messages="builderform.address1.$error" ng-show="builderform.address1.$touched || noTouchBuilder">
                <div ng-message="required">This field is required</div>
             </div>
          </md-input-container>
          <md-input-container class="md-block">
             <label>Address Line 2</label>
             <input name="address2" type="text" ng-model="address2" required>
-            <div ng-messages="developerform.address2.$error" ng-show="developerform.address2.$touched || noTouchDeveloper">
+            <div ng-messages="builderform.address2.$error" ng-show="builderform.address2.$touched || noTouchBuilder">
                <div ng-message="required">This field is required</div>
             </div>
          </md-input-container>
          <md-input-container style="width:49%">
             <label>Landmark</label>
             <input name="landmark" type="text" ng-model="landmark" required>
-            <div ng-messages="developerform.landmark.$error" ng-show="developerform.landmark.$touched || noTouchDeveloper">
+            <div ng-messages="builderform.landmark.$error" ng-show="builderform.landmark.$touched || noTouchBuilder">
                <div ng-message="required">This field is required</div>
             </div>
          </md-input-container>
          <md-input-container style="width:49%">
             <label>City</label>
             <input name="city" type="text" ng-model="city" ng-pattern="/^[a-zA-Z]{1,60}$/" required>
-            <div ng-messages="developerform.city.$error" ng-show="developerform.city.$touched || noTouchDeveloper">
+            <div ng-messages="builderform.city.$error" ng-show="builderform.city.$touched || noTouchBuilder">
                <div ng-message="required">This field is required</div>
                <div ng-message="pattern">Enter Valid City Name</div>
             </div>
@@ -58,7 +58,7 @@
          <md-input-container class="md-block">
             <label>Email Address</label>
             <input type="email" ng-model="email" name="email" required>
-            <div ng-messages="developerform.email.$error" ng-show="developerform.email.$touched || noTouchDeveloper">
+            <div ng-messages="builderform.email.$error" ng-show="builderform.email.$touched || noTouchBuilder">
                <div ng-message="required">This field is required</div>
                <div ng-message="email">Enter Valid Email</div>
             </div>
@@ -66,14 +66,14 @@
          <md-input-container style="width:32%">
             <label>Website</label>
             <input name="website" type="text" ng-model="website" ng-pattern="/^(http\:\/\/|https\:\/\/)?([a-z0-9][a-z0-9\-]*\.)+[a-z0-9][a-z0-9\-]*$/">
-            <div ng-messages="developerform.website.$error" ng-show="developerform.website.$touched || noTouchDeveloper">
+            <div ng-messages="builderform.website.$error" ng-show="builderform.website.$touched || noTouchBuilder">
                <div ng-message="pattern">Enter Valid Website</div>
             </div>
          </md-input-container>
          <md-input-container style="width:32%">
             <label>Primary Contact</label>
             <input type="text" ng-model="mobile" name="mobile" ng-pattern="/^[0-9]{10}$/" required>
-            <div ng-messages="developerform.mobile.$error" ng-show="developerform.mobile.$touched || noTouchDeveloper">
+            <div ng-messages="builderform.mobile.$error" ng-show="builderform.mobile.$touched || noTouchBuilder">
                <div ng-message="pattern">Enter Valid Phone No.</div>
                <div ng-message="required">Phone No. is Required</div>
             </div>
@@ -81,13 +81,13 @@
          <md-input-container style="width:32%">
             <label>Alternate Contact</label>
             <input type="text" ng-model="alt_mob" name="alt_mob" ng-pattern="/^[0-9]{10}$/">
-            <div ng-messages="developerform.alt_mob.$error" ng-show="developerform.alt_mob.$touched || noTouchDeveloper">
+            <div ng-messages="builderform.alt_mob.$error" ng-show="builderform.alt_mob.$touched || noTouchBuilder">
                <div ng-message="pattern">Enter Valid Phone No.</div>
             </div>
          </md-input-container>
          <section layout="row" layout-align="space-around start">
-            <md-button type="submit" class="md-raised md-primary" ng-click="submitDeveloper(developerform)">Submit</md-button>
-            <md-button type="submit" class="md-raised md-primary" ui-sref="developer.list">Cancel</md-button>
+            <md-button type="submit" class="md-raised md-primary" ng-click="submitBuilder(builderform)">Submit</md-button>
+            <md-button type="submit" class="md-raised md-primary" ui-sref="builder.list">Cancel</md-button>
          </section>
       </md-card-content>
    </md-card>
