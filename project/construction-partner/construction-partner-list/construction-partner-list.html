@@ -20,10 +20,10 @@
          <tbody>
             <tr ng-repeat="partner in partnerList | filter: searchPartners">
                <td>{{partner.name}}</td>
-               <td>{{partner.company_type}}</td>
+               <td>{{partner.companyType}}</td>
                <td>{{partner.website}}</td>
                <td>
-                  <a href="#/constructionpartner/detail/{{partner.partner_id}}">View Details</a>
+                  <a href="#/constructionpartner/detail/{{partner.partnerId}}">View Details</a>
                </td>
             </tr>
          </tbody>

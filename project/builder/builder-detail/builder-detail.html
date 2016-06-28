@@ -55,7 +55,7 @@
 
          <md-input-container style="width:49%">
             <label>Area Constructed</label>
-            <input name="areacon" type="text" ng-model="builder.area_constructed">
+            <input name="areacon" type="text" ng-model="builder.areaConstructed">
          </md-input-container>
          <md-input-container class="md-block">
             <label>Email Address</label>
@@ -82,8 +82,8 @@
          </md-input-container>
          <md-input-container style="width:32%">
             <label>Alternate Contact</label>
-            <input type="text" ng-model="builder.alt_mob" name="alt_mob" ng-pattern="/^[0-9]{10}$/">
-            <div ng-messages="updatebuilderform.alt_mob.$error" ng-show="updatebuilderform.alt_mob.$touched || noTouchBuilder">
+            <input type="text" ng-model="builder.altMob" name="altMob" ng-pattern="/^[0-9]{10}$/">
+            <div ng-messages="updatebuilderform.altMob.$error" ng-show="updatebuilderform.altMob.$touched || noTouchBuilder">
                <div ng-message="pattern">Enter Valid Phone No.</div>
             </div>
          </md-input-container>

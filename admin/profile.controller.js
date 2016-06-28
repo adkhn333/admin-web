@@ -30,7 +30,7 @@ app.controller("profileCtrl", ['$scope', '$location', '$localStorage', '$http', 
 
          var adminObject = {
             mobile: $scope.admin.mobile,
-            alt_mob: $scope.admin.alt_mob,
+            altMob: $scope.admin.altMob,
             city: $scope.admin.city,
             address: $scope.admin.address,
             dob: finalTime,

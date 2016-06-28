@@ -5,7 +5,7 @@ app.controller("forgotPasswordCtrl", ['$scope', '$location', '$http', '$mdToast'
          return ;
       }
       var auth = firebase.auth();
-      var emailAddress = $scope.email_reset;
+      var emailAddress = $scope.emailReset;
       auth.sendPasswordResetEmail(emailAddress).then(function() {
          console.log("email sent");
          $timeout(function(){

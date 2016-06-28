@@ -10,7 +10,7 @@ app.controller("teamDetailCtrl", ['$scope', '$http', '$stateParams', '$mdDialog'
    };
 
    console.log($stateParams.name);
-   $scope.team_name = $stateParams.name;
+   $scope.teamName = $stateParams.name;
    $scope.team = [];
 
    list_service = AdminService.getAllAdminDetailsRequest();
@@ -18,7 +18,7 @@ app.controller("teamDetailCtrl", ['$scope', '$http', '$stateParams', '$mdDialog'
    list_service.then(function(alladminlist){
       $scope.adminlist = [];
       for(var i = 0; i<alladminlist.length;i++){
-         if(alladminlist[i].team == $scope.team_name){
+         if(alladminlist[i].team == $scope.teamName){
             $scope.adminlist.push(alladminlist[i]);
          }
       }

@@ -19,7 +19,7 @@ app.factory("BuilderService", ['$http', '$rootScope', '$localStorage', '$mdToast
       ref.on('value', function(snapshot){
          var devList = [];
          angular.forEach(snapshot.val(), function(value, key){
-            value.builder_id = key;
+            value.builderId = key;
             devList.push(value);
          });
          $mdToast.show(

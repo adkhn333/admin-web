@@ -4,7 +4,7 @@
 <md-card>
    <md-card-content>
       <md-card-title-text>
-         <span class="md-headline" layout="row" layout-align="center center">All {{team_name}} Team Members - {{adminlist.length}}</span>
+         <span class="md-headline" layout="row" layout-align="center center">All {{teamName}} Team Members - {{adminlist.length}}</span>
       </md-card-title-text>
       <md-input-container class="md-block">
          <input placeholder="Search Team Members here" type="text" ng-model="searchMembers">
@@ -18,7 +18,7 @@
             <th>
                <md-input-container class="md-block">
                   <label>Status</label>
-                  <md-select placeholder="Status" ng-model="status_ans" ng-change="setStatusFilter(status_ans)">
+                  <md-select placeholder="Status" ng-model="statusAns" ng-change="setStatusFilter(statusAns)">
                      <md-option value="All"> All
                      </md-option>
                      <md-option value="Active"> Active
@@ -40,7 +40,7 @@
                <td>{{admin.designation}}</td>
                <td>{{admin.status}}</td>
                <td>
-                  <a href="#/admindetail/{{admin.admin_id}}" class="md-button md-raised md-primary">View Details</a>
+                  <a href="#/admindetail/{{admin.adminId}}" class="md-button md-raised md-primary">View Details</a>
                </td>
             </tr>
          </tbody>

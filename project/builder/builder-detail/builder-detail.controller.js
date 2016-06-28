@@ -1,5 +1,5 @@
 app.controller("detailBuilderCtrl", ['$scope','$stateParams', '$timeout', function($scope, $stateParams, $timeout){
-   $scope.id = $stateParams.builder_id;
+   $scope.id = $stateParams.builderId;
 
    var ref = db.ref().child("builders").child($scope.id);
    ref.on('value', function(snapshot){
@@ -28,11 +28,11 @@ app.controller("detailBuilderCtrl", ['$scope','$stateParams', '$timeout', functi
          city: $scope.builder.city,
          about: $scope.builder.about,
          established: $scope.builder.established,
-         area_constructed: $scope.builder.area_constructed,
+         areaConstructed: $scope.builder.areaConstructed,
          email: $scope.builder.email,
          website: $scope.builder.website,
          mobile: $scope.builder.mobile,
-         alt_mob: $scope.builder.alt_mob || ''
+         altMob: $scope.builder.altMob || ''
       }
       console.log(devObj);
       ref.update(devObj);

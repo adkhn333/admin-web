@@ -67,7 +67,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
          }
       })
       .state('admindetails', {
-         url: '/admindetail/:admin_id',
+         url: '/admindetail/:adminId',
          templateUrl: 'admin/admin-detail.html',
          controller: 'adminDetailCtrl',
          resolve: {
@@ -110,7 +110,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
          }
       })
       .state('constructionpartner.detail', {
-         url: '/detail/:partner_id',
+         url: '/detail/:partnerId',
          templateUrl: 'project/construction-partner/construction-partner-detail/construction-partner-detail.html',
          controller: 'detailConstructionPartnerCtrl',
          resolve: {
@@ -153,7 +153,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
          }
       })
       .state('builder.detail', {
-         url: '/detail/:builder_id',
+         url: '/detail/:builderId',
          templateUrl: 'project/builder/builder-detail/builder-detail.html',
          controller: 'detailBuilderCtrl',
          resolve: {

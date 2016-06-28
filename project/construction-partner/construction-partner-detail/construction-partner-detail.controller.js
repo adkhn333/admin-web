@@ -1,5 +1,5 @@
 app.controller("detailConstructionPartnerCtrl", ['$scope', '$http', '$stateParams', '$mdToast', '$mdDialog', '$location', '$timeout', function($scope, $http, $stateParams, $mdToast, $mdDialog, $location, $timeout){
-   $scope.id = $stateParams.partner_id;
+   $scope.id = $stateParams.partnerId;
 
    $scope.compTypeList = [
       {'name': 'Construction Company'},
@@ -33,7 +33,7 @@ app.controller("detailConstructionPartnerCtrl", ['$scope', '$http', '$stateParam
 
       var partnerUpdateObject = {
          name: $scope.partner.name,
-         company_type: $scope.partner.company_type,
+         companyType: $scope.partner.companyType,
          website: $scope.partner.website,
       }
       console.log(partnerUpdateObject);
