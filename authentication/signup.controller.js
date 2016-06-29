@@ -20,7 +20,7 @@ app.controller("signupCtrl", ['$scope', '$http', '$rootScope', '$location', '$md
       if($scope.userPassword == $scope.userPasswordVerify){
          var signupObject = {
             adminId: paramList[0],
-            match_id: paramList[1],
+            matchId: paramList[1],
             code: paramList[2],
             opt: paramList[3]
          };
