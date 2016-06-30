@@ -1,0 +1,82 @@
+<div ng-include="'navigation/header.html'"></div>
+
+	<md-card >
+		<md-card-title>
+			<md-card-title-text >
+				<h2 align="center"><span >Admins</span></h2> 
+			</md-card-title-text>
+		</md-card-title>
+		<md-card-content>
+			<form ng-submit="adminAccessApply()">
+
+
+				<!-- <md-select ng-model="cityid" placeholder="Select City">
+				  <md-option ng-repeat="city in cities" value="{{city.id}}" >
+				    {{city.name}}
+				  </md-option>
+				</md-select> -->
+			<md-card >
+				<div layout="row" layout-wrap>
+					<div flex="33">
+						<md-input-container class="md-block" flex-gt-sm>
+							<label>City</label>
+							<md-select ng-model="data.city" ng-change="getProjects(data.city)">
+								<md-option ng-repeat="city in cities" value="{{city.cityId}}" required>
+								{{city.cityName}}
+								</md-option>
+							</md-select>
+						</md-input-container>
+	                </div>
+
+	                   <div flex="33">
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>Select Projects</label>
+                           
+                            <md-select ng-model="data.project" ng-change="getProject(data.project)">
+                                <md-option ng-repeat="project in projects" value="{{project.projectId}}" required>
+                                {{project.projectName}}
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
+                    </div>
+                     <div flex="33">
+                      <md-input-container class="md-block" flex-gt-sm>
+                     <md-button class="md-raised md-primary" ng-click="locadAdmins()">Load Admins</md-button>
+                     </md-input-container>
+                     </div>
+                
+					</div>
+
+					</md-card>
+<!-- 
+				<md-button class="md-raised md-primary" ng-click="loadProjects(cityData)">Find Projects</md-button>
+
+				<md-select ng-model="project" placeholder="Select project">
+				  <md-option ng-repeat="value in projects" value="{{value.projectId}}" >
+				    {{value.projectDetails.projectName}}
+				  </md-option>
+				</md-select> -->
+
+
+					<md-card >
+				<div layout="row" layout-wrap>
+					<div flex="100">
+				<md-list>
+					<md-list-item layout="row"  ng-repeat="admin in admins">
+						<label flex>{{admin.fname }} {{admin.lname}}</label>
+						<md-checkbox aria-label="admins" 
+						ng-model="adminAccess[admin.uid]" 
+						ng-init="adminAccess[admin.uid]=admin.value1">
+						</md-checkbox>
+					</md-list-item>
+				</md-list>
+				</div>
+				</div>
+
+
+</md-card>
+				<md-button class="md-primary" ng-click="giveAccess()">Apply</md-button>
+
+		</md-card-content>
+	</md-card>
+
