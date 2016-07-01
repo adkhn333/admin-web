@@ -1,0 +1,78 @@
+<style type="text/css">
+    
+table {
+    width: 100%;
+}
+table th {
+    border-collapse: collapse;
+    border-top: 1px solid #DCDCDC;
+    border-bottom: 1px solid #DCDCDC;
+    text-transform: uppercase;
+    padding: 15px;
+    background-color: #20a79a;
+    color: #fff;
+    /*background-color: #009688;*/
+}
+table td {
+    border-collapse: collapse;
+    border-bottom: 1px solid #DCDCDC;
+    padding: 15px;
+}
+
+
+</style>
+
+<div ng-include="'navigation/header.html'"></div>
+<md-content layout-padding>
+    <md-card class="md-padding">
+        <md-card-content>
+            <form name="myForm">
+                <div layout="row" layout-wrap>
+					<div flex="25">
+						<md-input-container class="md-block" flex-gt-sm>
+							<label>City</label>
+							<md-select ng-model="data.city" ng-change="getProjects(data.city)">
+								<md-option ng-repeat="city in cities" value="{{city.cityId}}" required>
+								{{city.cityName}}
+								</md-option>
+							</md-select>
+						</md-input-container>
+	                </div>
+                    <div flex="25">
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>Select Projects</label>
+                           
+                            <md-select ng-model="data.project" ng-change="getProject(data.city, data.project)">
+                                <md-option ng-repeat="project in projects" value="{{project.projectId}}" required>
+                                {{project.projectName}}
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Editable -->
+            <h1>Editable</h1>
+            <table>
+                <tr>
+                    <th>Project Name</th>
+                    <th>Version</th>
+                    <th>Submit</th>
+                </tr>
+                <tr ng-show="editableProject">
+                    <td>{{editableProject.projectName}}</td>
+                    <td>{{editableProject.version}}</td>
+                    <td style="text-align:center;">
+                        <md-button class="md-fab md-mini"
+                            ng-disabled="submitted"
+                            ng-click="submitProject(editableProject)">
+                            Ok
+                        </md-button>
+                    </td>
+                </tr>
+            </table>
+            
+        </md-card-content>
+    </md-card>
+</md-content>

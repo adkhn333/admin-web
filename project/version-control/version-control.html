@@ -1,0 +1,133 @@
+<style type="text/css">
+    
+table {
+    width: 100%;
+}
+table th {
+    border-collapse: collapse;
+    border-top: 1px solid #DCDCDC;
+    border-bottom: 1px solid #DCDCDC;
+    text-transform: uppercase;
+    padding: 15px;
+    background-color: #20a79a;
+    color: #fff;
+    /*background-color: #009688;*/
+}
+table td {
+    border-collapse: collapse;
+    border-bottom: 1px solid #DCDCDC;
+    padding: 15px;
+}
+
+
+</style>
+
+<div ng-include="'navigation/header.html'"></div>
+<md-content layout-padding>
+    <md-card class="md-padding">
+        <md-card-content>
+            <form name="myForm">
+                <div layout="row" layout-wrap>
+					<div flex="33">
+						<md-input-container class="md-block" flex-gt-sm>
+							<label>City</label>
+							<md-select ng-model="data.city" ng-change="getProjects(data.city)">
+								<md-option ng-repeat="(key, value) in cities" value="{{key}}" required>
+								{{key}}
+								</md-option>
+							</md-select>
+						</md-input-container>
+	                </div>
+                    <div flex="33">
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>Select Projects</label>
+                           
+                            <md-select ng-model="data.project" ng-change="getProject(data.city, data.project)">
+                                <md-option ng-repeat="project in projects" value="{{project.projectId}}" required>
+                                {{project.projectName}}
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Editable -->
+            <h1>Editable</h1>
+            <table>
+                <tr>
+                    <th>Project Name</th>
+                    <th>Version</th>
+                </tr>
+                <tr ng-show="allProjects.editable">
+                    <td>{{allProjects.editable.projectName}}</td>
+                    <td>{{allProjects.editable.version}}</td>
+                </tr>
+            </table>
+            
+            <!-- Submitted -->
+            <h1>Submitted</h1>
+            <table>
+                <tr>
+                    <th>Project Name</th>
+                    <th>Version</th>
+                    <th>Go Live</th>
+                    <th>Reject</th>
+                </tr>
+                <tr ng-show="allProjects.submitted">
+                    <td>{{allProjects.submitted.projectName}}</td>
+                    <td>{{allProjects.submitted.version}}</td>
+                    <td style="text-align:center;" ng-click="accept(data.city, data.project, allProjects.submitted)">
+                         <md-button class="md-fab md-mini">
+                            Live
+                        </md-button>
+                    </td>
+                    <td style="text-align:center;" ng-click="reject(data.city, data.project, allProjects.submitted)">
+                        <md-button class="md-fab md-mini">
+                            X
+                        </md-button>
+                    </td>
+                </tr>
+            </table>
+            
+            <!-- Rejected -->
+            <h1>Rejected</h1>
+            <table>
+                <tr>
+                    <th>Project Name</th>
+                    <th>Version</th>
+                </tr>
+                <tr ng-repeat="rejectedProject in allProjects.rejected" ng-show="allProjects.rejected">
+                    <td>{{rejectedProject.projectName}}</td>
+                    <td>{{rejectedProject.version}}</td>
+                </tr>
+            </table>
+            
+            <!-- Live -->
+            <h1>Current Live Projects</h1>
+            <table>
+                <tr>
+                    <th>Project Name</th>
+                    <th>Version</th>
+                </tr>
+                <tr ng-show="allProjects.live">
+                    <td>{{allProjects.live.projectName}}</td>
+                    <td>{{allProjects.live.version}}</td>
+                </tr>
+            </table>
+            
+            <!-- Previous Live -->
+            <h1>Previous Live</h1>
+            <table>
+                <tr>
+                    <th>Project Name</th>
+                    <th>Version</th>
+                </tr>
+                <tr ng-repeat="previousLive in allProjects.prevLive" ng-show="allProjects.prevLive">
+                    <td>{{previousLive.projectName}}</td>
+                    <td>{{previousLive.version}}</td>
+                </tr>
+            </table>
+        </md-card-content>
+    </md-card>
+</md-content>

@@ -184,7 +184,28 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
                return AuthenticationService.checkAuthentication();
             }
          }
-      });
+      })
+
+      .state('version-control', {
+         url: '/version-control',
+         templateUrl: 'project/version-control/version-control.html',
+         controller: 'versionControlCtrl',
+         resolve: {
+            currentAuth: function(AuthenticationService){
+               return AuthenticationService.checkAuthentication();
+            }
+         }
+      })
+      .state('project-approval', {
+         url: '/project-approval',
+         templateUrl: 'project/version-control/project-approval.html',
+         controller: 'projectApprovalCtrl',
+         resolve: {
+            currentAuth: function(AuthenticationService){
+               return AuthenticationService.checkAuthentication();
+            }
+         }
+      })
 
    $urlRouterProvider.otherwise('/dashboard');
 

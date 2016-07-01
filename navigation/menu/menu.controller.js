@@ -108,6 +108,16 @@ app.controller('MenuCtrl', ['$scope', '$timeout', '$mdSidenav', '$log', '$mdDial
          link: '#/constructionpartner/list',
          title: 'Construction Partners',
          icon: 'group'
+      },
+      {
+         link: '#/version-control',
+         title: 'Version Control',
+         icon: 'group'
+      },
+      {
+         link: '#/project-approval',
+         title: 'Project Approval',
+         icon: 'group'
       }
    ];
 }]);
