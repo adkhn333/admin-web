@@ -1,0 +1,59 @@
+<md-button type="submit" class="md-raised md-primary" ui-sref="builder.list">Cancel</md-button>
+<form name="addnearbyform" novalidate>
+   <md-card layout-padding style="width:60%; margin: auto">
+      <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline" layout="row" layout-align="center center">Add New Builder</span>
+          </md-card-title-text>
+        </md-card-title>
+      <md-card-content>
+         <md-input-container class="md-block">
+            <label>Full Name</label>
+            <input name="fullname" type="text" ng-model="fullname" required>
+         </md-input-container>
+         <md-input-container class="md-block">
+            <label>Address Line 1</label>
+            <input name="address1" type="text" ng-model="address1" required>
+         </md-input-container>
+         <md-input-container class="md-block">
+            <label>Address Line 2</label>
+            <input name="address2" type="text" ng-model="address2" required>
+         </md-input-container>
+         <md-input-container style="width:49%">
+            <label>Landmark</label>
+            <input name="landmark" type="text" ng-model="landmark" required>
+         </md-input-container>
+         <md-input-container class="md-block">
+            <label>About</label>
+            <input name="about" type="text" ng-model="about">
+         </md-input-container>
+         <md-input-container class="md-block">
+            <label>Email Address</label>
+            <input type="email" ng-model="email" name="email" required>
+            <div ng-messages="addnearbyform.email.$error" ng-show="addnearbyform.email.$touched || noTouchBuilder">
+               <div ng-message="required">This field is required</div>
+               <div ng-message="email">Enter Valid Email</div>
+            </div>
+         </md-input-container>
+         <md-input-container style="width:32%">
+            <label>Website</label>
+            <input name="website" type="text" ng-model="website" ng-pattern="/^(http\:\/\/|https\:\/\/)?([a-z0-9][a-z0-9\-]*\.)+[a-z0-9][a-z0-9\-]*$/">
+            <div ng-messages="addnearbyform.website.$error" ng-show="addnearbyform.website.$touched || noTouchBuilder">
+               <div ng-message="pattern">Enter Valid Website</div>
+            </div>
+         </md-input-container>
+         <md-input-container style="width:32%">
+            <label>Primary Contact</label>
+            <input type="text" ng-model="mobile" name="mobile" ng-pattern="/^[0-9]{10}$/" required>
+            <div ng-messages="addnearbyform.mobile.$error" ng-show="addnearbyform.mobile.$touched || noTouchBuilder">
+               <div ng-message="pattern">Enter Valid Phone No.</div>
+               <div ng-message="required">Phone No. is Required</div>
+            </div>
+         </md-input-container>
+         <section layout="row" layout-align="space-around start">
+            <md-button type="submit" class="md-raised md-primary" ng-click="submitBuilder(addnearbyform)">Submit</md-button>
+            <md-button type="submit" class="md-raised md-primary" ui-sref="builder.list">Cancel</md-button>
+         </section>
+      </md-card-content>
+   </md-card>
+</form>
