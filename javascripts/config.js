@@ -163,6 +163,49 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
          }
       });
 
+   // Nearby Routes
+   $stateProvider
+      .state('nearby', {
+         url: '/nearby',
+         templateUrl: 'nearby/nearby.html',
+         controller: 'nearbyCtrl',
+         resolve: {
+            currentAuth: function(AuthenticationService){
+               return AuthenticationService.checkAuthentication();
+            }
+         }
+      })
+      .state('nearby.list', {
+         url: '/list',
+         templateUrl: 'nearby/nearby-list/nearby-list.html',
+         controller: 'nearbyListCtrl',
+         resolve: {
+            currentAuth: function(AuthenticationService){
+               return AuthenticationService.checkAuthentication();
+            }
+         }
+      })
+      .state('nearby.add', {
+         url: '/add',
+         templateUrl: 'nearby/nearby-add/nearby-add.html',
+         controller: 'addNearbyCtrl',
+         resolve: {
+            currentAuth: function(AuthenticationService){
+               return AuthenticationService.checkAuthentication();
+            }
+         }
+      })
+      .state('nearby.detail', {
+         url: '/detail/:nearbyId',
+         templateUrl: 'nearby/nearby-detail/nearby-detail.html',
+         controller: 'detailNearbyCtrl',
+         resolve: {
+            currentAuth: function(AuthenticationService){
+               return AuthenticationService.checkAuthentication();
+            }
+         }
+      });
+
    // team section routes
    $stateProvider
       .state('teammaster', {

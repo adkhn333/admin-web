@@ -1,38 +1,19 @@
-app.factory("BuilderService", ['$http', '$rootScope', '$localStorage', '$mdToast', '$mdDialog', '$q', '$firebaseArray', function($http, $rootScope, $localStorage, $mdToast, $mdDialog, $q, $firebaseArray){
+app.factory("NearbyService", ['$http', '$localStorage', '$mdToast', '$mdDialog', '$q', '$firebaseArray', function($http, $localStorage, $mdToast, $mdDialog, $q, $firebaseArray){
    var service = {};
 
-   service.getAllBuildersRequest = getAllBuildersRequest;
+   service.getAllNearbyPlacesRequest = getAllNearbyPlacesRequest;
 
    return service;
 
-   function getAllBuildersRequest(){
-
+   function getAllNearbyPlacesRequest(){
       var deferred = $q.defer();
-
-      var ref = db.ref().child("builders");
-
-      // devList = $firebaseArray(ref);
-      // $rootScope.$watch('devList');
-      // console.log(devList);
-      // deferred.resolve(devList);
-
+      var ref = db.ref().child("nearby");
       ref.on('value', function(snapshot){
-         var devList = [];
-         angular.forEach(snapshot.val(), function(value, key){
-            value.builderId = key;
-            devList.push(value);
-         });
-         $mdToast.show(
-            $mdToast.simple()
-              .textContent("Builders Data fetched Successfully")
-              .hideDelay(3000)
-         );
-         deferred.resolve(devList);
+         var nearbyList = [];
+         deferred.resolve(nearbyList);
       }, function(errorObject){
-         console.log(errorObject);
          console.log("error");
       });
-
       return deferred.promise;
    }
-}])
+}]);
