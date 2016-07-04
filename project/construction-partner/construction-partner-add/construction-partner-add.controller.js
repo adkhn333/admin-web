@@ -10,11 +10,11 @@ app.controller("addConstructionPartnerCtrl", ['$scope', '$http', '$mdToast', '$m
    $scope.submitPartnerMaster = function(){
       var PartnerMasterObject = {
          name: $scope.companyname,
-         company_type: $scope.selectedCompType,
+         companyType: $scope.selectedCompType,
          website: $scope.website || '',
-         tracking_id: $localStorage.currentUser.uid,
-         active_flag: 1,
-         created_date: new Date()
+         trackingId: $localStorage.currentUser.uid,
+         activeFlag: 1,
+         createdDate: new Date()
       }
       console.log(PartnerMasterObject);
 
@@ -23,7 +23,7 @@ app.controller("addConstructionPartnerCtrl", ['$scope', '$http', '$mdToast', '$m
          console.log(data);
          console.log(data.key);
          ref.child(data.key).update({
-            partner_id: data.key
+            partnerId: data.key
          });
          $timeout(function () {
             $location.path("/constructionpartner/list");

@@ -20,8 +20,8 @@
                </div>
             </md-input-container>
             <md-input-container class="md-block">
-               <input placeholder="Confirm Password" type="password" ng-model="userPassword_verify" name="userPassword_verify" required ng-pattern="/^((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20})$/" class="md-block">
-               <div ng-messages="signupForm.userPassword_verify.$error" ng-show="signupForm.userPassword_verify.$touched || notouchlogin">
+               <input placeholder="Confirm Password" type="password" ng-model="userPasswordVerify" name="userPasswordVerify" required ng-pattern="/^((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20})$/" class="md-block">
+               <div ng-messages="signupForm.userPasswordVerify.$error" ng-show="signupForm.userPasswordVerify.$touched || notouchlogin">
                   <div ng-message="required">This is required</div>
                   <div ng-message="pattern">Password should be 6-20 characters long and should atleast contain one number,one uppercase and one lowercase letter.</div>
                </div>

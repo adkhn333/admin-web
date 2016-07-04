@@ -15,7 +15,7 @@ app.factory("AdminService", ['$http', '$rootScope', '$localStorage', '$mdToast',
       ref.on('value', function(snapshot){
          var adminlist = [];
          angular.forEach(snapshot.val(), function(value, key){
-            value.admin_id = key;
+            value.adminId = key;
             adminlist.push(value);
          })
          console.log(adminlist);

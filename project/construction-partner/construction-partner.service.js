@@ -11,7 +11,7 @@ app.factory("ConstructionPartnerService", ['$http', '$localStorage', '$mdToast',
       ref.on('value', function(snapshot){
          var partnerList = [];
          angular.forEach(snapshot.val(), function(value, key){
-            value.partner_id = key;
+            value.partnerId = key;
             partnerList.push(value);
          });
          $mdToast.show(

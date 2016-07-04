@@ -67,7 +67,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
          }
       })
       .state('admindetails', {
-         url: '/admindetail/:admin_id',
+         url: '/admindetail/:adminId',
          templateUrl: 'admin/admin-detail.html',
          controller: 'adminDetailCtrl',
          resolve: {
@@ -110,7 +110,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
          }
       })
       .state('constructionpartner.detail', {
-         url: '/detail/:partner_id',
+         url: '/detail/:partnerId',
          templateUrl: 'project/construction-partner/construction-partner-detail/construction-partner-detail.html',
          controller: 'detailConstructionPartnerCtrl',
          resolve: {
@@ -120,42 +120,85 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
          }
       });
 
-   // Developer Routes
+   // Builder Routes
    $stateProvider
-      .state('developer', {
-         url: '/developer',
-         templateUrl: 'project/developer/developer.html',
-         controller: 'developerCtrl',
+      .state('builder', {
+         url: '/builder',
+         templateUrl: 'project/builder/builder.html',
+         controller: 'builderCtrl',
          resolve: {
             currentAuth: function(AuthenticationService){
                return AuthenticationService.checkAuthentication();
             }
          }
       })
-      .state('developer.list', {
+      .state('builder.list', {
          url: '/list',
-         templateUrl: 'project/developer/developer-list/developer-list.html',
-         controller: 'developerListCtrl',
+         templateUrl: 'project/builder/builder-list/builder-list.html',
+         controller: 'builderListCtrl',
          resolve: {
             currentAuth: function(AuthenticationService){
                return AuthenticationService.checkAuthentication();
             }
          }
       })
-      .state('developer.add', {
+      .state('builder.add', {
          url: '/add',
-         templateUrl: 'project/developer/developer-add/developer-add.html',
-         controller: 'addDeveloperCtrl',
+         templateUrl: 'project/builder/builder-add/builder-add.html',
+         controller: 'addBuilderCtrl',
          resolve: {
             currentAuth: function(AuthenticationService){
                return AuthenticationService.checkAuthentication();
             }
          }
       })
-      .state('developer.detail', {
-         url: '/detail/:developer_id',
-         templateUrl: 'project/developer/developer-detail/developer-detail.html',
-         controller: 'detailDeveloperCtrl',
+      .state('builder.detail', {
+         url: '/detail/:builderId',
+         templateUrl: 'project/builder/builder-detail/builder-detail.html',
+         controller: 'detailBuilderCtrl',
+         resolve: {
+            currentAuth: function(AuthenticationService){
+               return AuthenticationService.checkAuthentication();
+            }
+         }
+      });
+
+   // Nearby Routes
+   $stateProvider
+      .state('nearby', {
+         url: '/nearby',
+         templateUrl: 'nearby/nearby.html',
+         controller: 'nearbyCtrl',
+         resolve: {
+            currentAuth: function(AuthenticationService){
+               return AuthenticationService.checkAuthentication();
+            }
+         }
+      })
+      .state('nearby.list', {
+         url: '/list',
+         templateUrl: 'nearby/nearby-list/nearby-list.html',
+         controller: 'nearbyListCtrl',
+         resolve: {
+            currentAuth: function(AuthenticationService){
+               return AuthenticationService.checkAuthentication();
+            }
+         }
+      })
+      .state('nearby.add', {
+         url: '/add',
+         templateUrl: 'nearby/nearby-add/nearby-add.html',
+         controller: 'addNearbyCtrl',
+         resolve: {
+            currentAuth: function(AuthenticationService){
+               return AuthenticationService.checkAuthentication();
+            }
+         }
+      })
+      .state('nearby.detail', {
+         url: '/detail/:nearbyId',
+         templateUrl: 'nearby/nearby-detail/nearby-detail.html',
+         controller: 'detailNearbyCtrl',
          resolve: {
             currentAuth: function(AuthenticationService){
                return AuthenticationService.checkAuthentication();

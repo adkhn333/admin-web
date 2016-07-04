@@ -100,8 +100,8 @@ app.controller('MenuCtrl', ['$scope', '$timeout', '$mdSidenav', '$log', '$mdDial
          icon: 'group'
       },
       {
-         link: '#/developer/list',
-         title: 'Developers',
+         link: '#/builder/list',
+         title: 'Builders',
          icon: 'group'
       },
       {
