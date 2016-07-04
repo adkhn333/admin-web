@@ -207,6 +207,17 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
          }
       })
 
+      .state('add-location', {
+         url: '/add-location',
+         templateUrl: 'location/add-location.html',
+         controller: 'createCityZoneLocationCtrl',
+         resolve: {
+            currentAuth: function(AuthenticationService){
+               return AuthenticationService.checkAuthentication();
+            }
+         }
+      })
+
    $urlRouterProvider.otherwise('/dashboard');
 
 }]);

@@ -118,6 +118,11 @@ app.controller('MenuCtrl', ['$scope', '$timeout', '$mdSidenav', '$log', '$mdDial
          link: '#/project-approval',
          title: 'Project Approval',
          icon: 'group'
+      },
+      {
+         link: '#/add-location',
+         title: 'Add Location',
+         icon: 'group'
       }
    ];
 }]);

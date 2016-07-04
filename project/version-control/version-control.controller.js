@@ -104,32 +104,6 @@ app
 
 
 		var newVersion = (checkVersion(submittedData.version)+1)+'-1';
-		//var newSubVersion = checkVersion(submittedData.version)+'-'+(checkSubVersion(submittedData.version)+1);
-		//console.log(newVersion);
-		
-		// console.log(submittedData);
-		// var liveData = submittedData;
-		//newEditable['version'] = newVersion;
-		// console.log(liveData);
-		// console.log(newEditable);
-
-		
-		// return;
-
-
-		// var newEditable = submittedData;
-		// newEditable.version = newSubVersion;
-		// editableRef.set(newEditable);
-
-
-		// prevLive = curent live
-		// live = submitted
-		// submitted = null
-		// editble = editable + 1
-		// rejected = remain same
-
-		// protectedResidential = submitted + new version
-		// projects = submitted
 
 		if($scope.allProjects.live){
 			prevLiveRef.child($scope.allProjects.live.version).set($scope.allProjects.live);
@@ -140,7 +114,6 @@ app
 		var submittedRef = firebase.database().ref()
 		.child('protectedResidentialVersions/'+cityId+'/projects/'+projectId+'/submitted').remove();
 		
-
 
 		
 		var protedtedResidentialRef = firebase.database().ref()
@@ -153,7 +126,7 @@ app
 				// console.log(projectId);
 				console.log(submittedData.version);
 				firebase.database().ref()
-				.child('projects/'+cityId+'/residential/'+projectId+'/'+submittedData.version)
+				.child('projects/'+cityId+'/residential/'+projectId)
 				.set(snapshot.val());
 
 				firebase.database().ref()
@@ -170,9 +143,19 @@ app
 				// .child('protectedResidential/'+cityId+'/projects/'+projectId+'/'+snapshot.val().version);
 				// .set(x);
 
-				var newEditable = submittedData;
+				var newEditable = snapshot.val();
 				newEditable.version = newVersion;
 				editableRef.set(newEditable);
+
+
+				firebase.database()
+				.ref('protectedResidential/'+$scope.data.city+'/projects/'+projectId+'/'+newEditable.version)
+				.set(newEditable);
+
+				console.log('protectedResidential/'+$scope.data.city+'/projects/'+projectId+'/'+submittedData.version);
+				firebase.database()
+				.ref('protectedResidential/'+$scope.data.city+'/projects/'+projectId+'/'+submittedData.version)
+				.remove();
 
 			},50);
 		});

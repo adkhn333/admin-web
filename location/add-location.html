@@ -1,0 +1,181 @@
+<div ng-include="'navigation/header.html'"></div>
+<md-content>
+    <div layout="column" >
+        <md-card class="md-padding">
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Create Cities, Zones & Locations</span>
+                    <!-- <span class="md-subhead">Description</span> -->
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-content>
+                <div flex>
+                  <md-radio-group ng-model="selected.status" ng-change="radioChange(selected.status)"  layout="row">
+                    <md-radio-button value="city">Add City</md-radio-button>
+                    <md-radio-button value="zone">Add Zone </md-radio-button>
+                    <md-radio-button value="location">Add Location</md-radio-button>
+                  </md-radio-group>
+                </div><br>
+                <form name="cityForm" ng-show="selected.status=='city'">
+                    <div layout="row" layout-align="center center">
+                        <div flex="50">
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>City Name</label>
+                                <input ng-model="city.cityName" type="text" required>
+                            </md-input-container>
+                        </div>
+                        <div flex="25">
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>Latitude</label>
+                                <input ng-model="city.latitude" type="number" required>
+                            </md-input-container>
+                        </div>
+                        <div flex="25">
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>Longitude</label>
+                                <input ng-model="city.longitude" type="number" required>
+                            </md-input-container>
+                        </div>
+                    </div>
+                    <div layout="row" layout-align="center center">
+                        <div flex="25">
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>Country</label>
+                                <input ng-model="city.country" type="text" required>
+                            </md-input-container>
+                        </div>
+                        <div flex="25">
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>State</label>
+                                <input ng-model="city.state" type="text" required>
+                            </md-input-container>
+                        </div>
+                    </div>
+                    <md-card-actions layout="row" layout-align="end center">
+                        <md-button
+                            class="md-raised md-primary"
+                            ng-disabled="cityForm.$pristine"
+                            ng-click="reset()"
+                        >Reset</md-button>
+                        <md-button
+                            class="md-raised md-primary"
+                            ng-disabled="cityForm.$invalid"
+                            ng-click="addNewCity(city)"
+                        >Add</md-button>
+                    </md-card-actions>
+                </form>
+
+                <form name="zoneForm" ng-show="selected.status=='zone'">               
+
+                    <div layout="row" layout-align="center center">
+                        <div flex="25">
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>City Name</label>
+                                <md-select ng-model="zone.city">
+                                    <md-option ng-repeat="city in cities" value="{{city}}" required>
+                                    {{city.cityName}}
+                                    </md-option>
+                                </md-select>
+                            </md-input-container>
+                        </div>
+                        <div flex="25">
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>Zone Name</label>
+                                <input ng-model="zone.zoneName" type="text" required>
+                            </md-input-container>
+                        </div>
+                        <div flex="25">
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>Latitude</label>
+                                <input ng-model="zone.latitude" type="number" required>
+                            </md-input-container>
+                        </div>
+                        <div flex="25">
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>Longitude</label>
+                                <input ng-model="zone.longitude" type="number" required>
+                            </md-input-container>
+                        </div>
+
+                    </div>
+                    <md-card-actions layout="row" layout-align="end center">
+                        <md-button
+                            class="md-raised md-primary"
+                            ng-disabled="zoneForm.$pristine"
+                            ng-click="reset()"
+                        >Reset</md-button>
+                        <md-button
+                            class="md-raised md-primary"
+                            ng-disabled="zoneForm.$invalid"
+                            ng-click="addNewZone(zone)"
+                        >Add</md-button>
+                    </md-card-actions>
+                </form>
+
+                <form name="locationForm" ng-show="selected.status=='location'">
+
+                    <div layout="row" layout-align="center center">
+                        <div flex="33">
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>City Name</label>
+                                <md-select ng-model="location.cityName"
+                                    ng-change="selectZonesByCity(location.cityName)">
+                                    <md-option ng-repeat="city in cities" value="{{city}}" required>
+                                    {{city.cityName}}
+                                    </md-option>
+                                </md-select>
+                            </md-input-container>
+                        </div>
+                        <div flex="33">
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>Zone Name</label>
+                                <md-select ng-model="location.zone">
+                                    <md-option ng-repeat="zone in zones" value="{{zone}}" required>
+                                    {{zone.zoneName}}
+                                    </md-option>
+                                </md-select>
+                            </md-input-container>
+                        </div>
+                    </div>
+
+                    <div layout="row" layout-align="center center">
+                        <div flex="50">
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>Location Name</label>
+                                <input ng-model="location.location" type="text" required>
+                            </md-input-container>
+                        </div>
+                        <div flex="25">
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>Latitude</label>
+                                <input ng-model="location.latitude" type="number" required>
+                            </md-input-container>
+                        </div>
+                        <div flex="25">
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <label>Longitude</label>
+                                <input ng-model="location.longitude" type="number" required>
+                            </md-input-container>
+                        </div>
+                    </div>
+
+                    <md-card-actions layout="row" layout-align="end center">
+                        <md-button
+                            class="md-raised md-primary"
+                            ng-disabled="locationForm.$pristine"
+                            ng-click="reset()"
+                        >Reset</md-button>
+                        <md-button
+                            class="md-raised md-primary"
+                            ng-disabled="locationForm.$invalid"
+                            ng-click="addNewLocation(location)"
+                        >Add</md-button>
+                    </md-card-actions>
+                </form>
+
+                </md-card-content>
+           
+        </md-card>
+    </div>
+
+</md-content>
