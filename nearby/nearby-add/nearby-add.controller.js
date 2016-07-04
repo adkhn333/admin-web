@@ -27,11 +27,8 @@ app.controller("addNearbyCtrl", ['$scope', '$firebaseArray', '$location','NgMap'
          longitude: $scope.longitude,
          city: $scope.selectedCity,
          details: detailsObj,
-<<<<<<< HEAD
          placeid:$scope.placeid,
          // type: $scope.type
-=======
->>>>>>> 4667715... nearby 2
       }
 
       console.log(obj);
