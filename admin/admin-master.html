@@ -43,21 +43,6 @@
          <th>EMAIL</th>
          <th>DESIGNATION</th>
          <th>TEAM</th>
-         <th>
-            <md-input-container class="md-block">
-               <label>Status</label>
-               <md-select placeholder="Status" ng-model="statusAns" ng-change="setStatusFilter(statusAns)">
-                  <md-option value="All"> All
-                  </md-option>
-                  <md-option value="Active"> Active
-                  </md-option>
-                  <md-option value="Inactive"> Inactive
-                  </md-option>
-                  <md-option value="Blocked"> Blocked
-                  </md-option>
-               </md-select>
-            </md-input-container>
-         </th>
       </thead>
       <tbody>
          <tr ng-repeat="admin in adminlist|filter:statusFilter | filter:searchtext">
@@ -69,21 +54,7 @@
             <td>{{admin.email}}</td>
             <td>{{admin.designation}}</td>
             <td>{{admin.team}}</td>
-            <td>{{admin.status}}</td>
          </tr>
       </tbody>
    </table>
-
-   <!-- <md-list ng-cloak>
-      <md-list-item ng-repeat="admin in adminlist|filter:statusFilter | filter:searchtext">
-         <a href="#/admindetail/{{admin.adminId}}">
-            {{ admin.fname }} {{admin.lname}}
-         </a>
-         {{admin.email}}
-         {{admin.designation}}
-         {{admin.team}}
-         {{admin.status}}
-      </md-list-item>
-   </md-list> -->
-
 </md-card>

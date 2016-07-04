@@ -13,19 +13,19 @@ app.controller("profileCtrl", ['$scope', '$location', '$localStorage', '$http', 
 
       $scope.updateDetails = function(){
 
-         console.log($scope.admin.dob);
-         var tzoffset = (new Date($scope.admin.dob)).getTimezoneOffset() * 60000;
-         console.log(tzoffset);
+         // console.log($scope.admin.dob);
+         // var tzoffset = (new Date($scope.admin.dob)).getTimezoneOffset() * 60000;
+         // console.log(tzoffset);
 
          // console.log($scope.admin.dob.toISOString());
          // var birthdate = $scope.admin.dob.toISOString().split('T')[0];
          // console.log(birthdate);
 
-         var localISOTime = (new Date(new Date($scope.admin.dob).getTime() - tzoffset)).toISOString();
-
-         console.log(localISOTime);
-         console.log(localISOTime.split('T')[0]);
-         finalTime = localISOTime.split('T')[0];
+         // var localISOTime = (new Date(new Date($scope.admin.dob).getTime() - tzoffset)).toISOString();
+         //
+         // console.log(localISOTime);
+         // console.log(localISOTime.split('T')[0]);
+         // finalTime = localISOTime.split('T')[0];
 
 
          var adminObject = {
@@ -33,7 +33,8 @@ app.controller("profileCtrl", ['$scope', '$location', '$localStorage', '$http', 
             altMob: $scope.admin.altMob,
             city: $scope.admin.city,
             address: $scope.admin.address,
-            dob: finalTime,
+            dob: $scope.admin.dob,
+            // dob: finalTime,
             gender: $scope.admin.gender
          }
          console.log(adminObject);
