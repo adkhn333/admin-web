@@ -22,9 +22,17 @@
             <input name="placetype" type="text" ng-model="placetype" required>
          </md-input-container>
          <md-input-container class="md-block">
+            <label>Place Id</label>
+            <input name="placeid" type="text" ng-model="placeid" required>
+         </md-input-container>
+         <!-- <md-input-container class="md-block">
             <label>Address</label>
             <input name="address" type="text" ng-model="address" required>
-         </md-input-container>
+         </md-input-container> -->
+         Enter an address: <br/>
+         <input places-auto-complete size=80
+         ng-model="address" on-place-changed="placeChanged()" /> <br/>
+         <ng-map class="google-map"></ng-map>
          <md-input-container class="md-block">
             <label>Landmark</label>
             <input name="landmark" type="text" ng-model="landmark" required>

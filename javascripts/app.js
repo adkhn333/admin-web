@@ -1,4 +1,4 @@
-var app = angular.module('RoofpikAdmin', ['ngMaterial', 'ui.router', 'ngStorage', 'firebase', 'ngMessages']);
+var app = angular.module('RoofpikAdmin', ['ngMaterial', 'ui.router', 'ngStorage', 'firebase', 'ngMessages','ngMap']);
 var db = firebase.database();
 
 app.controller('homeCtrl', function($scope) {

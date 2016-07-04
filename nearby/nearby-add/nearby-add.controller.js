@@ -1,7 +1,16 @@
-app.controller("addNearbyCtrl", ['$scope', '$firebaseArray', '$location', function($scope, $firebaseArray, $location){
+app.controller("addNearbyCtrl", ['$scope', '$firebaseArray', '$location','NgMap',function($scope, $firebaseArray, $location,NgMap){
    var getcity = db.ref("city");
    $scope.cities = $firebaseArray(getcity);
-
+   $scope.placeChanged = function(){
+      $scope.place = this.getPlace();
+      //console.log('location', $scope.place.geometry.location);
+      $scope.map.setCenter($scope.place.geometry.location);
+      $scope.placeid = $scope.place.place_id;
+      //console.log($scope.google_place_id);
+   }
+   NgMap.getMap().then(function(map) {
+      $scope.map = map;
+   });
    $scope.submitNearby = function(){
 
       var detailsObj = {
@@ -18,6 +27,7 @@ app.controller("addNearbyCtrl", ['$scope', '$firebaseArray', '$location', functi
          longitude: $scope.longitude,
          city: $scope.selectedCity,
          details: detailsObj,
+         placeid:$scope.placeid,
          // type: $scope.type
       }
 
