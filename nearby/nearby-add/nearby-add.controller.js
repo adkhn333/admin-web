@@ -27,8 +27,11 @@ app.controller("addNearbyCtrl", ['$scope', '$firebaseArray', '$location','NgMap'
          longitude: $scope.longitude,
          city: $scope.selectedCity,
          details: detailsObj,
+<<<<<<< HEAD
          placeid:$scope.placeid,
          // type: $scope.type
+=======
+>>>>>>> 4667715... nearby 2
       }
 
       console.log(obj);
@@ -38,17 +41,9 @@ app.controller("addNearbyCtrl", ['$scope', '$firebaseArray', '$location','NgMap'
       obj['nearbyId'] = newNearbyKey;
       var updatesNearby = {};
       updatesNearby['/nearby/'+$scope.selectedCity+"/"+newNearbyKey] = obj;
-      db.ref().update(updates).then(function(){
+      db.ref().update(updatesNearby).then(function(){
          console.log("success");
          $location.path("/nearby/list");
       });
-
-      // var updatesNearbyDistance = {};
-      // var allprojects = db.ref("projects")
-      // allprojects.on("value", function(snapshot){
-      //    console.log(snapshot.val());
-         // for(var i in snapshot.val())
-      // });
-      // updatesNearbyDistance['nearbyDistance/'+$scope.selectedCity+"/"+newNearbyKey+""]
    };
 }]);

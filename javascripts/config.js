@@ -216,6 +216,16 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
                return AuthenticationService.checkAuthentication();
             }
          }
+      })
+      .state('nearby.get-distance', {
+         url: '/get-distance',
+         templateUrl: 'nearby/project-distance/project-distance.html',
+         controller: 'getProjectDistanceCtrl',
+         resolve: {
+            currentAuth: function(AuthenticationService){
+               return AuthenticationService.checkAuthentication();
+            }
+         }
       });
 
    // team section routes

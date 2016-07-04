@@ -1,0 +1,31 @@
+<md-button type="submit" class="md-raised md-primary" ui-sref="nearby.list">Cancel</md-button>
+<md-card layout-padding style="width:60%; margin: auto">
+   <md-card-title>
+       <md-card-title-text>
+         <span class="md-headline" layout="row" layout-align="center center">Add New Nearby Place</span>
+       </md-card-title-text>
+     </md-card-title>
+   <md-card-content>
+      <form name="addnearbyform" novalidate>
+         <md-input-container class="md-block">
+            <md-select ng-model="selectedCity" placeholder="Select City" ng-change="onChange()">
+               <md-option ng-value="city.cityId" ng-repeat="city in cities">{{city.cityName}}</md-option>
+            </md-select>
+         </md-input-container>
+         <md-input-container class="md-block">
+            <md-select ng-model="selectedPlace" placeholder="Select Nearby Place" ng-change="onChangePlace()">
+               <md-option ng-value="place.nearbyId" ng-repeat="place in allPlaces">{{place.name}}</md-option>
+            </md-select>
+         </md-input-container>
+         <md-radio-group ng-model="time">
+            <md-radio-button value="off-peak">Off Peak Time</md-radio-button>
+            <md-radio-button value="peak">Peak Time</md-radio-button>
+         </md-radio-group>
+
+         <section layout="row" layout-align="space-around start">
+            <md-button type="submit" class="md-raised md-primary" ng-click="getDistance()">Submit</md-button>
+            <md-button type="submit" class="md-raised md-primary" ui-sref="nearby.list">Cancel</md-button>
+         </section>
+      </form>
+   </md-card-content>
+</md-card>
