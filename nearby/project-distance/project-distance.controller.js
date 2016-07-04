@@ -1,4 +1,4 @@
-app.controller("getProjectDistanceCtrl", ['$scope', '$http', '$firebaseArray', function($scope, $http, $firebaseArray){
+app.controller("getProjectDistanceCtrl", ['$scope', '$http', '$firebaseArray', 'ProjectDistanceService', function($scope, $http, $firebaseArray, ProjectDistanceService){
    var getcity = db.ref("city");
    $scope.cities = $firebaseArray(getcity);
 
@@ -17,16 +17,21 @@ app.controller("getProjectDistanceCtrl", ['$scope', '$http', '$firebaseArray', f
       }
       console.log(object);
 
-      var allProjects = db.ref("projects/"+$scope.selectedCity+"/residential");
-      allProjects.on("value", function(snapshot){
-         console.log(snapshot.val());
+      var nearbyPlaceDetails = db.ref("nearby/"+$scope.selectedCity+"/"+$scope.selectedPlace);
+      nearbyPlaceDetails.on("value", function(snap){
+         console.log(snap.val());
+         var placeDetailsLat = snap.val().latitude;
+         var placeDetailsLng = snap.val().longitude;
+         console.log(placeDetailsLat, placeDetailsLng);
+         var allProjects = db.ref("projects/"+$scope.selectedCity+"/residential");
+         allProjects.on("value", function(snapshot){
+            console.log(snapshot.val());
+            var projects = snapshot.val();
+            for(var i in projects){
+               console.log(i, projects[i]);
+               ProjectDistanceService.getProjectDistanceRequest($scope.selectedCity, $scope.selectedPlace, $scope.time, i, placeDetailsLat, placeDetailsLng);
+            }
+         });
       });
-      $http.get("https://maps.googleapis.com/maps/api/distancematrix/json?origins=place_id:ChIJ__8PKZ0YDTkR5kCechetH68&destinations=place_id:ChIJa5eBWT8YDTkRpPAcyLWSglA&key=AIzaSyCAm8WiABW8aEssyzeEJz1kWoRjuZXZwfQ")
-         .success(function(response){
-            console.log(response);
-         })
-         .error(function(response){
-            console.log(response);
-         })
    }
 }]);
