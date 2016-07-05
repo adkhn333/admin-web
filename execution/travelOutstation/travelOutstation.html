@@ -1,0 +1,161 @@
+<div ng-include="'navigation/header.html'"></div>
+	<div >
+		
+		<md-tabs md-stretch-tabs="always" md-dynamic-height md-border-bottom>
+	        
+	        <md-tab label="Planned">
+		        <md-content style = "padding:50px;">
+		        	<md-card >
+	        			<div style="padding:30px;">
+				            <span class="md-subhead">
+					            <div style="padding:0px; margin:0px;" ng-click="startActivity()">
+								    <i class="material-icons">room</i>
+								    Start my travel
+								</div>
+				            </span>
+			            	<p style="margin:2">latitude: {{planningDetails.start.lat}}</p>
+				      		<p style="margin:2">longitude: {{planningDetails.start.lng}}</p>
+				      		<p style="margin:2">Start time: {{planningDetails.start.time}}</p>
+				      		<p style="margin:2">Start City: {{planningDetails.start.location}}</p>
+
+				        </div>
+					</md-card>
+					<md-card >
+	        			<div style="padding:30px;">
+				            <span class="md-subhead">
+					            <div style="padding:0px; margin:0px;" ng-click="startActivity()">
+								    <i class="material-icons">room</i>
+								    End my travel
+								</div>
+				            </span>
+			            	<p style="margin:2">latitude: {{planningDetails.end.lat}}</p>
+				      		<p style="margin:2">longitude: {{planningDetails.end.lat}}</p>
+				      		<p style="margin:2">End time: {{planningDetails.end.lat}}</p>
+				      		<p style="margin:2">End City: {{planningDetails.end.location}}</p>
+				        </div>
+					</md-card>
+					<md-card>
+						<p> <i class="material-icons">message</i> Mode: {{planningDetails.mode}}</p>
+					</md-card>
+					<md-card>
+						<p> <i class="material-icons">message</i> Project ID: {{planningDetails.project_id}}</p>
+					</md-card>
+					<md-card>
+						<p> <i class="material-icons">message</i> purpose: {{planningDetails.purpose}}</p>
+					</md-card>
+		        </md-content>
+	        </md-tab>
+
+	        <md-tab label="Summary">
+		        <md-content style = "padding:50px;">
+		        	<div layout="row">
+			        	<md-button class="md-raised md-primary" ng-click="startActivity(activity)">
+			        		{{toggle}}
+			        	</md-button>
+			        	<md-button class="md-raised md-primary"  ng-click="cancel()">
+			        		cancel			        	
+			        	</md-button>
+		        	</div>
+		        	<md-card >
+	        			<div style="padding:30px;">
+				            <span class="md-subhead">
+					            <div style="padding:0px; margin:0px;">
+								    <i class="material-icons">room</i>
+								    Start my travel
+								</div>
+				            </span>
+			            	<p style="margin:2">latitude: {{startLatitude}}</p>
+				      		<p style="margin:2">longitude: {{startLongitude}}</p>
+				      		<p style="margin:2">Start time: {{startTime}}</p>
+				        </div>
+					</md-card>
+					<md-card>
+		        		<div style="padding:30px;">
+				            <span class="md-subhead" style="margin:2px;">
+					            <div style="margin:0px; display:block;">
+								    <i class="material-icons">format_align_justify</i>
+								    <span style="padding-bottom:10px !important;">Mode</span>
+								</div>
+				            </span>
+					        <md-radio-group ng-model="activity.mode" ng-init="mode=null">
+						        <md-radio-button value="Bus">Bus</md-radio-button>
+						        <md-radio-button value="Auto"> Auto </md-radio-button>
+						        <md-radio-button value="Metro">Metro</md-radio-button>
+						        <md-radio-button value="Cab">Cab/Car</md-radio-button>
+						    </md-radio-group>
+						    <md-input-container style="width:100%">
+						    	<label>Other</label>
+						    	<input type="text" ng-model="activity.mode" ng-init="mode=null">
+						    </md-input-container>
+						</div>
+					</md-card>
+					<md-card>
+						<div style="padding:30px;">
+							<p>
+								<i class="material-icons">message</i>
+								Remarks
+							</p>
+						    <textarea rows="5" ng-model="activity.remark" ng-init="remark=null">
+						    </textarea>
+						</div>
+					</md-card>
+					<md-card >
+	        			<div style="padding:30px;">
+				            <span class="md-subhead">
+					            <div style="padding:0px; margin:0px;" >
+								    <i class="material-icons">room</i>
+								    End my travel
+								</div>
+				            </span>
+			            	<p style="margin:2">latitude: {{endLatitude}}</p>
+				      		<p style="margin:2">longitude: {{endLongitude}}</p>
+				      		<p style="margin:2">End time: {{endTime}}</p>
+				        </div>
+					</md-card>
+		        </md-content>
+	        </md-tab>
+
+
+	        <md-tab label="comments">
+		        <md-content style = "padding:50px;">
+		    		<md-list>
+		    			<md-list-item ng-repeat="comment in comments">
+		    				<p>Message: {{comment.message}}</p>
+			                <p>Time: {{comment.time}}</p>
+			                <p>Userid: {{comment.userid}}</p>
+			                <p>Name: {{comment.name}}</p>
+		    			</md-list-item>
+		    			<divider></divider>
+		    		</md-list>
+		    		<div style="margin:10px">
+					    <textarea  rows="5" ng-model="com.message" ng-init="message=null">
+					    </textarea>
+				    </div>
+					<md-button class="md-primary md-raised" ng-click="add_comment(com)">Add comment</md-button>
+		        
+
+
+
+<form>
+    <div class="multiselect">
+        <div class="selectBox" ng-click="showCheckboxes()">
+            <select>
+                <option>Select an option</option>
+            </select>
+            <div class="overSelect"></div>
+        </div>
+        <div id="checkboxes">
+            <label for="one"><input type="checkbox" id="one"/>First checkbox</label>
+            <label for="two"><input type="checkbox" id="two"/>Second checkbox </label>
+            <label for="three"><input type="checkbox" id="three"/>Third checkbox</label>
+        </div>
+    </div>
+</form>
+
+
+		        </md-content>
+	        </md-tab>
+	    </md-tabs>
+
+	</div>
+	

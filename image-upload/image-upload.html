@@ -1,0 +1,48 @@
+<div ng-include="'navigation/header.html'"></div>
+<md-content>
+    <div layout="column" >
+        <md-card class="md-padding">
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Image Upload</span>
+                    <!-- <span class="md-subhead">Description</span> -->
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-content>
+                <form name="cityForm" novalidate>
+                    <md-progress-linear ng-hide="dataloaded" md-mode="query"></md-progress-linear>
+                    <div layout="row">
+                        <div flex="33">
+                          <md-select ng-model="cityId" placeholder="Select a City">
+                                <md-option ng-value="city.cityId" ng-repeat="city in cities">{{ city.cityName }}</md-option>
+                            </md-select>
+                        </div>
+                        <div flex="33">
+                          <md-select ng-model="project" placeholder="Select a Project">
+                                <md-option ng-value="value" ng-repeat="(key, value) in projects">{{ value.projectName }}</md-option>
+                            </md-select>
+                        </div>
+                        <div flex="33">
+                            <md-select ng-model="path" placeholder="Select a path">
+                                <md-option ng-value="path.value" ng-repeat="path in paths">{{ path.name }}</md-option>
+                            </md-select>
+                        </div>
+                    </div>
+                 
+                    <div class="page" layout="row">
+
+                        <div flex="75">
+                            <input type="file" name="file" onchange="angular.element(this).scope().getFileDetails(this)" style = "width: 40%" accept="image/*" multiple />
+                        </div>
+                        <div flex="25">
+
+                            <md-button ng-disabled="myform.$inavlid" ng-click="upload()" md-no-ink class="md-raised md-primary">Upload</md-button>
+                        </div>
+                    </div>
+                </form>
+            </md-card-content>
+           
+        </md-card>
+    </div>
+
+</md-content>

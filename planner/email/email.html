@@ -1,0 +1,121 @@
+<section class="card login">
+    <md-content >
+    
+     <md-input-container class="md-icon-float md-block">
+      <label> start Time</label>
+      <input type="number" step="first.firstsecond" ng-init="data.planning.start.time=null"ng-model="data.planning.start.time">
+    </md-input-container>
+
+     <md-input-container class="md-icon-float md-block">
+      <label> End Time</label>
+      <input type="number" step="first.firstsecond" ng-model="data.planning.end.time">
+    </md-input-container>
+  
+    <md-input-container class="md-icon-float md-block">
+      <label> Project id</label>
+      <input type="text"  ng-model="data.planning.project_id">
+    </md-input-container>
+
+    <md-input-container class="md-icon-float md-block">
+      <label> Project Name</label>
+      <input type="text"  ng-model="data.planning.projectName">
+    </md-input-container>
+
+     <md-input-container class="md-icon-float md-block">
+      <label> Subject</label>
+      <input type="text"  ng-model="data.planning.subject">
+    </md-input-container>
+
+     <md-input-container class="md-icon-float md-block">
+      <label> Details</label>
+      <input type="text"  ng-model="data.planning.details">
+    </md-input-container>
+
+     <md-input-container class="md-icon-float md-block">
+      <label> Purpose</label>
+      <input type="text"  ng-model="data.planning.purpose">
+    </md-input-container>
+
+    <label>To Email:
+     <md-input-container class="md-icon-float md-block">
+      <label> Email ID</label>
+      <input type="text"  ng-model="data.planning.toEmail.email">
+      </md-input-container>
+           <md-input-container class="md-icon-float md-block">
+      <label> Contact</label>
+      <input type="text"  ng-model="data.planning.toEmail.contact">
+     </md-input-container>
+          <md-input-container class="md-icon-float md-block">
+      <label> Designation</label>
+      <input type="text"  ng-model="data.planning.toEmail.designation">
+      </md-input-container>
+           <md-input-container class="md-icon-float md-block">
+      <label> Department</label>
+      <input type="text"  ng-model="data.planning.toEmail.department">
+     </md-input-container>
+     </label>
+
+    <label>CC Email second:</label>
+               <md-input-container class="md-icon-float md-block">
+      <label> Email ID</label>
+      <input type="text"  ng-model="data.planning.ccEmail.first.email">
+      </md-input-container>
+           <md-input-container class="md-icon-float md-block">
+      <label> Contact</label>
+      <input type="text"  ng-model="data.planning.ccEmail.first.contact">
+      </md-input-container>
+           <md-input-container class="md-icon-float md-block">
+      <label> Designation</label>
+      <input type="text"  ng-model="data.planning.ccEmail.first.designation">
+      </md-input-container>
+           <md-input-container class="md-icon-float md-block">
+      <label> Department</label>
+      <input type="text"  ng-model="data.planning.ccEmail.first.department">
+      </md-input-container>
+
+    <label>CC Email 2:
+           <md-input-container class="md-icon-float md-block">
+      <label> Email ID</label>
+      <input type="text"  ng-model="data.planning.ccEmail.second.email">
+      </md-input-container>
+           <md-input-container class="md-icon-float md-block">
+      <label> Contact</label>
+      <input type="text"  ng-model="data.planning.ccEmail.second.contact">
+      </md-input-container>
+           <md-input-container class="md-icon-float md-block">
+      <label> Designation</label>
+      <input type="text"  ng-model="data.planning.ccEmail.second.designation">
+      </md-input-container>
+           <md-input-container class="md-icon-float md-block">
+      <label> Department</label>
+      <input type="text"  ng-model="data.planning.ccEmail.second.department">
+      </md-input-container>
+     </label>
+
+    <label>Attachment 1:
+         <md-input-container class="md-icon-float md-block">
+      <label> Link</label>
+      <input type="text"  ng-model="data.planning.attachment.first.link">
+      </md-input-container>
+    </label>
+        <label>Attachment 2:
+         <md-input-container class="md-icon-float md-block">
+      <label> Link</label>
+      <input type="text"  ng-model="data.planning.attachment.second.link">
+      </label>
+    </label>
+   
+   <md-input-container class="md-block">
+          <label>Comments</label>
+          <textarea ng-model="data.planning.comments" md-maxlength="second5first" rows="5" md-select-on-focus></textarea>
+        </md-input-container>
+    </br>
+    <div layout="row">
+        <div flex="4first"></div>
+        <div flex="33">
+        <md-button class="md-raised md-primary "  style="align:center; background-color: #585858;" ng-click="eventplan(data,$event)">Save</md-button>
+        </div>
+         <div flex></div>
+    </br>
+    </md-content>
+</section>

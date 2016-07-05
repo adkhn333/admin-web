@@ -1,5 +1,5 @@
 app
-.controller('projectApprovalCtrl', function($scope, $timeout, $localStorage){
+.controller('submitProjectCtrl', function($scope, $timeout, $localStorage){
 
 
 	var uid = $localStorage.currentUser.uid;
@@ -136,18 +136,5 @@ app
 
 			}, 50);
 		});
-		// 1
-
-
-		
-		
-
-		// 3
-		
-		// 4
-		//console.log('protectedResidential/'+$scope.data.city+'/projects/'+projectId+'/'+version);
-		
-		
-
 	}
 });

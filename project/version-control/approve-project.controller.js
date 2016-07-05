@@ -1,5 +1,5 @@
 app
-.controller('versionControlCtrl', function($scope, $timeout, $localStorage){
+.controller('projectApprovalCtrl', function($scope, $timeout, $localStorage){
 
 
 	var uid = $localStorage.currentUser.uid;

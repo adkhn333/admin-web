@@ -1,0 +1,65 @@
+    <section class="card login" ng-clock >
+        <md-content >
+
+        </br>
+        <md-input-container>
+            <label for="repeatSelect"> Leave Type: </label>
+                <md-select name="leaveSelect" ng-init="leave.leaveSelect=null" ng-model="leave.planning.leaveSelect" >
+                <md-option ng-repeat="option in dats.leaveModes" value="{{option.mode}}">{{option.mode}}</md-option>
+                </md-select>
+         </md-input-container>  
+
+
+        </br>
+     
+       <span class="radioValue" style="color:#808080;">Urgent</span> 
+       </br> </br>
+       <md-radio-group ng-model="leave.planning.urgent">
+          <md-radio-button value="Yes" class="md-primary">Yes</md-radio-button>
+          <md-radio-button  value="No"> No </md-radio-button>
+          
+        </md-radio-group>      
+       
+
+        <md-input-container class="md-icon-float md-block">
+          <label> start Time</label>
+          <input type="number" step="0.01" ng-model="leave.planning.start.time">
+        </md-input-container>
+
+        <md-input-container class="md-icon-float md-block">
+          <label> End Time</label>
+          <input type="number" step="0.01" ng-model="leave.planning.end.time">
+        </md-input-container>
+
+        <md-input-container class="md-icon-float md-block">
+          <label> Purpose of Leave</label>
+          <input type="text-area"  ng-model="leave.planning.purpose">
+        </md-input-container>
+          
+         
+        <md-input-container class="md-icon-float md-block">
+          <label> Remark</label>
+          <input type="text"  ng-model="leave.planning.remark">
+        </md-input-container>
+
+         <md-input-container class="md-icon-float md-block">
+          <label> Status</label>
+          <input type="text"  ng-model="leave.planning.status">
+        </md-input-container>
+       
+       <md-input-container class="md-block">
+              <label>Comments</label>
+              <textarea ng-model="leave.comments" md-maxlength="150" rows="5" md-select-on-focus></textarea>
+        </md-input-container>
+
+        </br>
+        <div layout="row">
+            <div flex="40"></div>
+            <div flex="33">
+            <md-button class="md-raised md-primary "  style="align:center; background-color: #585858;" ng-click="eventplan(leave,$event)">Save</md-button>
+        </div>
+             <div flex></div>
+        </br>
+        </md-content>
+    </section>
+

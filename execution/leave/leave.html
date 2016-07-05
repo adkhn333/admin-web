@@ -1,0 +1,100 @@
+<div ng-include="'navigation/header.html'"></div>
+	<div >
+		
+		<md-tabs md-stretch-tabs="always" md-dynamic-height md-border-bottom>
+	        
+	        <md-tab label="Planned">
+		        <md-content style = "padding:50px;">
+
+
+		        	<md-card >
+	        			<div style="padding:30px;">
+				            <span class="md-subhead">
+					            <div style="padding:0px; margin:0px;">
+								    
+								    Leave Start Details
+								</div>
+				            </span>
+			            	
+				      		<p style="margin:2">Start time: {{planningDetails.start.time}}</p>
+				        </div>
+					</md-card>
+					<md-card >
+	        			<div style="padding:30px;">
+				            <span class="md-subhead">
+					            <div style="padding:0px; margin:0px;">
+								   
+								    Leave End Details
+								</div>
+				            </span>
+				      		<p style="margin:2">End time: {{planningDetails.end.time}}</p>
+				        </div>
+					</md-card>
+
+					<md-card>
+					<div style="padding:30px">
+						<p>  Purpose of leave: {{planningDetails.purpose}}</p>
+						<p>   Urgent: {{planningDetails.urgent}}</p>
+						<p>  Remarks: {{planningDetails.remark}}</p>
+						<p>  Type of leave: {{planningDetails.leaveSelect}}</p>
+
+					</div>
+					</md-card>
+					
+		        </md-content>
+	        </md-tab>
+
+	        <md-tab label="Summary">
+		        <md-content style = "padding:50px;">
+		        	<div layout="row">
+			        	<md-button class="md-raised md-primary" ng-click="startActivity(activity)">
+			        		{{toggle}}
+			        	</md-button>
+			        	<md-button class="md-raised md-primary"  ng-click="cancel()">
+			        		cancel			        	
+			        	</md-button>
+		        	</div>
+		        	<md-card >
+	        			<div style="padding:30px;">
+			            	
+				      		<p style="margin:2">Start time: {{startTime}}</p>
+				      		<p style="margin:2">End time: {{endTime}}</p>
+				        </div>
+					</md-card>
+				
+					<md-card>
+						<div style="padding:30px;">
+							<p>
+								<i class="material-icons">message</i>
+								Remarks
+							</p>
+						    <textarea rows="5" ng-model="activity.remark" ng-init="remark=null">
+						    </textarea>
+						</div>
+					</md-card>
+				
+		        </md-content>
+	        </md-tab>
+
+
+	        <md-tab label="comments">
+		        <md-content style = "padding:50px;">
+		    		<md-list>
+		    			<md-list-item ng-repeat="comment in comments">
+		    				<p>Message: {{comment.message}}</p>
+			                <p>Time: {{comment.time}}</p>
+			                <p>Userid: {{comment.userid}}</p>
+			                <p>Name: {{comment.name}}</p>
+		    			</md-list-item>
+		    		</md-list>
+		    		<div style="margin:10px">
+					    <textarea  rows="5" ng-model="com.message" ng-init="message=null">
+					    </textarea>
+				    </div>
+					<md-button class="md-primary md-raised" ng-click="add_comment(com)">Add comment</md-button>
+		        </md-content>
+	        </md-tab>
+	    </md-tabs>
+
+	</div>
+	

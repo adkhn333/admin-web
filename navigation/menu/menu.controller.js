@@ -110,18 +110,33 @@ app.controller('MenuCtrl', ['$scope', '$timeout', '$mdSidenav', '$log', '$mdDial
          icon: 'group'
       },
       {
-         link: '#/version-control',
-         title: 'Version Control',
+         link: '#/submit-project',
+         title: 'Submit Project',
          icon: 'group'
       },
       {
-         link: '#/project-approval',
+         link: '#/approve-project',
          title: 'Project Approval',
          icon: 'group'
       },
       {
          link: '#/add-location',
          title: 'Add Location',
+         icon: 'group'
+      },
+      {
+         link: '#/image-upload',
+         title: 'Image Upload',
+         icon: 'group'
+      },
+      {
+         link: '#/plannerMain',
+         title: 'Planning Phase',
+         icon: 'group'
+      },
+      {
+         link: '#/tasks',
+         title: 'Execution Phase',
          icon: 'group'
       }
    ];

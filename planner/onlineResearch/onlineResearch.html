@@ -1,0 +1,88 @@
+<section class="card login">
+    <md-content >
+    <md-input-container class="md-icon-float md-block">
+      <label> start Latitude</label>
+      <input type="number" step="0.01" ng-init="data.planning.start.lat=null" ng-model="data.planning.start.lat">
+    </md-input-container>
+
+     <md-input-container class="md-icon-float md-block">
+      <label> start Longitude</label>
+      <input type="number" step="0.01" ng-init="data.planning.start.lng=null" ng-model="data.planning.start.lng">
+    </md-input-container>
+
+     <md-input-container class="md-icon-float md-block">
+      <label> start Time</label>
+      <input type="number" step="0.01" ng-init="data.planning.start.time=null" ng-model="data.planning.start.time">
+    </md-input-container>
+
+     <md-input-container class="md-icon-float md-block">
+      <label> start Location</label>
+      <input type="text"  ng-init="data.planning.start.location=null" ng-model="data.planning.start.location">
+    </md-input-container>
+        
+  
+    <md-input-container class="md-icon-float md-block">
+      <label> End Latitude</label>
+      <input type="number" step="0.01" ng-init="data.planning.end.lat=null" ng-model="data.planning.end.lat">
+    </md-input-container>
+
+    <md-input-container class="md-icon-float md-block">
+      <label> End Longitude</label>
+      <input type="number" step="0.01" ng-init="data.planning.end.lng=null" ng-model="data.planning.end.lng">
+    </md-input-container>
+
+     <md-input-container class="md-icon-float md-block">
+      <label> End Time</label>
+      <input type="number" step="0.01" ng-init="data.planning.end.time=null" ng-model="data.planning.end.time">
+    </md-input-container>
+
+    <md-input-container class="md-icon-float md-block">
+      <label> End Location</label>
+      <input type="text"  ng-init="data.planning.end.location=null" ng-model="data.planning.end.location">
+    </md-input-container>
+        
+  
+    <md-input-container class="md-icon-float md-block">
+      <label> Project id</label>
+      <input type="text"  ng-init="data.planning.project_id=null" ng-model="data.planning.project_id">
+    </md-input-container>
+
+     <md-input-container class="md-icon-float md-block">
+      <label>Project Name</label>
+      <input type="text"  ng-init="data.planning.project_name=null" ng-model="data.planning.project_name">
+    </md-input-container>
+
+
+     <md-input-container class="md-icon-float md-block">
+      <label>Project City</label>
+      <input type="text"  ng-init="data.planning.project_city=null" ng-model="data.planning.project_city">
+    </md-input-container>
+
+   
+   <md-input-container class="md-block">
+     <label>Project Type</label>
+     <input type="text"  ng-init="data.planning.project_type=null" ng-model="data.planning.project_type">
+    </md-input-container>
+
+    <md-input-container class="md-block">
+     <label>Remark</label>
+     <input type="text"  ng-init="data.planning.remark=null" ng-model="data.planning.remark">
+    </md-input-container>
+
+    <md-input-container class="md-block">
+     <label>Purpose</label>
+     <input type="text"  ng-init="data.planning.purpose=null" ng-model="data.planning.purpose">
+    </md-input-container>
+
+     <input type="hidden"  ng-model="data.planning.active" value="true">
+    
+    </br>
+    <div layout="row">
+     <div flex="40"></div>
+     <div flex="33">
+     <md-button class="md-raised md-primary "  style="align:center; background-color: #585858;" ng-click="eventplan(data,$event)">Save</md-button>
+     </div>
+     <div flex></div>
+    </br>
+    </md-content>
+</section>

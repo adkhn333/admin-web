@@ -186,19 +186,19 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
          }
       })
 
-      .state('version-control', {
-         url: '/version-control',
-         templateUrl: 'project/version-control/version-control.html',
-         controller: 'versionControlCtrl',
+      .state('submit-project', {
+         url: '/submit-project',
+         templateUrl: 'project/version-control/submit-project.html',
+         controller: 'submitProjectCtrl',
          resolve: {
             currentAuth: function(AuthenticationService){
                return AuthenticationService.checkAuthentication();
             }
          }
       })
-      .state('project-approval', {
-         url: '/project-approval',
-         templateUrl: 'project/version-control/project-approval.html',
+      .state('approve-project', {
+         url: '/approve-project',
+         templateUrl: 'project/version-control/approve-project.html',
          controller: 'projectApprovalCtrl',
          resolve: {
             currentAuth: function(AuthenticationService){
@@ -217,6 +217,109 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
             }
          }
       })
+
+      .state('image-upload', {
+         url: '/image-upload',
+         templateUrl: 'image-upload/image-upload.html',
+         controller: 'uploadImageCtrl',
+         resolve: {
+            currentAuth: function(AuthenticationService){
+               return AuthenticationService.checkAuthentication();
+            }
+         }
+      })
+
+
+        //planner
+   $stateProvider
+   .state('plannerMain', {
+    url:'/plannerMain',
+    templateUrl: 'planner/planner_main/plannerMain.html',
+ })
+   .state('plannerMain.travelLocal', {
+    url:'/travelLocal/:date/:userid/:activityid',
+    templateUrl: 'planner/travelLocal/travelLocal.html',
+    controller: 'travelLocalCtrl'
+ })
+   .state('plannerMain.appointment', {
+    url:'/appointment/:date/:userid/:activityid',
+    templateUrl: 'planner/appointment/appointment.html',
+    controller: 'appointmentCtrl'
+ })
+   
+   .state('plannerMain.travelOutstation', {
+    url:'/travelOutstation/:date/:userid/:activityid',
+    templateUrl: 'planner/travelOutstation/travelOutstation.html',
+    controller: 'travelOutstationCtrl'
+ })
+   .state('plannerMain.leave', {
+    url:'/leave/:date/:userid/:activityid',
+    templateUrl: 'planner/leave/leave.html',
+    controller: 'leaveCtrl'
+ })
+   .state('plannerMain.onlineResearch', {
+    url:'/onlineResearch/:date/:userid/:activityid',
+    templateUrl: 'planner/onlineResearch/onlineResearch.html',
+    controller: 'onlineResearchCtrl'
+ })
+   .state('plannerMain.email', {
+    url:'/email/:date/:userid/:activityid',
+    templateUrl: 'planner/email/email.html',
+    controller: 'emailCtrl'
+ })
+   .state('plannerMain.phoneCalls', {
+    url:'/phoneCalls/:date/:userid/:activityid',
+    templateUrl: 'planner/phoneCalls/phoneCalls.html',
+    controller: 'phone_callsCtrl'
+ })
+   .state('plannerMain.dataEntry', {
+    url:'/dataEntry/:date/:userid/:activityid',
+    templateUrl: 'planner/dataEntry/dataEntry.html',
+    controller: 'data_entryCtrl'
+ })
+   .state('plannerMain.blank', {
+    url:'/blank',
+    templateUrl: 'planner/blank/blank.html',
+    controller: 'blankCtrl'
+ })
+   .state('to_do', {
+    url:'/to_do',
+    templateUrl: 'planner/to_do/to_do.html',
+    controller: 'to_doCtrl'
+ })
+   
+    //execution
+   .state('tasks', {
+    url:'/tasks',
+    templateUrl: 'execution/tasks/tasks.html',
+    controller:'tasksCtrl'
+ })
+    .state('travelLocal', {
+    url:'/travelLocal/:activityId',
+    templateUrl: 'execution/travelLocal/travelLocal.html',
+    controller:'travelLocalCtrl'
+ })
+    .state('travelOutstation', {
+    url:'/travelOutstation/:activityId',
+    templateUrl: 'execution/travelOutstation/travelOutstation.html',
+    controller:'travelOutstationCtrl'
+ })
+.state('phoneCalls', {
+    url:'/phoneCalls/:activityId',
+    templateUrl: 'execution/phoneCalls/phoneCalls.html',
+    controller:'phoneCallsCtrl'
+ })
+.state('leave', {
+    url:'/leave/:activityId',
+    templateUrl: 'execution/leave/leave.html',
+    controller:'leaveCtrl'
+ })
+.state('dataEntry', {
+    url:'/dataEntry/:activityId',
+    templateUrl: 'execution/dataEntry/dataEntry.html',
+    controller:'leaveCtrl'
+ })
+
 
    $urlRouterProvider.otherwise('/dashboard');
 

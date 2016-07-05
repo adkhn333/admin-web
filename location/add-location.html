@@ -16,6 +16,7 @@
                     <md-radio-button value="location">Add Location</md-radio-button>
                   </md-radio-group>
                 </div><br>
+                <md-progress-linear ng-hide="dataloaded" md-mode="query"></md-progress-linear>
                 <form name="cityForm" ng-show="selected.status=='city'">
                     <div layout="row" layout-align="center center">
                         <div flex="50">

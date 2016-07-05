@@ -1,0 +1,34 @@
+<div ng-include="'navigation/header.html'"></div>
+<div flex>
+	<md-content>
+		<md-card md-scroll-y style = "width: 90%; margin: 2% auto;">
+
+			<md-toolbar layout="row" class="md-hue-3" style = "background-color: #009999; color: white">
+		      <div class="md-toolbar-tools">
+		        My Activities
+		      </div>
+		    </md-toolbar>
+
+			<md-list flex >
+				<md-list-item  ng-repeat = "(key, task) in activities">
+					
+					<div ng-repeat="v in [0]" style = "width: 15%; margin-left: 15px; margin-right: 10px; align: center">
+					
+						<md-checkbox> &nbsp;
+						</md-checkbox>
+					
+					</div>
+
+					<div class ="myActivity" style = "width: 85%" ng-click = "myFunc(task.type,task.$id)" >
+						<p>ActivityType : &nbsp;{{task.type}}</p>
+						<p>Start Time &nbsp;&nbsp;  : &nbsp;{{task.planning.start.time}}</p>
+						<p>End Time  &nbsp;&nbsp;&nbsp;   : &nbsp;{{task.planning.end.time}}</p>
+					</div>
+					<md-divider></md-divider>
+				</md-list-item>
+					
+			</md-list>
+
+		</md-card>
+	</md-content>
+</div>

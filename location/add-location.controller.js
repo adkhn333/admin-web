@@ -1,5 +1,8 @@
 app
 .controller('createCityZoneLocationCtrl', function($scope, $http, $timeout){
+
+	$scope.dataloaded = true; // loading indicator
+
 	$scope.city = {};
 	$scope.zone = {};
 	$scope.location = {};
@@ -13,7 +16,7 @@ app
 		if($scope.selected.status=='zone'){
 			//console.log('Select city');
 			firebase.database().ref().child('city').once('value', function(snapshot){
-				console.log(snapshot.val());
+				// console.log(snapshot.val());
 				$timeout(function(){
 					$scope.cities = snapshot.val();
 				},50);
@@ -22,7 +25,7 @@ app
 		}else if($scope.selected.status=='location') {
 			//console.log('Select city, zone');
 			firebase.database().ref().child('city').once('value', function(snapshot){
-				console.log(snapshot.val());
+				// console.log(snapshot.val());
 				$timeout(function(){
 					$scope.cities = snapshot.val();
 				},50);
@@ -35,15 +38,15 @@ app
 	}
 
 	$scope.selectZonesByCity = function(data) {
-		console.log(data);
+		// console.log(data);
 		var myobj = JSON.parse(data);
 
-		console.log();
+		// console.log();
 
 		firebase.database().ref().child('zone/'+myobj.cityId).once('value', function(snapshot){
 			$timeout(function(){
 				$scope.zones = snapshot.val();
-				console.log(snapshot.val());
+				// console.log(snapshot.val());
 			},50);
 		});
 	}
@@ -62,6 +65,7 @@ app
 	}
 
 	$scope.addNewCity = function(city) {
+		$scope.dataloaded = false; // loading indicator
 		$scope.reset();
 
 
@@ -70,45 +74,60 @@ app
 		var updates = {};
 		updates['/city/' + newCityKey] = city;
 
-		firebase.database().ref().update(updates);
+		firebase.database().ref().update(updates, function(){
+			$timeout(function() {
+				$scope.dataloaded = true; // loading indicator
+			}, 10);
+		});
 	}
 	$scope.addNewZone = function(zone) {
-		console.log(zone);
+		$scope.dataloaded = false; // loading indicator
+		// console.log(zone);
 		$scope.reset();
 
 		var myobj = JSON.parse(zone.city);
 
 		myobj['zoneName'] = zone.zoneName;
-		console.log(myobj);
+		// console.log(myobj);
 
 		var newZoneKey = firebase.database().ref().child('zone').push().key;
 		myobj['zoneId'] = newZoneKey;
 		var updates = {};
 		updates['/zone/'+ myobj.cityId + '/' + newZoneKey] = myobj;
 
-		firebase.database().ref().update(updates);
+		firebase.database().ref().update(updates, function(){
+			$timeout(function() {
+				$scope.dataloaded = true; // loading indicator
+			}, 10);
+			
+		});
 
 	}
 	$scope.addNewLocation = function(location) {
-		console.log(location);
+		// console.log(location);
+		$scope.dataloaded = false; // loading indicator
 		$scope.reset();
 
 		var myobj = JSON.parse(location.zone);
 
 		myobj['locationName'] = location.location;
-		console.log(myobj);
+		// console.log(myobj);
 
 		var newLocationKey = firebase.database().ref().child('location').push().key;
 		myobj['locationId'] = newLocationKey;
 
 		var updates = {};
 		updates['location/'+myobj.cityId+'/'+newLocationKey] = myobj;
-		firebase.database().ref().update(updates);
+		firebase.database().ref().update(updates, function(){
+			$timeout(function() {
+				$scope.dataloaded = true; // loading indicator
+			}, 10);
+			
+		});
 
 
 	}
 
-//firebase.database().ref().child("zone").set(city);
 });
 
 
