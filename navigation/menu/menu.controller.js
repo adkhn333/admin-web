@@ -138,6 +138,11 @@ app.controller('MenuCtrl', ['$scope', '$timeout', '$mdSidenav', '$log', '$mdDial
          link: '#/tasks',
          title: 'Execution Phase',
          icon: 'group'
+      },
+      {
+         link: '#/project-access',
+         title: 'Project Access',
+         icon: 'group'
       }
    ];
 }]);

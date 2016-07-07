@@ -11,7 +11,19 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
                return AuthenticationService.checkAuthentication();
             }
          }
+      })
+
+      .state('projectAccessControl', {
+         url: '/project-access',
+         templateUrl: 'access-control/project-access.html',
+         controller: 'projectAccessCtrl',
+         resolve: {
+            currentAuth: function(AuthenticationService){
+               return AuthenticationService.checkAuthentication();
+            }
+         }
       });
+
 
    // authentication routes
    $stateProvider
