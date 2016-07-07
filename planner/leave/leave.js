@@ -1,4 +1,4 @@
-		app.controller('leaveCtrl', function($scope, $stateParams, $q,$mdDialog, $mdMedia,$location,$state) {
+		app.controller('leavePlannerCtrl', function($scope, $stateParams, $q,$mdDialog, $mdMedia,$location,$state) {
 
 			$scope.dats = {
 			 

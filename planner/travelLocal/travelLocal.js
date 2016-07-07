@@ -1,5 +1,6 @@
-app.controller('travelLocalCtrl', function($scope, $stateParams, $q, $mdDialog, $mdMedia,$location,$state) {
+app.controller('travelLocalPlannerCtrl', function($scope, $stateParams, $q, $mdDialog, $mdMedia,$location,$state) {
 
+ console.log($stateParams);
  $scope.dats = {
 
   availableModes:[

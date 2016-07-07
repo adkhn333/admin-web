@@ -230,7 +230,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
       })
 
 
-        //planner
+   //planner
    $stateProvider
    .state('plannerMain', {
     url:'/plannerMain',
@@ -239,43 +239,43 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
    .state('plannerMain.travelLocal', {
     url:'/travelLocal/:date/:userid/:activityid',
     templateUrl: 'planner/travelLocal/travelLocal.html',
-    controller: 'travelLocalCtrl'
+    controller: 'travelLocalPlannerCtrl'
  })
    .state('plannerMain.appointment', {
     url:'/appointment/:date/:userid/:activityid',
     templateUrl: 'planner/appointment/appointment.html',
-    controller: 'appointmentCtrl'
+    controller: 'appointmentPlannerCtrl'
  })
    
    .state('plannerMain.travelOutstation', {
     url:'/travelOutstation/:date/:userid/:activityid',
     templateUrl: 'planner/travelOutstation/travelOutstation.html',
-    controller: 'travelOutstationCtrl'
+    controller: 'travelOutstationPlannerCtrl'
  })
    .state('plannerMain.leave', {
     url:'/leave/:date/:userid/:activityid',
     templateUrl: 'planner/leave/leave.html',
-    controller: 'leaveCtrl'
+    controller: 'leavePlannerCtrl'
  })
    .state('plannerMain.onlineResearch', {
     url:'/onlineResearch/:date/:userid/:activityid',
     templateUrl: 'planner/onlineResearch/onlineResearch.html',
-    controller: 'onlineResearchCtrl'
+    controller: 'onlineResearchPlannerCtrl'
  })
    .state('plannerMain.email', {
     url:'/email/:date/:userid/:activityid',
     templateUrl: 'planner/email/email.html',
-    controller: 'emailCtrl'
+    controller: 'emailPlannerCtrl'
  })
    .state('plannerMain.phoneCalls', {
     url:'/phoneCalls/:date/:userid/:activityid',
     templateUrl: 'planner/phoneCalls/phoneCalls.html',
-    controller: 'phone_callsCtrl'
+    controller: 'phone_callsPlannerCtrl'
  })
    .state('plannerMain.dataEntry', {
     url:'/dataEntry/:date/:userid/:activityid',
     templateUrl: 'planner/dataEntry/dataEntry.html',
-    controller: 'data_entryCtrl'
+    controller: 'data_entryPlannerCtrl'
  })
    .state('plannerMain.blank', {
     url:'/blank',

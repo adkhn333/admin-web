@@ -1,9 +1,60 @@
-app.controller('data_entryCtrl', function($scope, $stateParams, $q,$mdDialog, $mdMedia,$location,$state) {
+app.controller('data_entryPlannerCtrl', function($timeout,$scope, $stateParams, $q,$mdDialog, $mdMedia,$location,$state) {
 
-//console.log( $stateParams.date);
-//console.log( $stateParams.userid);
+getCities();
 
 $scope.repeatSelect;
+$scope.cities=[];
+$scope.city={};
+$scope.projects=[];
+$scope.data={};
+
+
+function getCities() {
+        var cityData = firebase.database().ref('city');
+        cityData.on('value', function(data) {
+            console.log(data.val());
+            $timeout(function(){
+                angular.forEach(data.val(), function(value, key){
+                    console.log(key);
+                $scope.cities.push(value);
+                
+            })
+            }, 50);
+            
+        });
+    }
+
+    $scope.getProjects=function(){
+        console.log($scope.cityId);
+        $scope.data.city_id=$scope.cityId;
+        console.log('admins/'+$stateParams.userid+'/projectAccess/'+$scope.cityId);
+        var cityId=$scope.cityId;
+        firebase.database().ref('admins/'+$stateParams.userid+'/projectAccess/'+$scope.cityId).on('value', function (snapshot) {
+            var cityIdData=snapshot.val();
+            console.log(cityIdData);
+            $scope.projects=cityIdData.projects;
+            $scope.data.city_name=cityIdData.cityName;
+            console.log($scope.projects);
+
+        });
+
+    };
+
+     $scope.projectSelected=function(){
+        console.log($scope.projectId);
+        
+    $scope.data.project_id=$scope.projectId;
+       
+        var projectId=$scope.projectId;
+        firebase.database().ref('/city/'+$scope.cityId+'/projects/'+projectId).on('value', function (snapshot) {
+            var projectIdData=snapshot.val();
+            console.log(projectIdData);
+            $scope.data.project_name=projectIdData.projectName;
+            console.log($scope.projects);
+
+        });
+
+    };
 
 if($stateParams.activityid) {
 
@@ -32,8 +83,9 @@ if($stateParams.activityid) {
 
 }
 
-$scope.eventplan = function(data,ev) {
-    console.log(data);
+$scope.eventplan = function() {
+    console.log($scope.data);
+    
     console.log($stateParams.date);
     $mdDialog.show(
     $mdDialog.alert()
@@ -43,7 +95,7 @@ $scope.eventplan = function(data,ev) {
         .textContent('You can add more activity.')
         .ariaLabel('Alert Dialog Demo')
         .ok('OK')
-        .targetEvent(ev)
+    
     );
     $state.go("plannerMain.blank");
     if(!$stateParams.activityid) {
@@ -53,10 +105,10 @@ $scope.eventplan = function(data,ev) {
 
     var updates = {};
     updates['/activity/' + $stateParams.userid  + '/' + $stateParams.date + '/' + newPostKey + '/type'] = "DataEntry";
-    data.planning.active=true;
-    updates['/activity/' + $stateParams.userid  + '/' + $stateParams.date + '/' + newPostKey + '/planning'] = data.planning;
+    $scope.data.active=true;
+   updates['/activity/' + $stateParams.userid  + '/' + $stateParams.date + '/' + newPostKey + '/planning'] = $scope.data;
 
-    return firebase.database().ref().update(updates);
+    firebase.database().ref().update(updates);
     
 
 };

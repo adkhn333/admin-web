@@ -40,34 +40,39 @@
       <label> End Location</label>
       <input type="text"  ng-init="data.planning.end.location=null" ng-model="data.planning.end.location">
     </md-input-container>
+
+    Projects : 
         
-  
+  <div ng-repeat="pro in projlist">
     <md-input-container class="md-icon-float md-block">
       <label> Project id</label>
-      <input type="text"  ng-init="data.planning.project_id=null" ng-model="data.planning.project_id">
+      <input type="text" ng-model="pro.projectId">
     </md-input-container>
 
      <md-input-container class="md-icon-float md-block">
       <label>Project Name</label>
-      <input type="text"  ng-init="data.planning.project_name=null" ng-model="data.planning.project_name">
+      <input type="text"  ng-model="pro.projectName">
     </md-input-container>
-
 
      <md-input-container class="md-icon-float md-block">
       <label>Project City</label>
-      <input type="text"  ng-init="data.planning.project_city=null" ng-model="data.planning.project_city">
+      <input type="text" ng-model="pro.projectCity">
     </md-input-container>
 
    
    <md-input-container class="md-block">
      <label>Project Type</label>
-     <input type="text"  ng-init="data.planning.project_type=null" ng-model="data.planning.project_type">
+     <input type="text" ng-model="pro.projectType">
     </md-input-container>
 
     <md-input-container class="md-block">
      <label>Remark</label>
-     <input type="text"  ng-init="data.planning.remark=null" ng-model="data.planning.remark">
+     <input type="text" ng-model="pro.remark">
     </md-input-container>
+</div>
+
+<md-button class="md-raised md-primary "  style="align:center; background-color: #585858;" ng-click="addproj()">Add More Projects
+</md-button>
 
     <md-input-container class="md-block">
      <label>Purpose</label>
