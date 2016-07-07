@@ -143,6 +143,11 @@ app.controller('MenuCtrl', ['$scope', '$timeout', '$mdSidenav', '$log', '$mdDial
          link: '#/project-access',
          title: 'Project Access',
          icon: 'group'
+      },
+      {
+         link: '#/nearby/list',
+         title: 'Nearby',
+         icon: 'group'
       }
    ];
 }]);
