@@ -1,7 +1,7 @@
 app
 .controller('submitProjectCtrl', function($scope, $timeout, $localStorage){
 
-
+	$scope.dataloaded = false;
 	var uid = $localStorage.currentUser.uid;
 	var email = $localStorage.currentUser.email;
 
@@ -10,6 +10,7 @@ app
 	//Get all cities
 	firebase.database().ref().child('admins/'+uid).once('value', function(snapshot){
 		$timeout(function(){
+			$scope.dataloaded = true;
 			$scope.userData = snapshot.val(); //validationManager
 			$scope.cities = $scope.userData.projectAccess;
 			//console.log($scope.cities);
@@ -26,10 +27,12 @@ app
 	// called when project changes
 	// @param: string (selected city id)
 	$scope.getProject = function(cityId, projectId){
+		$scope.dataloaded = false;
 		firebase.database()
 		.ref('protectedResidentialVersions/'+cityId+'/projects')
 		.once('value', function(projectSnapshot){
 			$timeout(function(){
+				$scope.dataloaded = true;
 				angular.forEach(projectSnapshot.val(), function(value, key){
 					if(key==projectId){
 						if(value.submitted != undefined){

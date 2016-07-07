@@ -2,6 +2,7 @@
 <md-content layout-padding>
     <md-card class="md-padding">
         <md-card-content>
+            <md-progress-linear md-mode="query" ng-hide="dataloaded"></md-progress-linear>
             <form name="myForm">
                 <div layout="row" layout-wrap>
 					<div flex="33">
@@ -54,12 +55,12 @@
                     <td>{{allProjects.submitted.projectName}}</td>
                     <td>{{allProjects.submitted.version}}</td>
                     <td style="text-align:center;" ng-click="accept(data.city, data.project, allProjects.submitted)">
-                         <md-button class="md-fab md-mini">
+                         <md-button ng-disabled="golive" class="md-fab md-mini">
                             Live
                         </md-button>
                     </td>
                     <td style="text-align:center;" ng-click="reject(data.city, data.project, allProjects.submitted)">
-                        <md-button class="md-fab md-mini">
+                        <md-button ng-disabled="rejectlive" class="md-fab md-mini">
                             X
                         </md-button>
                     </td>
