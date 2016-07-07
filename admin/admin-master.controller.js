@@ -30,7 +30,7 @@ app.controller("adminMasterCtrl", ['$scope', '$location', '$http', '$mdToast', '
             fname: $scope.firstname,
             lname: $scope.lastname,
             email: $scope.email,
-            tracking_id: $localStorage.currentUser.uid // uid of admin who added the new admin
+            trackingId: $localStorage.currentUser.uid // uid of admin who added the new admin
          }
          console.log(adminObject);
 

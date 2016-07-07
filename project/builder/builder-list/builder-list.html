@@ -1,13 +1,13 @@
-<md-button class="md-raised md-primary" aria-label="Add Developer" ui-sref="developer.add">Add Developer</md-button>
+<md-button class="md-raised md-primary" aria-label="Add Builder" ui-sref="builder.add">Add Builder</md-button>
 <md-card>
    <md-card-title>
       <md-card-title-text>
-         <span class="md-headline" layout="row" layout-align="center center">All Developers - {{devList.length}}</span>
+         <span class="md-headline" layout="row" layout-align="center center">All Builders - {{devList.length}}</span>
       </md-card-title-text>
    </md-card-title>
    <md-card-content>
       <md-input-container class="md-block">
-         <input placeholder="Search Developers here" type="text" ng-model="searchDevelopers">
+         <input placeholder="Search Builders here" type="text" ng-model="searchBuilders">
       </md-input-container>
       <table class="admintable">
          <thead>
@@ -19,14 +19,14 @@
             <th></th>
          </thead>
          <tbody>
-            <tr ng-repeat="dev in devList | filter: searchDevelopers">
+            <tr ng-repeat="dev in devList | filter: searchBuilders">
                <td>{{dev.name}}</td>
                <td>{{dev.email}}</td>
                <td>{{dev.city}}</td>
                <td>{{dev.mobile}}</td>
-               <td>{{dev.active_flag}}</td>
+               <td>{{dev.activeFlag}}</td>
                <td>
-                  <a href="#/developer/detail/{{dev.developer_id}}">View Details</a>
+                  <a href="#/builder/detail/{{dev.builderId}}">View Details</a>
                </td>
             </tr>
          </tbody>

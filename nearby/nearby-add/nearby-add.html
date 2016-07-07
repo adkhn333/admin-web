@@ -1,0 +1,58 @@
+<md-button type="submit" class="md-raised md-primary" ui-sref="builder.list">Cancel</md-button>
+<form name="addnearbyform" novalidate>
+   <md-card layout-padding style="width:60%; margin: auto">
+      <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline" layout="row" layout-align="center center">Add New Nearby Place</span>
+          </md-card-title-text>
+        </md-card-title>
+      <md-card-content>
+         <md-input-container class="md-block">
+            <label>City</label>
+            <md-select ng-model="selectedCity" aria-label="just_to_avoid_warning">
+               <md-option ng-value="city.cityId" ng-repeat="city in cities">{{city.cityName}}</md-option>
+            </md-select>
+         </md-input-container>
+         <md-input-container class="md-block">
+            <label>Place Name</label>
+            <input name="placename" type="text" ng-model="placename" required>
+         </md-input-container>
+         <md-input-container class="md-block">
+            <label>Place Type</label>
+            <input name="placetype" type="text" ng-model="placetype" required>
+         </md-input-container>
+         <md-input-container class="md-block">
+            <label>Address</label>
+            <input name="address" type="text" ng-model="address" required>
+         </md-input-container>
+         <md-input-container class="md-block">
+            <label>Landmark</label>
+            <input name="landmark" type="text" ng-model="landmark" required>
+         </md-input-container>
+         <md-input-container class="md-block">
+            <label>Latitude</label>
+            <input name="latitude" type="text" ng-model="latitude" required>
+         </md-input-container>
+         <md-input-container class="md-block">
+            <label>Longitude</label>
+            <input name="longitude" type="text" ng-model="longitude" required>
+         </md-input-container>
+         <md-input-container class="md-block">
+            <label>Email Address</label>
+            <input type="email" ng-model="email" name="email">
+         </md-input-container>
+         <md-input-container class="md-block">
+            <label>Website</label>
+            <input name="website" type="text" ng-model="website" ng-pattern="/^(http\:\/\/|https\:\/\/)?([a-z0-9][a-z0-9\-]*\.)+[a-z0-9][a-z0-9\-]*$/">
+         </md-input-container>
+         <md-input-container class="md-block">
+            <label>Primary Contact</label>
+            <input type="text" ng-model="mobile" name="mobile" ng-pattern="/^[0-9]{10}$/">
+         </md-input-container>
+         <section layout="row" layout-align="space-around start">
+            <md-button type="submit" class="md-raised md-primary" ng-click="submitNearby(addnearbyform)">Submit</md-button>
+            <md-button type="submit" class="md-raised md-primary" ui-sref="builder.list">Cancel</md-button>
+         </section>
+      </md-card-content>
+   </md-card>
+</form>

@@ -1,7 +1,7 @@
 app.controller("adminDetailCtrl", ['$scope', '$stateParams', '$http', '$location', '$mdSidenav', '$localStorage', '$mdToast', '$mdDialog', 'AdminService', function($scope, $stateParams, $http, $location, $mdSidenav, $localStorage, $mdToast, $mdDialog, AdminService){
 
    $scope.emailid = $localStorage.currentUser.email;
-   $scope.id = $stateParams.admin_id;
+   $scope.id = $stateParams.adminId;
    // console.log($scope.id);
    $scope.admin = [];
    // console.log($scope.id);
@@ -33,35 +33,35 @@ app.controller("adminDetailCtrl", ['$scope', '$stateParams', '$http', '$location
 
    var old_marketing, old_validation, new_marketing, new_validation;
 
-   $scope.$watch('admin.marketing_manager', function(newValue, oldValue){
+   $scope.$watch('admin.marketingManager', function(newValue, oldValue){
       new_marketing = newValue;
       old_marketing = oldValue;
    });
-   $scope.$watch('admin.validation_manager', function(newValue, oldValue){
+   $scope.$watch('admin.validationManager', function(newValue, oldValue){
       new_validation = newValue;
       old_validation = oldValue;
    });
    $scope.enterAdminPostionDetails = function(){
       var posObject = {
-         admin_id: $scope.id,
+         adminId: $scope.id,
          team: $scope.admin.team,
-         employee_number: $scope.admin.employee_number,
+         employeeNumber: $scope.admin.employeeNumber,
          designation: $scope.admin.designation,
-         marketing_manager: $scope.admin.marketing_manager,
-         validation_manager: $scope.admin.validation_manager,
+         marketingManager: $scope.admin.marketingManager,
+         validationManager: $scope.admin.validationManager,
          current_city: '1',
-         tracking_id: $localStorage.currentUser.uid
+         trackingId: $localStorage.currentUser.uid
       }
       console.log(posObject);
       var ref = db.ref().child("admins").child($scope.id);
       ref.update(posObject);
 
       var marketing_updates = {};
-      marketing_updates['/admins/' + $scope.admin.marketing_manager + '/managerFor/marketing/' + $scope.id] = true;
+      marketing_updates['/admins/' + $scope.admin.marketingManager + '/managerFor/marketing/' + $scope.id] = true;
       db.ref().update(marketing_updates);
 
       var data_validation_updates = {};
-      data_validation_updates['/admins/' + $scope.admin.validation_manager + '/managerFor/dataValidation/' + $scope.id] = true;
+      data_validation_updates['/admins/' + $scope.admin.validationManager + '/managerFor/dataValidation/' + $scope.id] = true;
       db.ref().update(data_validation_updates);
 
       if(old_marketing != undefined){

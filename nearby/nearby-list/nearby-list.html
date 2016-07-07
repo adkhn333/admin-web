@@ -1,0 +1,41 @@
+
+<md-button class="md-raised md-primary" aria-label="Add Nearby Place" ui-sref="nearby.add">Add Nearby Place</md-button>
+<md-card>
+   <md-card-title>
+      <md-card-title-text>
+         <span class="md-headline" layout="row" layout-align="center center">All Nearby Places</span>
+      </md-card-title-text>
+   </md-card-title>
+   <md-card-content>
+      <form name="getplaces" novalidate>
+         <md-input-container class="md-block">
+            <label>City</label>
+            <md-select ng-model="selectedCity" aria-label="just_to_avoid_warning">
+               <md-option ng-value="city.cityId" ng-repeat="city in cities">{{city.cityName}}</md-option>
+            </md-select>
+         </md-input-container>
+         <section layout="row" layout-align="space-around start">
+            <md-button type="submit" class="md-raised md-primary" ng-click="submitCity(getplaces)">Get all Nearby Places</md-button>
+         </section>
+      </form>
+      <md-input-container class="md-block">
+         <input placeholder="Search Nearby Places here" type="text" ng-model="searchNearby">
+      </md-input-container>
+      <table class="admintable">
+         <thead>
+            <th>NAME</th>
+            <th>TYPE</th>
+            <th></th>
+         </thead>
+         <tbody>
+            <tr ng-repeat="nearby in nearbyList | filter: searchNearby">
+               <td>{{nearby.name}}</td>
+               <td>{{nearby.type}}</td>
+               <td>
+                  <a href="#/nearby/detail/{{nearby.nearbyId}}">View Details</a>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+   </md-card-content>
+</md-card>

@@ -17,10 +17,10 @@ app.controller("signupCtrl", ['$scope', '$http', '$rootScope', '$location', '$md
       if(form.$invalid){
          return;
       }
-      if($scope.userPassword == $scope.userPassword_verify){
+      if($scope.userPassword == $scope.userPasswordVerify){
          var signupObject = {
-            admin_id: paramList[0],
-            match_id: paramList[1],
+            adminId: paramList[0],
+            matchId: paramList[1],
             code: paramList[2],
             opt: paramList[3]
          };

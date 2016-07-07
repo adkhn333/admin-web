@@ -27,7 +27,7 @@
          <div layout="row">
             <md-input-container>
                <label>Employee Number</label>
-               <input name="employee_number" type="text" ng-model="admin.employee_number" required> <!-- TODO: add required validation -->
+               <input name="employeeNumber" type="text" ng-model="admin.employeeNumber" required> <!-- TODO: add required validation -->
             </md-input-container>
          </div>
          <div layout="row">
@@ -42,16 +42,16 @@
             </md-input-container>
             <md-input-container flex>
                <label>Select Marketing Manager</label>
-               <md-select ng-model="admin.marketing_manager">
-                  <md-option ng-repeat="admin in alladminlist" value="{{admin.admin_id}}">
+               <md-select ng-model="admin.marketingManager">
+                  <md-option ng-repeat="admin in alladminlist" value="{{admin.adminId}}">
                      {{admin.fname}} {{admin.lname}}
                   </md-option>
                </md-select>
             </md-input-container>
             <md-input-container flex>
                <label>Select Data Validation Manager</label>
-               <md-select ng-model="admin.validation_manager">
-                  <md-option ng-repeat="admin in alladminlist" value="{{admin.admin_id}}">
+               <md-select ng-model="admin.validationManager">
+                  <md-option ng-repeat="admin in alladminlist" value="{{admin.adminId}}">
                      {{admin.fname}} {{admin.lname}}
                   </md-option>
                </md-select>
