@@ -1,4 +1,4 @@
-app.controller("addNearbyCtrl", ['$scope', '$firebaseArray', '$location','NgMap',function($scope, $firebaseArray, $location,NgMap){
+app.controller("addNearbyCtrl", ['$scope', '$firebaseArray', '$location', 'NgMap', function($scope, $firebaseArray, $location, NgMap){
    var getcity = db.ref("city");
    $scope.cities = $firebaseArray(getcity);
    $scope.placeChanged = function(){
@@ -27,7 +27,7 @@ app.controller("addNearbyCtrl", ['$scope', '$firebaseArray', '$location','NgMap'
          longitude: $scope.longitude,
          city: $scope.selectedCity,
          details: detailsObj,
-         placeid:$scope.placeid,
+         placeId:$scope.placeid,
          // type: $scope.type
       }
 
