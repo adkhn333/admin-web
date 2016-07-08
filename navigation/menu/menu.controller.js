@@ -112,17 +112,17 @@ app.controller('MenuCtrl', ['$scope', '$timeout', '$mdSidenav', '$log', '$mdDial
       {
          link: '#/submit-project',
          title: 'Submit Project',
-         icon: 'group'
+         icon: 'location_city'
       },
       {
          link: '#/approve-project',
          title: 'Project Approval',
-         icon: 'group'
+         icon: 'supervisor_account'
       },
       {
          link: '#/add-location',
          title: 'Add Location',
-         icon: 'group'
+         icon: 'location_city'
       },
       {
          link: '#/image-upload',
@@ -132,22 +132,27 @@ app.controller('MenuCtrl', ['$scope', '$timeout', '$mdSidenav', '$log', '$mdDial
       {
          link: '#/plannerMain',
          title: 'Planning Phase',
-         icon: 'group'
+         icon: 'today'
       },
       {
          link: '#/tasks',
          title: 'Execution Phase',
-         icon: 'group'
+         icon: 'event'
       },
       {
          link: '#/project-access',
          title: 'Project Access',
-         icon: 'group'
+         icon: 'lock_outline'
       },
       {
          link: '#/nearby/list',
          title: 'Nearby',
-         icon: 'group'
+         icon: 'room'
+      },
+      {
+         link: '#/nearby/get-distance',
+         title: 'Calculate Distance',
+         icon: 'gps_fixed'
       }
    ];
 }]);

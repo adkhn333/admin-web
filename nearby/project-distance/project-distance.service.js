@@ -1,4 +1,4 @@
-app.factory("ProjectDistanceService", ['$http', '$q', function($http, $q){
+app.factory("ProjectDistanceService", ['$http', '$mdDialog', '$q', function($http, $mdDialog, $q){
    var service = {};
 
    service.getProjectDistanceRequest = getProjectDistanceRequest;
@@ -30,6 +30,14 @@ app.factory("ProjectDistanceService", ['$http', '$q', function($http, $q){
          nearbyDistanceUpdates['nearbyDistance/'+selectedCity+"/"+selectedPlace+"/residential/"+i+"/"+time+"/duration"] = response.rows[0].elements[0].duration;
          db.ref().update(nearbyDistanceUpdates).then(function(){
             console.log("success nearbyDistance update");
+            // $mdDialog.show(
+            //    $mdDialog.alert()
+            //       .clickOutsideToClose(true)
+            //       .title('Distances Successfully Updated')
+            //       .textContent('Project Distances from Nearby Locations Successfully Updated')
+            //       .ariaLabel('Distances Successfully Updated')
+            //       .ok('OK!')
+            // );
             return deferred.promise;
          });
       }
