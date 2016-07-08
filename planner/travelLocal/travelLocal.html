@@ -3,8 +3,10 @@
     <div flex="95">
         <section class="card ">
             <md-content >
+                
+                <!-- TODO -->
 
-                <md-input-container class="md-icon-float md-block">
+                <!-- <md-input-container class="md-icon-float md-block">
                     <label> start Latitude</label>
                     <input type="number" step="0.01" ng-model="data.planning.start.lat">
                 </md-input-container>
@@ -12,11 +14,11 @@
                 <md-input-container class="md-icon-float md-block">
                     <label> start Longitude</label>
                     <input type="number" step="0.01" ng-model="data.planning.start.lng">
-                </md-input-container>
+                </md-input-container> -->
 
                 <md-input-container class="md-icon-float md-block">
                     <label> start Time</label>
-                    <input type="number" step="0.01" ng-init="data.planning.start.time=null" ng-model="data.planning.start.time">
+                    <input type="text" ng-init="data.planning.start.time=null" ng-model="data.planning.start.time">
                 </md-input-container>
 
                 <md-input-container class="md-icon-float md-block">
@@ -25,14 +27,14 @@
                 </md-input-container>
                  <input type="hidden"  ng-model="data.planning.active" value="true">
 
-                <md-input-container>
+                <md-input-container class="md-block">
                      <label for="repeatSelect"> Mode: </label>
                     <md-select  name="repeatSelect" ng-init="data.planning.mode=null" ng-model="data.planning.mode">
                         <md-option ng-repeat="option in dats.availableModes" value="{{option.mode}}">{{option.mode}}</md-option>
                     </md-select>
                 </md-input-container>
 
-                <md-input-container class="md-icon-float md-block">
+               <!--  <md-input-container class="md-icon-float md-block">
                     <label> End Latitude</label>
                     <input type="number" step="0.01" ng-model="data.planning.end.lat">
                 </md-input-container>
@@ -40,11 +42,11 @@
                 <md-input-container class="md-icon-float md-block">
                     <label> End Longitude</label>
                     <input type="number" step="0.01" ng-model="data.planning.end.lng">
-                </md-input-container>
+                </md-input-container> -->
 
                 <md-input-container class="md-icon-float md-block">
                     <label> End Time</label>
-                    <input type="number" step="0.01" ng-model="data.planning.end.time">
+                    <input type="text" step="0.01" ng-model="data.planning.end.time">
                 </md-input-container>
 
                 <md-input-container class="md-icon-float md-block">
@@ -52,20 +54,29 @@
                     <input type="text" ng-model="data.planning.end.location">
                 </md-input-container>
 
-                <md-input-container class="md-icon-float md-block">
+
+                <md-input-container class="md-block">
+                            <label > Select City: </label>
+                            <md-select   ng-change="getProjects(data.planning.cityId)" ng-model="data.planning.cityId" >
+                                <md-option ng-repeat="city in cities" value="{{city.cityId}}">{{city.cityName}}</md-option>
+                            </md-select>
+                </md-input-container>  
+                <md-input-container class="md-block">
+                            <label > Select Project: </label>
+                            <md-select ng-model="data.planning.project_id" >
+                                <md-option ng-repeat="project in projects" value="{{project.projectId}}">{{project.projectName}}</md-option>
+                            </md-select>
+                </md-input-container>  
+
+               <!--  <md-input-container class="md-icon-float md-block">
                     <label> Project id</label>
                     <input type="text" ng-model="data.planning.project_id">
-                </md-input-container>
+                </md-input-container> -->
 
                 <md-input-container class="md-icon-float md-block">
                     <label> Purpose</label>
                     <input type="text" ng-model="data.planning.purpose">
                 </md-input-container>
-
-               <!--  <md-input-container class="md-icon-float md-block">
-                    <label> Active</label>
-                    <input type="text" ng-model="data.planning.active">
-                </md-input-container> -->
 
 
                 <md-input-container class="md-block">

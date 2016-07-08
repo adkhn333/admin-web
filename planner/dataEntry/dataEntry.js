@@ -9,7 +9,7 @@ $scope.projects=[];
 $scope.data={};
 
 
-function getCities() {
+    function getCities() {
         var cityData = firebase.database().ref('city');
         cityData.on('value', function(data) {
             console.log(data.val());

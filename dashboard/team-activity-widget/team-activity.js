@@ -1,4 +1,4 @@
-app.controller('TeamActivityWidgetCtrl', function($scope) {
+app.controller('TeamActivityWidgetCtrl', function($timeout,  $scope) {
 
     $scope.activity = "activity";
 });

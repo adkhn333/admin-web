@@ -1,7 +1,12 @@
-app.controller('travelLocalPlannerCtrl', function($scope, $stateParams, $q, $mdDialog, $mdMedia,$location,$state) {
+app.controller('travelLocalPlannerCtrl', function($timeout, $localStorage, $scope, $stateParams, $q, $mdDialog, $mdMedia,$location,$state) {
 
- console.log($stateParams);
- $scope.dats = {
+console.log($stateParams);
+
+$scope.cities=[];
+$scope.projects=[];
+
+
+$scope.dats = {
 
   availableModes:[
   {mode:"car"},
@@ -11,6 +16,36 @@ app.controller('travelLocalPlannerCtrl', function($scope, $stateParams, $q, $mdD
   ]
 };
 $scope.repeatSelect;
+
+
+
+        firebase.database().ref('city')
+        .once('value', function(data) {
+            console.log(data.val());
+            $timeout(function(){
+                angular.forEach(data.val(), function(value, key){
+                    console.log(key);
+                $scope.cities.push(value);
+                
+            })
+            }, 50);
+            
+        });
+
+    $scope.getProjects=function(cityId){
+        firebase.database().ref('admins/'+$stateParams.userid+'/projectAccess/'+cityId).on('value', function (snapshot) {
+
+          $timeout(function(){
+            var cityIdData=snapshot.val();
+            console.log(cityIdData);
+            $scope.projects=cityIdData.projects;        
+          },50);
+
+        });
+
+    };
+
+// firebase.database().ref('admins/'+$stateParams.userid+'/projectAccess/');
 
 if($stateParams.activityid) {
   console.log($stateParams);
@@ -38,6 +73,9 @@ if($stateParams.activityid) {
 }
 
 
+
+
+
 $scope.eventplan = function(data,ev) {
     console.log(data);
     console.log($stateParams.date);
@@ -60,12 +98,19 @@ $scope.eventplan = function(data,ev) {
     }
     else var newPostKey = $stateParams.activityid;
 
+    data.planning.start.lat = 22.32323;
+    data.planning.start.lng = 77.43434;
+    data.planning.end.lat = 22.11212;
+    data.planning.end.lng = 77.33333;
+
+
     var updates = {};
     updates['/activity/' + $stateParams.userid  + '/' + $stateParams.date + '/' + newPostKey + '/type'] = "localTravel";
     data.planning.active=true;
     updates['/activity/' + $stateParams.userid  + '/' + $stateParams.date + '/' + newPostKey + '/planning'] = data.planning;
     
-    return firebase.database().ref().update(updates);
+
+    firebase.database().ref().update(updates);
     
 };
 

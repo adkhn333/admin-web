@@ -107,6 +107,19 @@ app
 		firebase.database().ref('protectedResidentialVersions/'+cityId+'/projects/'+projectId+'/submitted').remove();
 
 
+
+		firebase.database().ref('protectedResidential/'+cityId+'/projects/'+projectId+'/'+submittedData.version)
+		.once('value', function(submitedVersionSnapshot){
+			$timeout(function(){
+				// add to projects
+				firebase.database().ref('projects/'+cityId+'/residential/'+projectId)
+				.set(submitedVersionSnapshot.val());
+
+			},50);
+		});
+
+
+
 		firebase.database().ref('protectedResidentialVersions/'+cityId+'/projects/'+projectId+'/editable')
 		.once('value', function(editableSnapshot){
 			$timeout(function(){
@@ -133,12 +146,6 @@ app
 				.set(submittedData);
 			});
 		});
-
-
-
-		// add to projects
-		firebase.database().ref('projects/'+cityId+'/residential/'+projectId)
-		.set(submittedData);
 
 
 		// get current editable version and change the protected editable

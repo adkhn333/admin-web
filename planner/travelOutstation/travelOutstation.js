@@ -1,5 +1,36 @@
-    app.controller('travelOutstationPlannerCtrl', function($scope, $stateParams, $q,$mdDialog, $mdMedia,$location,$state) {
+    app.controller('travelOutstationPlannerCtrl', function($timeout, $scope, $stateParams, $q,$mdDialog, $mdMedia,$location,$state) {
       
+      $scope.cities=[];
+      $scope.projects=[];
+
+
+firebase.database().ref('city')
+        .once('value', function(data) {
+            console.log(data.val());
+            $timeout(function(){
+                angular.forEach(data.val(), function(value, key){
+                    console.log(key);
+                $scope.cities.push(value);
+                
+            })
+            }, 50);
+            
+        });
+
+    $scope.getProjects=function(cityId){
+        firebase.database().ref('admins/'+$stateParams.userid+'/projectAccess/'+cityId).on('value', function (snapshot) {
+
+          $timeout(function(){
+            var cityIdData=snapshot.val();
+            console.log(cityIdData);
+            $scope.projects=cityIdData.projects;        
+          },50);
+
+        });
+
+    };
+
+
        $scope.dats = {
          
           availableModes:[
@@ -62,6 +93,11 @@
             var newPostKey = firebase.database().ref('/activity/'+$stateParams.userid).child($stateParams.date).push().key;
           }
           else var newPostKey = $stateParams.activityid;
+
+          data.planning.start.lat = 22.32323;
+          data.planning.start.lng = 77.43434;
+          data.planning.end.lat = 22.11212;
+          data.planning.end.lng = 77.33333;
           
             var updates = {};
             updates['/activity/' + $stateParams.userid  + '/' + $stateParams.date + '/' + newPostKey + '/type'] = "OutstationTravel";

@@ -1,4 +1,4 @@
-app.controller('ActivityLogCtrl', function($scope) {
+app.controller('ActivityLogCtrl', function($timeout, $scope) {
 
 
     $scope.todos = [{
@@ -62,4 +62,14 @@ app.controller('ActivityLogCtrl', function($scope) {
         when: '3:08PM',
         notes: " I'll be in your neighborhood doing errands lorem ipsum dolor amit."
     }];
+
+
+    firebase.database().ref('admins')
+    .once('value', function(adminsSnapshot){
+        $timeout(function(){
+
+            $scope.admins = adminsSnapshot.val();
+            console.log($scope.admins);
+        },50);
+    });
 });
