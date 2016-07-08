@@ -1,12 +1,4 @@
 app.controller('projectAccessCtrl', ['$scope', '$timeout', function($scope, $timeout) {
-    var db = firebase.database();
-    // $scope.cities = [{
-    //         name: 'Gurgaon',
-    //         id: 1234
-    //     }
-
-    // ];
-
     db.ref().child('city').once('value', function(citySnapshot) {
         $timeout(function() {
             $scope.cities = citySnapshot.val();
@@ -54,19 +46,17 @@ app.controller('projectAccessCtrl', ['$scope', '$timeout', function($scope, $tim
 
     // }
     $scope.adminAccess = {};
-    $scope.locadAdmins = function() {
+    $scope.loadAdmins = function() {
         var projectAdminsList = {};
-
 
         db.ref().child('admins').once('value', function(adminSnapshot) {
             $scope.allAdminInit = adminSnapshot.val();
+            console.log($scope.allAdminInit);
 
             $scope.allAdmin = adminSnapshot.val();
             db.ref('/adminProjectAccess/' + $scope.cityid + '/projects/' + $scope.project).once("value", function(snapshot) {
                 var currentAdmin = snapshot.val();
                 angular.forEach(currentAdmin, function(value, key) {
-
-
 
                     $scope.allAdmin[value.adminId].value1 = true;
                     console.log($scope.allAdmin);
@@ -77,31 +67,27 @@ app.controller('projectAccessCtrl', ['$scope', '$timeout', function($scope, $tim
                     //console.log(citySnapshot.val());
                 }, 50);
             });
-
         });
-
     };
 
     $scope.finalAdminAccess = [];
     $scope.finalProjectAccess = [];
     $scope.giveAccess = function() {
-
         var proj = {
-
             projectId: $scope.project,
             projectName: $scope.projects[$scope.project].projectName
-
         }
-
+        console.log($scope.allAdminInit);
         angular.forEach($scope.allAdminInit, function(value, key) {
-
+           console.log(key, value.uid);
             //	console.log($scope.adminAccess[value.adminId]);
             if ($scope.adminAccess[value.uid] == true) {
                 console.log($scope.projects[$scope.project].projectName);
+                console.log(key, value.uid);
                 var addProjectAccess = {}
-                addProjectAccess['admins/'+value.uid+'/projectAccess/'+$scope.cityid+'/cityId'] = $scope.cityid;
-      			addProjectAccess['admins/'+value.uid+'/projectAccess/'+$scope.cityid+'/cityName'] = $scope.cities[$scope.cityid].cityName;
-      			addProjectAccess['admins/' + value.uid + '/projectAccess/' + $scope.cityid + '/projects/' + $scope.project] = proj;
+                addProjectAccess['admins/'+key+'/projectAccess/'+$scope.cityid+'/cityId'] = $scope.cityid;
+      			addProjectAccess['admins/'+key+'/projectAccess/'+$scope.cityid+'/cityName'] = $scope.cities[$scope.cityid].cityName;
+      			addProjectAccess['admins/' + key + '/projectAccess/' + $scope.cityid + '/projects/' + $scope.project] = proj;
 
       			console.log(addProjectAccess);
                 db.ref().update(addProjectAccess);
