@@ -21,7 +21,7 @@ app.controller('to_doCtrl', ['$scope','$location','$timeout', '$q', '$filter', '
           {id: '13', name: 'Others'}
         ],
          };
-     //angularfire method of retrieval
+   
      $scope.getActivities = function() {
         console.log("hello");
         var dates = $filter('date')($scope.date, 'dd-MM-yy');
@@ -32,18 +32,6 @@ app.controller('to_doCtrl', ['$scope','$location','$timeout', '$q', '$filter', '
         console.log();
         $scope.todos = $firebaseArray(ref);
          console.log( $scope.todos);
-
-         // if($scope.todos.length==0)
-         //  {
-         //   $mdDialog.show(
-         //   $mdDialog.alert()
-         //  .clickOutsideToClose(true)
-         //  .title('No activity to show')
-         //  .textContent('You can add some activities !!')
-         //  .ariaLabel('No activity to show')
-         //  .ok('Got it!')
-
-         //  );}
 
       };
     
@@ -81,7 +69,7 @@ app.controller('to_doCtrl', ['$scope','$location','$timeout', '$q', '$filter', '
         if(type=="OutstationTravel")type="travelOutstation";
 
       $state.go("plannerMain."+type,{date:dates, userid:$scope.userid,activityid:x.$id});
-      // $location.url("travel_local").search({date:dates, userid:$scope.userid,activityid:x});
+   
     };
 
 

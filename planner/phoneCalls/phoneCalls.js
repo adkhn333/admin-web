@@ -1,4 +1,4 @@
-app.controller('phone_callsCtrl', function($scope, $stateParams, $q,$mdDialog, $mdMedia,$location,$state) {
+app.controller('phone_callsPlannerCtrl', function($scope, $stateParams, $q,$mdDialog, $mdMedia,$location,$state) {
     console.log('Hello phone_callsCtrl');
   
     console.log($stateParams.activityid);

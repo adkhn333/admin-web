@@ -1,7 +1,35 @@
-app.controller('onlineResearchCtrl', function($scope, $stateParams, $q,$mdDialog, $mdMedia,$location,$state) {
-  
+app.controller('onlineResearchPlannerCtrl', function($scope, $stateParams, $q, $mdDialog,$state) {
+
+
+  console.log("Called");
+
+    $scope.projlist = [
+    {
+      projectId : "",
+      projectName : "",
+      projectCity : "",
+      projectType : "",
+      remark: ""
+    }
+  ];
+
+
+  $scope.addproj = function() {
+    $scope.proj = {
+      projectId : "",
+      projectName : "",
+      projectCity : "",
+      projectType : "",
+      remark: ""
+    };
+    $scope.projlist.push($scope.proj);
+    console.log($scope.projlist);
+  };
+
+
      $scope.repeatSelect;
     console.log($stateParams.activityid);
+    
     if($stateParams.activityid) {
       console.log('Hello onlineResearch');
 
@@ -25,7 +53,7 @@ app.controller('onlineResearchCtrl', function($scope, $stateParams, $q,$mdDialog
               $scope.data = snap;
                  console.log($scope.data);
           }, function(err){
-               //do something with the error
+              
                console.log(err);
         });
 
@@ -33,6 +61,15 @@ app.controller('onlineResearchCtrl', function($scope, $stateParams, $q,$mdDialog
 
 
   $scope.eventplan = function(data,ev) {
+
+    // console.log(data,ev);
+    // return;
+    for (i in $scope.projlist) {
+        delete $scope.projlist[i]['$$hashKey'];
+      }
+
+      data.planning.projects=$scope.projlist;
+
     console.log(data);
     console.log($stateParams.date);
     var newPostKey;
@@ -47,7 +84,6 @@ app.controller('onlineResearchCtrl', function($scope, $stateParams, $q,$mdDialog
         .ok('OK')
         .targetEvent(ev)
     );
-      $state.go("plannerMain.blank");
     if(!$stateParams.activityid) {
          newPostKey = firebase.database().ref('/activity/'+$stateParams.userid + '/').child($stateParams.date).push().key;
       }
@@ -55,10 +91,13 @@ app.controller('onlineResearchCtrl', function($scope, $stateParams, $q,$mdDialog
       
         var updates = {};
         updates['/activity/' + $stateParams.userid  + '/' + $stateParams.date + '/' + newPostKey + '/type'] = "onlineResearch";
+        data.planning.active=true;
         updates['/activity/' + $stateParams.userid  + '/' + $stateParams.date + '/' + newPostKey + '/planning'] = data.planning;
-        
+          $state.go("plannerMain.blank");
         return firebase.database().ref().update(updates);
-        
+       
   };
+
+
 
 }); // Controller

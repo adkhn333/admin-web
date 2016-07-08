@@ -1,4 +1,4 @@
-    app.controller('travelOutstationCtrl', function($scope, $stateParams, $q,$mdDialog, $mdMedia,$location,$state) {
+    app.controller('travelOutstationPlannerCtrl', function($scope, $stateParams, $q,$mdDialog, $mdMedia,$location,$state) {
       
        $scope.dats = {
          
