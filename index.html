@@ -5,12 +5,16 @@
    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
    <title>Roofpik Admin Application</title>
    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
+   <link rel="stylesheet" href="bower_components/mdPickers/dist/mdPickers.min.css">
+   <link rel="stylesheet" href="stylesheets/ajay.css">
    <link rel="stylesheet" href="stylesheets/style.css">
+   <link rel="stylesheet" href="stylesheets/adnan.css">
    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
    <link href="bower_components/angular-material-data-table/dist/md-data-table.min.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body ng-app="RoofpikAdmin" ng-controller="MenuCtrl">
+   <loading-indicator ng-show="isLoading"></loading-indicator>
    <div class="main" layout="column" layout-fill>
       <md-content class="main-content">
          <div ui-view></div>
@@ -34,11 +38,19 @@
    <script src="https://cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min.js"></script>
    <script>
       // Initialize Firebase
+      // var config = {
+      //    apiKey: "AIzaSyD_4bPp5HKryXDzaQwfRhqAU5SsSAdDIJ0",
+      //    authDomain: "roofpik-948d0.firebaseapp.com",
+      //    databaseURL: "https://roofpik-948d0.firebaseio.com",
+      //    storageBucket: "roofpik-948d0.appspot.com",
+      // };
+      // firebase.initializeApp(config);
+      
       var config = {
-         apiKey: "AIzaSyD_4bPp5HKryXDzaQwfRhqAU5SsSAdDIJ0",
-         authDomain: "roofpik-948d0.firebaseapp.com",
-         databaseURL: "https://roofpik-948d0.firebaseio.com",
-         storageBucket: "roofpik-948d0.appspot.com",
+         apiKey: "AIzaSyAPMy7EC5OM7LjoXfxJBg12zDtN1k-7rnU",
+         authDomain: "admin-web-88abe.firebaseapp.com",
+         databaseURL: "https://admin-web-88abe.firebaseio.com",
+         storageBucket: "",
       };
       firebase.initializeApp(config);
    </script>
@@ -134,6 +146,35 @@
 
    <!-- Directives -->
    <script src="navigation/menu/userAvatar.js"></script>
+
+   <!--Add Project-->
+   <script src="add-project/add-project.controller.js"></script>
+   <script src="add-project/basic-details/basic-details.controller.js"></script>
+   <script src="add-project/new-project/new-project.controller.js"></script>
+   <script src="add-project/rwa/rwa.controller.js"></script>
+   <script src="add-project/sports-activity-details/sports-activity-details.controller.js"></script>
+   <script src="add-project/club-house-details/club-house-details.controller.js"></script>
+   <script src="add-project/costing-details/costing-details.controller.js"></script>
+   <script src="add-project/other-details/other-details.controller.js"></script>
+   <script src="add-project/security-details/security-details.controller.js"></script>
+   <script src="add-project/society-shop-details/society-shop-details.controller.js"></script>
+   <script src="add-project/home-delivery-details/home-delivery-details.controller.js"></script>
+   <script src="add-project/unit-details/unit-details.controller.js"></script>
+   <script src="add-project/connectivity-details/connectivity-details.controller.js"></script>
+   
+   <!-- mdPickers -->
+   <script src="bower_components/moment/min/moment.min.js"></script>
+   <script src="bower_components/mdPickers/dist/mdPickers.min.js"></script>
+
+   <!-- Adnan -->
+   <script src="loading-indicator/loading-indicator.js"></script>
+   <script src="loading-indicator/loading-indicator.service.js"></script>
+   <script src="error-handler/error-handler.service.js"></script>
+   <script src="error-handler/error-message.service.js"></script>
+   <script src="camelCaseToHuman/camelCaseToHuman.filter.js"></script>
+   <script src="address/address.service.js"></script>
+   <script src="builders/builders.service.js"></script>
+
 
    <script src="nearby/project-distance/project-distance.service.js"></script>
 </body>

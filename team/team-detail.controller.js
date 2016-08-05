@@ -1,4 +1,4 @@
-app.controller("teamDetailCtrl", ['$scope', '$http', '$stateParams', '$mdDialog', '$mdToast', '$localStorage', '$location', '$mdSidenav', 'AdminService', function($scope, $http, $stateParams, $mdDialog, $mdToast, $localStorage, $location, $mdSidenav, AdminService){
+app.controller("teamDetailCtrl", ['$scope', '$rootScope', 'ErrorMessage', '$http', '$stateParams', '$mdDialog', '$mdToast', '$localStorage', '$location', '$mdSidenav', 'AdminService', function($scope, $rootScope, ErrorMessage, $http, $stateParams, $mdDialog, $mdToast, $localStorage, $location, $mdSidenav, AdminService){
 
    $scope.setStatusFilter = function(statusValue) {
       $scope.showStatus = statusValue;
@@ -13,17 +13,30 @@ app.controller("teamDetailCtrl", ['$scope', '$http', '$stateParams', '$mdDialog'
    $scope.teamName = $stateParams.name;
    $scope.team = [];
 
+   $rootScope.isLoading = true;
+
    list_service = AdminService.getAllAdminDetailsRequest();
    // console.log(list_service);
-   list_service.then(function(alladminlist){
-      $scope.adminlist = [];
-      for(var i = 0; i<alladminlist.length;i++){
-         if(alladminlist[i].team == $scope.teamName){
-            $scope.adminlist.push(alladminlist[i]);
+   try {
+      list_service.then(function(alladminlist){
+         $rootScope.isLoading = false;
+         $scope.adminlist = [];
+         for(var i = 0; i<alladminlist.length;i++){
+            if(alladminlist[i].team == $scope.teamName){
+               $scope.adminlist.push(alladminlist[i]);
+            }
          }
+         console.log($scope.adminlist);
+      });
+   }
+   catch(error) {
+      if(error) {
+         var msg = 'Unhandled Exception';
+         $rootScope.isLoading = false;
+         ErrorMessage.showMessage('Something Went Wrong', msg);
+         console.error(error);
       }
-      console.log($scope.adminlist);
-   });
+   }
 
 
 }]);

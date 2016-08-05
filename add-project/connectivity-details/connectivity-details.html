@@ -1,0 +1,349 @@
+<md-card class="addProjectFormCard">
+    <md-toolbar>
+        <md-toolbar-title>
+            <md-toolbar-title-text>
+            <h2 align="center"><span>Connectivity Details</span></h2>
+            </md-toolbar-title-text>
+        </md-toolbar-title>
+    </md-toolbar>
+    <md-card-content>
+        <form name="connectivityForm" ng-submit="addConnectivityToProject(connectivity)">
+            <md-toolbar class="md-primary">
+                <div class="md-toolbar-tools">
+                    <h2 class="md-flex">
+                     Airport
+                  </h2>
+                </div>
+            </md-toolbar>
+            <div layout="row">
+                <md-input-container flex md-no-float class="md-block">
+                    <input name="airportDistance" ng-model="connectivity.airport.distance"
+                    ng-init="connectivity.airport.distance=null"
+                    placeholder="Distance"
+                    ng-pattern="/^\d+$/">
+                    <div ng-messages="connectivityForm.airportDistance.$error">
+                        <div ng-message="pattern">Invalid Distance</div>
+                    </div>
+                </md-input-container>
+                <div flex="5"></div>
+            </div>
+            <div layout="row" style="margin-top:-30px;">
+                <md-input-container flex class="md-block">
+                    <label>Lattitude</label>
+                    <input name="airportLattitude" ng-init="connectivity.airport.lattitude=null"
+                    ng-model="connectivity.airport.lattitude">
+                </md-input-container>
+                <div flex="5"></div>
+                <md-input-container flex class="md-block">
+                    <label>Longitude</label>
+                    <input name="airportLongitude" ng-init="connectivity.airport.longitude=null"
+                    ng-model="connectivity.airport.longitude">
+                </md-input-container>
+            </div>
+            <div layout="row" style="margin-top:-30px;">
+                <md-input-container flex md-no-float class="md-block">
+                    <input ng-model="connectivity.airport.peakTime"
+                    ng-init="connectivity.airport.peakTime=null"
+                    type="text" placeholder="Peak Time"
+                    ng-click="showTimePicker($event, 'airport', 'peakTime')">
+                </md-input-container>
+                <div flex="5">
+
+                </div>
+                <md-input-container flex md-no-float class="md-block">
+                    <input ng-model="connectivity.airport.offPeakTime"
+                    ng-init="connectivity.airport.offPeakTime=null"
+                    type="text" placeholder="Off Peak Time"
+                    ng-click="showTimePicker($event, 'airport', 'offPeakTime')">
+                </md-input-container>
+            </div>
+
+            <md-toolbar class="md-primary">
+                <div class="md-toolbar-tools">
+                    <h2 class="md-flex">
+                  Metro Station
+            </h2>
+                </div>
+            </md-toolbar>
+            <div layout="row">
+                <md-input-container flex md-no-float class="md-block">
+                    <input name="metroStationDistance" ng-model="connectivity.metroStation.distance"
+                    ng-init="connectivity.metroStation.distance=null"
+                    type="text" placeholder="Distance"
+                    ng-pattern="/^\d+$/">
+                    <div ng-messages="connectivityForm.metroStationDistance.$error">
+                        <div ng-message="pattern">Invalid Distance</div>
+                    </div>
+                </md-input-container>
+                <div flex="5">
+
+                </div>
+                <md-input-container flex md-no-float class="md-block">
+
+                </md-input-container>
+            </div>
+            <div layout="row" style="margin-top:-30px;">
+                <md-input-container flex class="md-block">
+                    <label>Lattitude</label>
+                    <input ng-init="connectivity.metroStation.lattitude=null"
+                    ng-model="connectivity.metroStation.lattitude">
+                </md-input-container>
+                <div flex="5">
+                    <!-- Spacer //-->
+                </div>
+                <md-input-container flex class="md-block">
+                    <label>Longitude</label>
+                    <input ng-init="connectivity.metroStation.longitude=null"
+                    ng-model="connectivity.metroStation.longitude">
+                </md-input-container>
+            </div>
+            <div layout="row" style="margin-top:-30px;">
+                <md-input-container flex md-no-float class="md-block">
+                    <input ng-model="connectivity.metroStation.peakTime"
+                    ng-init="connectivity.metroStation.peakTime=null"
+                    type="text" placeholder="Peak Time"
+                    ng-click="showTimePicker($event, 'metroStation', 'peakTime')">
+                </md-input-container>
+                <div flex="5">
+
+                </div>
+                <md-input-container flex md-no-float class="md-block">
+                    <input ng-model="connectivity.metroStation.offPeakTime"
+                    ng-init="connectivity.metroStation.offPeakTime=null"
+                    type="text" placeholder="Off Peak Time"
+                    ng-click="showTimePicker($event, 'metroStation', 'offPeakTime')">
+                </md-input-container>
+            </div>
+
+            <md-toolbar class="md-primary">
+                <div class="md-toolbar-tools">
+                    <h2 class="md-flex">
+                     Railway Station
+                  </h2>
+                </div>
+            </md-toolbar>
+
+            <div layout="row">
+                <md-input-container flex md-no-float class="md-block">
+                    <input name="railwayStationDistance" ng-model="connectivity.railwayStation.distance"
+                    ng-init="connectivity.railwayStation.distance=null"
+                    type="text" placeholder="Distance"
+                    ng-pattern="/^\d$/">
+                    <div ng-messages="connectivityForm.railwayStationDistance.$error">
+                        <div ng-message="pattern">Invalid Distance</div>
+                    </div>
+                </md-input-container>
+                <div flex="5">
+
+                </div>
+                <md-input-container flex md-no-float class="md-block">
+
+                </md-input-container>
+            </div>
+            <div layout="row" style="margin-top:-30px;">
+                <md-input-container flex class="md-block">
+                    <label>Lattitude</label>
+                    <input ng-init="connectivity.railwayStation.lattitude=null"
+                    ng-model="connectivity.railwayStation.lattitude">
+                </md-input-container>
+                <div flex="5">
+                    <!-- Spacer //-->
+                </div>
+                <md-input-container flex class="md-block">
+                    <label>Longitude</label>
+                    <input ng-init="connectivity.railwayStation.longitude=null"
+                    ng-model="connectivity.railwayStation.longitude">
+                </md-input-container>
+            </div>
+            <div layout="row" style="margin-top:-30px;">
+                <md-input-container flex md-no-float class="md-block">
+                    <input ng-model="connectivity.railwayStation.peakTime"
+                    ng-init="connectivity.railwayStation.peakTime=null"
+                    type="text" placeholder="Peak Time"
+                    ng-click="showTimePicker($event, 'railwayStation', 'peakTime')">
+                </md-input-container>
+                <div flex="5">
+
+                </div>
+                <md-input-container flex md-no-float class="md-block">
+                    <input ng-model="connectivity.railwayStation.offPeakTime"
+                    ng-init="connectivity.railwayStation.offPeakTime=null"
+                    type="text" placeholder="Off Peak Time"
+                    ng-click="showTimePicker($event, 'railwayStation', 'offPeakTime')">
+                </md-input-container>
+            </div>
+            <md-toolbar class="md-primary">
+                <div class="md-toolbar-tools">
+                    <h2 class="md-flex">
+                     Bus Stand
+                  </h2>
+                </div>
+            </md-toolbar>
+            <div layout="row">
+                <md-input-container flex md-no-float class="md-block">
+                    <input name="busStandDistance" ng-model="connectivity.busStand.distance"
+                    ng-init="connectivity.busStand.distance=null"
+                    type="text" placeholder="Distance"
+                    ng-pattern="/^\d+$/">
+                    <div ng-messages="connectivityForm.busStandDistance.$error">
+                        <div ng-message="pattern">Invalid Distance</div>
+                    </div>
+                </md-input-container>
+                <div flex="5">
+
+                </div>
+                <md-input-container flex md-no-float class="md-block">
+
+                </md-input-container>
+            </div>
+            <div layout="row" style="margin-top:-30px;">
+                <md-input-container flex class="md-block">
+                    <label>Lattitude</label>
+                    <input ng-init="connectivity.busStand.lattitude=null"
+                    ng-model="connectivity.busStand.lattitude">
+                </md-input-container>
+                <div flex="5">
+                    <!-- Spacer //-->
+                </div>
+                <md-input-container flex class="md-block">
+                    <label>Longitude</label>
+                    <input ng-init="connectivity.busStand.longitude=null"
+                    ng-model="connectivity.busStand.longitude">
+                </md-input-container>
+            </div>
+            <div layout="row" style="margin-top:-30px;">
+                <md-input-container flex md-no-float class="md-block">
+                    <input ng-model="connectivity.busStand.peakTime"
+                    ng-init="connectivity.busStand.peakTime=null"
+                    type="text" placeholder="Peak Time"
+                    ng-click="showTimePicker($event, 'busStand', 'peakTime')">
+                </md-input-container>
+                <div flex="5">
+
+                </div>
+                <md-input-container flex md-no-float class="md-block">
+                    <input ng-model="connectivity.busStand.offPeakTime"
+                    ng-init="connectivity.busStand.offPeakTime=null"
+                    type="text" placeholder="Off Peak Time"
+                    ng-click="showTimePicker($event, 'busStand', 'offPeakTime')">
+                </md-input-container>
+            </div>
+            <md-toolbar class="md-primary">
+                <div class="md-toolbar-tools">
+                    <h2 class="md-flex">
+                     Cab Stand
+                  </h2>
+                </div>
+            </md-toolbar>
+            <div layout="row">
+                <md-input-container flex md-no-float class="md-block">
+                    <input name="cabStandDistance" ng-model="connectivity.cabStand.distance"
+                    ng-init="connectivity.cabStand.distance=null"
+                    type="text" placeholder="Distance">
+                    <div ng-messages="connectivityForm.cabStandDistance.$error">
+                        <div ng-message="pattern">Invalid Distance</div>
+                    </div>
+                </md-input-container>
+                <div flex="5">
+
+                </div>
+                <md-input-container flex md-no-float class="md-block">
+
+                </md-input-container>
+            </div>
+            <div layout="row" style="margin-top:-30px;">
+                <md-input-container flex class="md-block">
+                    <label>Lattitude</label>
+                    <input ng-model="connectivity.cabStand.lattitude"
+                    ng-init="connectivity.cabStand.lattitude=null">
+                </md-input-container>
+                <div flex="5">
+                    <!-- Spacer //-->
+                </div>
+                <md-input-container flex class="md-block">
+                    <label>Longitude</label>
+                    <input ng-model="connectivity.cabStand.longitude"
+                    ng-init="connectivity.cabStand.longitude=null">
+                </md-input-container>
+            </div>
+
+            <md-toolbar class="md-primary">
+                <div class="md-toolbar-tools">
+                    <h2 class="md-flex">
+                     Auto Stand
+                  </h2>
+                </div>
+            </md-toolbar>
+            <div layout="row">
+                <md-input-container flex md-no-float class="md-block">
+                    <input name="autoStandDistance" ng-model="connectivity.autoStand.distance"
+                    ng-init="connectivity.autoStand.distance=null"
+                    type="text" placeholder="Distance">
+                    <div ng-messages="connectivityForm.autoStandDistance.$error">
+                        <div ng-message="pattern">Invalid Distance</div>
+                    </div>
+                </md-input-container>
+                <div flex="5">
+
+                </div>
+                <md-input-container flex md-no-float class="md-block">
+
+                </md-input-container>
+            </div>
+            <div layout="row" style="margin-top:-30px;">
+                <md-input-container flex class="md-block">
+                    <label>Lattitude</label>
+                    <input ng-model="connectivity.autoStand.lattitude"
+                    ng-init="connectivity.autoStand.lattitude=null">
+                </md-input-container>
+                <div flex="5">
+                    <!-- Spacer //-->
+                </div>
+                <md-input-container flex class="md-block">
+                    <label>Longitude</label>
+                    <input ng-model="connectivity.autoStand.longitude"
+                    ng-init="connectivity.autoStand.longitude=null">
+                </md-input-container>
+            </div>
+
+            <md-toolbar class="md-primary">
+                <div class="md-toolbar-tools">
+                    <h2 class="md-flex">
+                     Extraa Details
+                  </h2>
+                </div>
+            </md-toolbar>
+
+            <div layout="row">
+                <md-input-container flex md-no-float class="md-block">
+                    <input ng-model="connectivity.nearestMainRoad"
+                    ng-init="connectivity.nearestMainRoad=null"
+                    type="text" placeholder="Nearest Main road">
+                </md-input-container>
+                <div flex=5></div>
+                <md-input-container flex md-no-float class="md-block">
+                    <input name="mainRoadDistance" ng-model="connectivity.mainRoadDistance"
+                    ng-init="connectivity.mainRoadDistance=null"
+                    type="text" placeholder="Main Road Distance">
+                    <div ng-messages="connectivityForm.mainRoadDistance.$error">
+                        <div ng-message="pattern">Invalid Distance</div>
+                    </div>
+                </md-input-container>
+            </div>
+            <div layout="row" style="margin-top:-30px;">
+                <md-input-container flex md-no-float class="md-block">
+                    <input ng-model="connectivity.nearestExpressway"
+                    ng-init="connectivity.nearestExpressway=null"
+                    type="text" placeholder="Nearest Expressway">
+                </md-input-container>
+                <div flex=5></div>
+                <md-input-container flex md-no-float class="md-block">
+                    <input ng-model="connectivity.expresswayDistance"
+                    ng-init="connectivity.expresswayDistance=null"
+                    type="text" placeholder="Expressway Distance">
+                </md-input-container>
+            </div>
+            <md-button type="submit" class="md-primary md-raised">Submit</md-button>
+        </form>
+    </md-card-content>
+</md-card>

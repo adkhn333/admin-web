@@ -1,10 +1,35 @@
-app.controller('projectAccessCtrl', ['$scope', '$timeout', function($scope, $timeout) {
-   db.ref().child('city').once('value', function(citySnapshot) {
-      $timeout(function() {
+app.controller('projectAccessCtrl', ['$scope', '$rootScope', 'ErrorMessage', 'LoadingIndicatorService', '$timeout', function($scope, $rootScope, ErrorMessage, LoadingIndicatorService, $timeout) {
+   try {
+      $rootScope.isLoading = true;
+      // db.ref().child('city').once('value', function(citySnapshot) {
+      //    $timeout(function() {
+      //       $scope.cities = citySnapshot.val();
+      //       console.log(citySnapshot.val());
+      //    }, 0);
+      // }, function(error) {
+      //    var msg = 'Unhandled Exception';
+		// 	$rootScope.isLoading = false;
+		// 	ErrorMessage.showMessage('Something Went Wrong', msg);
+		// 	console.error(error);
+      // });
+      db.ref().child('city').once('value').then(function(citySnapshot) {
          $scope.cities = citySnapshot.val();
-         //console.log(citySnapshot.val());
-      }, 0);
-   });
+         $rootScope.isLoading = false;
+         // console.log(citySnapshot.val());
+         // LoadingIndicatorService.loadingEnd();
+      }, function(error) {
+         var msg = 'Unhandled Exception';
+			$rootScope.isLoading = false;
+			ErrorMessage.showMessage('Something Went Wrong', msg);
+			console.error(error);
+      });
+   }
+   catch(error) {
+      var msg = 'Unhandled Exception';
+      $rootScope.isLoading = false;
+      ErrorMessage.showMessage('Something Went Wrong', msg);
+      console.error(error);
+   }
 
    // called when city changes
    $scope.getProjects = function(val) {

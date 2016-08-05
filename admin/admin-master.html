@@ -20,14 +20,19 @@
             </md-input-container>
             <md-input-container flex>
                <label>Email Address</label>
-               <input name="email" required type="email" ng-model="email">
-               <div ng-messages="addAdminForm.email.$error">
-                  <div ng-message="required">This is required.</div>
+               <input name="email" required type="email" ng-model="email"
+                      ng-pattern="/^.+@.+\..+$/">
+               <div ng-messages="addAdminForm.email.$error" multiple>
+                  <div ng-message="required" multiple>This is required.</div>
+                  <div ng-message="pattern" multiple>Invalid Email</div>
                </div>
             </md-input-container>
          </div>
          <section layout="row" layout-align="space-around start">
-            <md-button class="md-raised md-primary" type="submit">Add Admin</md-button>
+            <md-button 
+               class="md-raised md-primary" 
+               type="submit"
+               ng-disabled="addAdminForm.$invalid">Add Admin</md-button>
          </section>
       </md-card-content>
    </form>

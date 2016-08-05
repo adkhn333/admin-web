@@ -1,0 +1,60 @@
+.addProjectFormCard{
+	max-width:950px;
+	margin:auto;
+}
+.addProjectFormCard form{
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top:10px;
+}
+.addProjectFormCard form input{
+	margin-bottom:-5px;
+}
+table.printShopDetails {
+	width: 100%;
+}
+table.printShopDetails, th, td {
+	border-collapse: collapse;
+	border: 1px solid #eee;
+	padding: 10px;
+}
+table.printShopDetails tbody {
+    background-color: #fff;
+}
+table.printShopDetails th {
+    color: white;
+    background-color: #3d3d3d;
+}
+table.printShopDetails tbody tr td {
+	text-align: center;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+.formFilters{
+	margin-top: 20px;
+}
+
+.menuClass{
+   width:100%;
+}
+.menuClass a{
+   text-decoration:none;
+   color:#be6539;
+   text-align:center;
+   width: 100%;
+   height:30px;
+   font-size:18px;
+   border-bottom:2px solid eeeeee;
+   border-right:1px solid eeeeee;
+   border-left:1px solid eeeeee;
+}
+.menuClass a:hover{
+   color:#be3965;
+   font-size:22px;
+   padding:10px;
+}

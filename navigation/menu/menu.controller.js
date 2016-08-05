@@ -153,6 +153,11 @@ app.controller('MenuCtrl', ['$scope', '$timeout', '$mdSidenav', '$log', '$mdDial
          link: '#/nearby/get-distance',
          title: 'Calculate Distance',
          icon: 'gps_fixed'
+      },
+      {
+         link: '#/add-project',
+         title: 'Add Project',
+         icon: 'book'
       }
    ];
 }]);

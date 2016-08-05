@@ -1,0 +1,96 @@
+<md-card class="addProjectFormCard">
+    <md-toolbar>
+        <md-toolbar-title>
+            <md-toolbar-title-text>
+            <h2 align="center"><span>Costing Details</span></h2>
+            </md-toolbar-title-text>
+        </md-toolbar-title>
+    </md-toolbar>
+    <md-card-content>
+        <form action="">
+            <div layout="row" layout-align="space-between">
+                <div flex>
+                    <md-checkbox 
+                        layout="row" 
+                        ng-model="costing.powerBackupCharges" 
+                        ng-init="costing.powerBackupCharges=null">
+                        Power Backup Charges
+                    </md-checkbox>
+                    <md-checkbox 
+                        layout="row" 
+                        ng-model="costing.maintenanceChargesFixed" 
+                        ng-init="costing.maintenanceChargesFixed=null">
+                        Maintenance Charges Fixed
+                    </md-checkbox>
+                    <md-checkbox 
+                        ng-model="costing.maintenanceChargesVariable" 
+                        ng-init="costing.maintenanceChargesVariable=null">
+                        Maintenance Charges Variable
+                    </md-checkbox>
+                    <md-checkbox 
+                        layout="row" 
+                        ng-model="costing.moveInCharges" 
+                        ng-init="costing.moveInCharges=null">
+                        Move In Charges
+                    </md-checkbox>
+                </div>
+                <div flex>
+                    <md-checkbox 
+                        layout="row" 
+                        ng-model="costing.moveOutCharges" 
+                        ng-init="costing.moveOutCharges=null">
+                        Move Out Charges
+                    </md-checkbox>
+                    <md-checkbox 
+                        layout="row" 
+                        ng-model="costing.cookingChargeOneMeal" 
+                        ng-init="costing.cookingChargeOneMeal=null" >
+                        Cooking Charge One Meal
+                    </md-checkbox>
+                    <md-checkbox 
+                        layout="row" 
+                        ng-model="costing.cookingChargeTwoMeals" 
+                        ng-init="costing.cookingChargeTwoMeals=null">
+                        Cooking Charge Two Meals
+                    </md-checkbox> 
+                    <md-checkbox 
+                        layout="row" 
+                        ng-model="costing.cleaningUtensilsOneTime" 
+                        ng-init="costing.cleaningUtensilsOneTime=null" ng-init="costing.powerBackupCharges=false" >
+                        Cleaning Utensils One Time
+                    </md-checkbox>
+                </div> 
+                <div flex>
+                    <md-checkbox 
+                        layout="row" 
+                        ng-model="costing.cleaningUtensilsTwoTime"  
+                        ng-init="costing.cleaningUtensilsTwoTime=null">
+                        Cleaning Utensils Two Time
+                    </md-checkbox>
+                    <md-checkbox 
+                        layout="row" 
+                        ng-model="costing.maid12Hours" 
+                        ng-init="costing.maid12Hours=null">
+                        Maid 12 Hours
+                    </md-checkbox>
+                    <md-checkbox 
+                        layout="row" 
+                        ng-model="costing.maid24Hours" 
+                        ng-init="costing.maid24Hours=null" >
+                        Maid 24 Hours
+                    </md-checkbox>
+                    <md-checkbox 
+                        layout="row" 
+                        ng-model="costing.carWashCharges" 
+                        ng-init="costing.carWashCharges=null" >
+                        Car Wash Charges
+                    </md-checkbox>
+                </div>
+            </div>
+            <div layout="row">
+                <div flex></div>
+                <md-button class="md-raised md-primary md-block" ng-click=submit(costing)>Submit</md-button>
+            </div>
+        </form>
+    </md-card-content>
+</md-card>

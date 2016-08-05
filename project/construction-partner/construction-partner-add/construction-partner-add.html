@@ -9,7 +9,10 @@
          <!-- TODO: validations -->
          <md-input-container class="md-block">
             <label>Company Name</label>
-            <input name="companyname" type="text" ng-model="companyname">
+            <input name="companyname" type="text" ng-model="companyname" required>
+            <div ng-messages="constructionpartneraddform.companyname.$error">
+               <div ng-message="required" class="my-message">Company Name is required</div>
+            </div>
          </md-input-container>
 
          <md-input-container class="md-block">
@@ -26,7 +29,11 @@
             <input name="website" type="text" ng-model="website">
          </md-input-container>
          <section layout="row" layout-align="space-around start">
-            <md-button type="submit" class="md-raised md-primary" ng-click="submitPartnerMaster()">Submit</md-button>
+            <md-button 
+               type="submit" 
+               class="md-raised md-primary" 
+               ng-disabled="constructionpartneraddform.$invalid"
+               ng-click="submitPartnerMaster()">Submit</md-button>
             <md-button type="submit" class="md-raised md-primary" ui-sref="constructionpartner.list">Cancel</md-button>
          </section>
       </md-card-content>

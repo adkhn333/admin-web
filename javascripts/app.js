@@ -1,8 +1,17 @@
-var app = angular.module('RoofpikAdmin', ['ngMaterial', 'ui.router', 'ngStorage', 'firebase', 'ngMessages','ngMap']);
+var app = angular.module('RoofpikAdmin', [
+   'ngMaterial', 
+   'ui.router', 
+   'ngStorage', 
+   'firebase', 
+   'ngMessages',
+   'ngMap',
+   'mdPickers'
+]);
+
 var db = firebase.database();
 
 app.controller('homeCtrl', function($scope) {
-
+   
 });
 
 app.config(['$mdThemingProvider', '$mdIconProvider', function($mdThemingProvider, $mdIconProvider) {
@@ -22,3 +31,4 @@ app.config(['$mdThemingProvider', '$mdIconProvider', function($mdThemingProvider
    $mdThemingProvider.theme('input', 'default')
    .primaryPalette('grey')
 }]);
+

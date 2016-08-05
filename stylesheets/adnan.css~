@@ -1,0 +1,29 @@
+.loading-indicator {
+    position: absolute;
+    z-index: 99;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.3);
+}
+
+.loading-indicator > div {
+    position: fixed;
+    background-color: white;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    left: 45%;
+    top: 30%;
+}
+
+.loading-indicator > div > md-progress-circular {
+    margin-left: 1px;
+    margin-top: 2px;
+}
+
+.anchor-tag-fix {
+    text-decoration: none;
+    color: black;
+}

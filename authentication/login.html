@@ -1,4 +1,4 @@
-<div layout="row" layout-align="center center">
+<form name="loginForm" layout="row" layout-align="center center">
    <md-card flex="33">
       <md-toolbar>
          <div class="md-toolbar-tool">
@@ -24,10 +24,14 @@
                </div>
             </md-input-container>
             <section layout="row" layout-align="space-around start">
-               <md-button type="submit" class="md-raised md-primary" ng-click="Login(loginForm)">Login</md-button>
+               <md-button 
+                    type="submit" 
+                    class="md-raised md-primary" 
+                     ng-click="Login(loginForm)"
+                     ng-disabled="loginForm.$invalid || !newUser.userEmail || !newUser.userPassword">Login</md-button>
                <md-button md-no-ink ui-sref="forgot" class="md-raised" >Reset Password</md-button>
             </section>
          </form>
       </md-content>
    </md-card>
-</div>
+</form>

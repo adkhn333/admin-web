@@ -16,49 +16,80 @@
          <md-input-container class="md-block">
             <label>Place Name</label>
             <input name="placename" type="text" ng-model="placename" required>
+            <div ng-messages="addnearbyform.placename.$error">
+              <div ng-message="required">Placename Is Required</div>
+            </div>
          </md-input-container>
          <md-input-container class="md-block">
             <label>Place Type</label>
-            <input name="placetype" type="text" ng-model="placetype" required>
+            <input name="placetype" type="text" ng-model="placetype" ng-init="placetype = null">
          </md-input-container>
          <md-input-container class="md-block">
             <label>Place Id</label>
-            <input name="placeid" type="text" ng-model="placeid" required>
+            <input name="placeid" type="text" ng-model="placeid" ng-init="placeid = null">
          </md-input-container>
          <!-- <md-input-container class="md-block">
             <label>Address</label>
             <input name="address" type="text" ng-model="address" required>
          </md-input-container> -->
          Enter an address: <br/>
-         <input places-auto-complete size=80
-         ng-model="address" on-place-changed="placeChanged()" /> <br/>
+         <!--<input places-auto-complete size=80
+         ng-model="address" on-place-changed="placeChanged()" /> <br/>-->
+         <md-input-container class="md-block">
+            <input 
+              places-auto-complete 
+              size=50
+              ng-model="address" 
+              on-place-changed="placeChanged()"/>
+         </md-input-container>
+         <br/>
          <ng-map class="google-map"></ng-map>
          <md-input-container class="md-block">
             <label>Landmark</label>
-            <input name="landmark" type="text" ng-model="landmark" required>
+            <input name="landmark" type="text" ng-model="landmark" ng-init="landmark = null">
          </md-input-container>
          <md-input-container class="md-block">
             <label>Latitude</label>
-            <input name="latitude" type="text" ng-model="latitude" required>
+            <input name="latitude" type="text" ng-model="latitude" ng-init="latitude = null">
          </md-input-container>
          <md-input-container class="md-block">
             <label>Longitude</label>
-            <input name="longitude" type="text" ng-model="longitude" required>
+            <input name="longitude" type="text" ng-model="longitude" ng-init="longitude = null">
          </md-input-container>
          <md-input-container class="md-block">
             <label>Email Address</label>
-            <input type="email" ng-model="email" name="email">
+            <input type="email" ng-model="email" name="email" ng-init="email = null">
+            <div ng-messages="addnearbyform.email.$error">
+              <div ng-message="email">Enter Valid Email Address</div>
+            </div>
          </md-input-container>
          <md-input-container class="md-block">
             <label>Website</label>
-            <input name="website" type="text" ng-model="website" ng-pattern="/^(http\:\/\/|https\:\/\/)?([a-z0-9][a-z0-9\-]*\.)+[a-z0-9][a-z0-9\-]*$/">
+            <input 
+              name="website" 
+              type="text" 
+              ng-model="website" 
+              ng-pattern="/^(http\:\/\/|https\:\/\/)?([a-z0-9][a-z0-9\-]*\.)+[a-z0-9][a-z0-9\-]*$/"
+              ng-init="website = null">
          </md-input-container>
          <md-input-container class="md-block">
             <label>Primary Contact</label>
-            <input type="text" ng-model="mobile" name="mobile" ng-pattern="/^[0-9]{10}$/">
+            <input 
+              ng-model="mobile" 
+              name="mobile" 
+              maxlength="10" 
+              ng-pattern="/^[0-9]{10}$/"
+              ng-init="mobile = null">
+            <div ng-messages="addnearbyform.mobile.$error">
+              <div ng-message="pattern">Invalid Mobile Number. Please Input digits 0-9</div>
+            </div>
          </md-input-container>
          <section layout="row" layout-align="space-around start">
-            <md-button type="submit" class="md-raised md-primary" ng-click="submitNearby(addnearbyform)">Submit</md-button>
+            <md-button 
+                type="submit" 
+                class="md-raised md-primary" 
+                ng-click="submitNearby(addnearbyform)"
+                ng-disabled="addnearbyform.$invalid">Submit</md-button>
             <md-button type="submit" class="md-raised md-primary" ui-sref="nearby.list">Cancel</md-button>
          </section>
       </md-card-content>

@@ -1,0 +1,70 @@
+<md-card class="addProjectFormCard">
+	<md-toolbar>
+        <md-toolbar-title>
+            <md-toolbar-title-text>
+            <h2 align="center"><span>Society Shop Details</span></h2>
+            </md-toolbar-title-text>
+        </md-toolbar-title>
+    </md-toolbar>
+	<md-card-content>
+		<form name="addSocietyShopForm" ng-submit="addSocietyShopToProject(obj)">
+			<div flex>
+				<p>Select Shop Type : <span class="radioValue">{{ obj.type | camelCaseToHuman }}</span> </p>
+		        <md-radio-group ng-model="obj.type" ng-init="obj.type='grocery'" layout="row" >
+			      <md-radio-button value="grocery" class="md-primary">Grocery</md-radio-button>
+			      <md-radio-button value="pharmacy" class="md-primary">Pharmacy</md-radio-button>
+			     <md-radio-button value="parlour" class="md-primary">Parlour</md-radio-button>
+			    </md-radio-group>
+			</div>
+			<div layout="row" >
+				<md-input-container flex class="md-block">
+			        <label>Name</label>
+			        <input name="name" required ng-model="obj.name">
+					<div ng-messages="addSocietyShopForm.name.$error">
+						<div ng-message="required">Name is required</div>
+					</div>
+			    </md-input-container>
+			    <div flex=5></div>
+			    <md-input-container flex class="md-block">
+			        <label>Contact</label>
+			        <input 
+						name="contact"
+						ng-model="obj.contact"
+						ng-pattern="/^[0-9]{10}$/">
+					<div ng-messages="addSocietyShopForm.contact.$error">
+						<div ng-message="pattern">Invalid Mobile Number</div>
+					</div>
+			    </md-input-container>
+		    </div>
+		    <md-button 
+				class="md-raised md-primary" 
+				type="submit"
+				ng-disabled="addSocietyShopForm.$invalid">Add</md-button>
+		</form>
+	</md-card-content>
+</md-card>
+<md-card class="addProjectFormCard">
+	<md-card-title>
+		<md-card-title-text>
+			<span class="md-headline" aling="center">Shops you have till Added</span>
+		</md-card-title-text>
+	</md-card-title>
+	<md-card-content>
+		<div layout-padding>
+        <table class="printShopDetails">
+            <thead>
+                <th>Category</th>
+                <th>Name</th>
+                <th>Contact</th>
+            </thead>
+            <tbody ng-repeat="(key,value) in items">
+                <tr ng-repeat="(key1, value1) in value">
+                    <td>{{key | uppercase}}</td>
+                    <td>{{value1.name}}</td>
+                    <td>{{value1.contact}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+	</md-card-content>
+</md-card>

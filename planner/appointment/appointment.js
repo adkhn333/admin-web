@@ -1,6 +1,5 @@
-app.controller('appointmentCtrl', function($scope) {
-  
-   $scope.data = {
+app.controller('appointmentCtrl', function($scope, $rootScope, ErrorMessage) {
+    $scope.data = {
       group1 : 'Car',
       start_lat: null,
       start_lng:null,
@@ -15,20 +14,27 @@ app.controller('appointmentCtrl', function($scope) {
       mode:null,
       active:null,
       availableModes:[
-      	{mode:"car"},
-      	{mode:"bike"},
-      	{mode:"metro"},
-      	{mode:"bus"}
+        {mode:"car"},
+        {mode:"bike"},
+        {mode:"metro"},
+        {mode:"bus"}
       ]
     };
     $scope.repeatSelect;
-
-
-  $scope.eventplan = function(datas) {
-    firebase.database().ref('users/' + userId).push({
-    username: datas.name,
-    email: email
-  });
-  };
-
+    $scope.eventplan = function(datas) {
+      try {
+        firebase.database().ref('users/' + userId).push({
+          username: datas.name,
+          email: email
+        });
+      }
+      catch(error) {
+        if(error) {
+          var msg = 'Unhandled Exception';
+          $rootScope.isLoading = false;
+          ErrorMessage.showMessage('Something Went Wrong', msg);
+          console.error(error);
+        }
+      }
+    };
 }); // Controller

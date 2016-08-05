@@ -1,4 +1,4 @@
-app.controller("accessControlCtrl", ['$scope', '$http', '$mdToast', '$mdDialog', '$localStorage', '$mdSidenav', '$location', 'AdminService', function($scope, $http, $mdToast, $mdDialog, $localStorage, $mdSidenav, $location, AdminService){
+app.controller("accessControlCtrl", ['$scope', '$rootScope', 'ErrorMessage', '$timeout', '$http', '$mdToast', '$mdDialog', '$localStorage', '$mdSidenav', '$location', 'AdminService', function($scope, $rootScope, ErrorMessage, $timeout, $http, $mdToast, $mdDialog, $localStorage, $mdSidenav, $location, AdminService){
    $scope.message = "Success!!";
 	$scope.isSelected = {};
 	$scope.selectedAdmins=[];
@@ -6,14 +6,19 @@ app.controller("accessControlCtrl", ['$scope', '$http', '$mdToast', '$mdDialog',
 	$scope.selectedWriters=[];
 
 	$scope.flag=false;
-	$scope.getObjects = function(){
+	$scope.getObjects = function() {
+		$rootScope.isLoading = true;
 		firebase.database().ref('databaseAccess/').once('value').then(function(snapshot){
 			$scope.$apply(function(){
 				$scope.objects = snapshot.val();
 				$scope.flag=true;
 			});
-		}).catch(function(err){
-			console.log(err);
+		}).catch(function(error){
+			var msg = 'Unhandled Exception';
+			if(error.stack.indexOf('permission_denied') != -1) msg = 'PERMISSION_DENIED';
+			// $rootScope.isLoading = false;
+			ErrorMessage.showMessage('Something Went Wrong', msg);
+			console.error(error);
 		});
 	};
 
@@ -28,42 +33,62 @@ app.controller("accessControlCtrl", ['$scope', '$http', '$mdToast', '$mdDialog',
 	$scope.selectedAdmins = [];
 	$scope.flag1 = false;
 
-	$scope.getAdmins = function(){
-		firebase.database().ref('admins/').once('value').then(function(snapshot){
-			$scope.$apply(function(){
-				$scope.admins = snapshot.val();
-				delete $scope.admins[$localStorage.currentUser.uid];
-				$scope.flag1 = true;
-			});
-		}).catch(function(err){
-			console.log(err);
-		});	// to get all admins
+	$scope.getAdmins = function() {
+		try {
+			firebase.database().ref('admins/').once('value').then(function(snapshot){
+				$scope.$apply(function(){
+					$scope.admins = snapshot.val();
+					delete $scope.admins[$localStorage.currentUser.uid];
+					$scope.flag1 = true;
+				});
+			}).catch(function(error){
+				var msg = 'Unhandled Exception';
+				if(error.stack.indexOf('permission_denied') != -1) msg = 'PERMISSION_DENIED';
+				$rootScope.isLoading = false;
+				ErrorMessage.showMessage('Something Went Wrong', msg);
+				console.error(error);
+			});	// to get all admins
 
-		firebase.database().ref('databaseAccess/'+$scope.selectedObject+'/read/').once('value').then(function(snapshot) {
-			$scope.$apply(function(){
-				$scope.objectReaders = snapshot.val();
-				for(var key in $scope.objectReaders) {
-					if($scope.objectReaders[key] === true){
-						$scope.selectedReaders.push(key);
+			firebase.database().ref('databaseAccess/'+$scope.selectedObject+'/read/').once('value').then(function(snapshot) {
+				$scope.$apply(function(){
+					$scope.objectReaders = snapshot.val();
+					for(var key in $scope.objectReaders) {
+						if($scope.objectReaders[key] === true){
+							$scope.selectedReaders.push(key);
+						}
 					}
-				}
-			});
-		}).catch(function(err) {
-			console.log(err.message);
-		}); // to get all objectReaders
+				});
+			}).catch(function(error) {
+				var msg = 'Unhandled Exception';
+				if(error.stack.indexOf('permission_denied') != -1) msg = 'PERMISSION_DENIED';
+				$rootScope.isLoading = false;
+				ErrorMessage.showMessage('Something Went Wrong', msg);
+				console.error(error);
+			}); // to get all objectReaders
 
-		firebase.database().ref('databaseAccess/'+$scope.selectedObject+'/write/').once('value').then(function(snapshot) {
-			$scope.$apply(function(){
-				$scope.objectWriters = snapshot.val();
-				for(var key in $scope.objectWriters){
-					if($scope.objectWriters[key] === true){
-						$scope.selectedWriters.push(key);
+			firebase.database().ref('databaseAccess/'+$scope.selectedObject+'/write/').once('value').then(function(snapshot) {
+				$scope.$apply(function(){
+					$scope.objectWriters = snapshot.val();
+					for(var key in $scope.objectWriters){
+						if($scope.objectWriters[key] === true){
+							$scope.selectedWriters.push(key);
+						}
 					}
-				}
-			});
-		}).catch(function(err) {
-			console.log(err.message);
-		}); // to get all objectWriters
+				});
+			}).catch(function(error) {
+				var msg = 'Unhandled Exception';
+				if(error.stack.indexOf('permission_denied') != -1) msg = 'PERMISSION_DENIED';
+				$rootScope.isLoading = false;
+				ErrorMessage.showMessage('Something Went Wrong', msg);
+				console.error(error);
+			}); // to get all objectWriters
+		}
+		catch(error) {
+			var msg = 'Unhandled Exception';
+			$rootScope.isLoading = false;
+			ErrorMessage.showMessage('Something Went Wrong', msg);
+			console.error(error);
+		}
 	};	//getAdmins
 
 	$scope.toggle = function (item, list) {
@@ -80,28 +105,40 @@ app.controller("accessControlCtrl", ['$scope', '$http', '$mdToast', '$mdDialog',
 	    		$scope.selectedReaders.push(item);
 	    }
 	};
+
 	$scope.exists = function (item, list) {
 	    return list.indexOf(item) > -1;
 	};
 
-	$scope.saveAccess = function(){
-      console.log($scope.admins);
-		for(var key in $scope.admins){
-         console.log(key);
-         console.log($scope.admins[key].uid);
-			var idx = $scope.selectedWriters.indexOf($scope.admins[key].uid);
-			if (idx > -1){
-				firebase.database().ref('databaseAccess/'+$scope.selectedObject+'/write/'+$scope.admins[key].uid).set(true);
-				$scope.selectedReaders.push($scope.admins[key].uid);
-			}else{
-				firebase.database().ref('databaseAccess/'+$scope.selectedObject+'/write/'+$scope.admins[key].uid).set(false);
+	$scope.saveAccess = function() {
+		try {
+			console.log($scope.admins);
+			for(var key in $scope.admins) {
+				console.log(key);
+				console.log($scope.admins[key].uid);
+				var idx = $scope.selectedWriters.indexOf($scope.admins[key].uid);
+				if (idx > -1) {
+					firebase.database().ref('databaseAccess/'+$scope.selectedObject+'/write/'+$scope.admins[key].uid).set(true);
+					$scope.selectedReaders.push($scope.admins[key].uid);
+				}
+				else {
+					firebase.database().ref('databaseAccess/'+$scope.selectedObject+'/write/'+$scope.admins[key].uid).set(false);
+				}
+				idx = $scope.selectedReaders.indexOf($scope.admins[key].uid);
+				if (idx > -1){
+					firebase.database().ref('databaseAccess/'+$scope.selectedObject+'/read/'+$scope.admins[key].uid).set(true);
+				}
+				else {
+					firebase.database().ref('databaseAccess/'+$scope.selectedObject+'/read/'+$scope.admins[key].uid).set(false);
+				}
 			}
-			idx = $scope.selectedReaders.indexOf($scope.admins[key].uid);
-			if (idx > -1){
-				firebase.database().ref('databaseAccess/'+$scope.selectedObject+'/read/'+$scope.admins[key].uid).set(true);
-			}else {
-				firebase.database().ref('databaseAccess/'+$scope.selectedObject+'/read/'+$scope.admins[key].uid).set(false);
-			}
+		}
+		catch(error) {
+			var msg = 'Unhandled Exception';
+			if(error.stack.indexOf('permission_denied') != -1) msg = 'PERMISSION_DENIED';
+			$rootScope.isLoading = false;
+			ErrorMessage.showMessage('Something Went Wrong', msg);
+			console.error(error);
 		}
 	};
 }]);

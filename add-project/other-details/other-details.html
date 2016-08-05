@@ -1,0 +1,65 @@
+  <md-card class="addProjectFormCard">
+    <md-toolbar>
+        <md-toolbar-title>
+            <md-toolbar-title-text>
+            <h2 align="center"><span>Other Details</span></h2>
+            </md-toolbar-title-text>
+        </md-toolbar-title>
+    </md-toolbar>
+    <md-card-content>
+      <form ng-submit="addOtherToProject(Other)">
+        <div layout="col" layout-align="space-between">
+          <div flex>
+            <md-checkbox layout="row" ng-model="other.powerBackup" ng-init="other.powerBackup=null" >
+              Power Backup
+            </md-checkbox>
+            <md-checkbox layout="row" ng-model="other.maintenance" ng-init="other.maintenance=null">
+              Maintenance
+            </md-checkbox>
+            <md-checkbox ng-model="other.waitingLoungeInTower" ng-init="other.waitingLoungeInTower=null">
+              Waiting Lounge In Tower
+            </md-checkbox>
+            <md-checkbox layout="row" ng-model="other.airConditioningInWaitingLounge" ng-init="other.airConditioningInWaitingLounge=null" >
+              Air Conditioning In Waiting Lounge
+            </md-checkbox>
+            <md-checkbox layout="row" ng-model="other.petFriendly" ng-init="other.petFriendly=null" >
+              Pet Friendly
+            </md-checkbox>        
+            <md-checkbox layout="row" ng-model="other.wheelChairFriendly" ng-init="other.wheelChairFriendly=null">
+              Wheelchair Friendly
+            </md-checkbox>       
+            <md-checkbox layout="row" ng-model="other.playSchool" ng-init="other.playSchool=null">
+              Play School
+            </md-checkbox>
+            <md-checkbox layout="row" ng-model="other.daycare" ng-init="other.daycare=null">
+              Daycare
+            </md-checkbox>        
+            <md-checkbox layout="row" ng-model="other.atm" ng-init="other.atm=null">
+              Atm
+            </md-checkbox>
+            <md-checkbox layout="row" ng-model="other.grocery" ng-init="other.grocery=null">
+              Grocery
+            </md-checkbox>      
+              </div> 
+              <div flex>
+              <md-checkbox layout="row" ng-model="other.pharmacy" ng-init="other.pharmacy=null">
+              Pharmacy
+            </md-checkbox>
+            <md-checkbox layout="row" ng-model="other.parlour" ng-init="other.parlour=null">
+              Parlour
+            </md-checkbox>
+            <md-checkbox layout="row" ng-model="other.park" ng-init="other.park=null">
+              Park
+            </md-checkbox>
+              <md-checkbox layout="row" ng-model="other.laundry" ng-init="other.laundry=null">
+              Laundry
+            </md-checkbox>         
+            <md-checkbox layout="row" ng-model="other.bank" ng-init="other.bank=null">
+              Bank
+            </md-checkbox>          
+          </div>
+        </div>   
+        <md-button  type="submit" class="md-raised md-primary md-block" >Submit</md-button>
+      </form>
+    </md-card-content>
+  </md-card>

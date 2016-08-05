@@ -1,0 +1,316 @@
+<md-card class="addProjectFormCard">
+	<md-toolbar>
+		<md-toolbar-title>
+			<md-toolbar-title-text>
+				<h2 align="center"><span>Basic Details</span></h2>
+			</md-toolbar-title-text>
+		</md-toolbar-title>
+	</md-toolbar>
+	<form name="basicDetailsForm" ng-submit="addBasicDetails(basic)">
+			<!-- Address Details  -->
+		<md-toolbar class="md-primary">
+	        <div class="md-toolbar-tools">
+	            <h2 class="md-flex">
+	              Address
+	            </h2>
+	        </div>
+	    </md-toolbar>
+		<div layout="row" >
+			<md-input-container flex class="md-block">
+				<label>Address Line 1</label>
+				<input required name="address1" ng-model="basic.addressLine1">
+			</md-input-container>
+			<div flex="5" >
+			<!-- Spacer //-->
+			</div>
+			<md-input-container flex class="md-block">
+				<label>Address Line 2</label>
+				<input  name="address2" 
+					ng-init="basic.addressLine2=null"
+					ng-model="basic.addressLine2">
+			</md-input-container>
+		</div>
+		<div layout="row"  >
+			<md-input-container flex md-no-float class="md-block" >
+				<input 
+					name="pincode"
+					ng-model="basic.pincode" 
+					ng-init="basic.pincode=null" 
+					type="text"
+					ng-pattern="/^[0-9]{6}$/"
+					placeholder="Pincode">
+				<div ng-messages="basicDetailsForm.pincode.$error">
+					<div ng-message="pattern">Invalid PIN</div>
+				</div>
+			</md-input-container>
+			<div flex="5">
+			</div>
+			<md-input-container flex md-no-float class="md-block" >
+				<input 
+				ng-model="basic.sector" 
+					ng-init="basic.sector=null" 
+					type="text" placeholder="Sector" >
+			</md-input-container>
+		</div>
+		<div layout="row">
+			<md-input-container flex  md-no-float class="md-block" >
+				<md-select multiple ng-model="basic.loc" aria-label="location" ng-model="abc" placeholder="Enter location">
+		          	<md-option ng-repeat="location in locations" value="{{location.locationId}}">
+		            {{location.locationName}}
+		          </md-option>
+		        </md-select>
+			</md-input-container>
+		</div>
+		<md-toolbar class="md-primary">
+	        <div class="md-toolbar-tools">
+	            <h2 class="md-flex">
+	              Construction/Design Details
+	            </h2>
+	        </div>
+	    </md-toolbar>
+		<div layout="row">
+			<md-input-container flex class="md-block">
+				<label>Construction Company Name</label>
+				<input name="constructionCompanyName" 
+					ng-init="basic.constructionCompany.name=null" 
+					ng-model="basic.constructionCompany.name">
+			</md-input-container>
+			<div flex="5" >
+			</div>
+			<md-input-container flex md-no-float class="md-block" >
+				<label>Construction Company Website/Email</label>
+				<input name="constrcutionCompanyEmail" 
+					ng-init="basic.constructionCompany.email=null" 
+					ng-model="basic.constructionCompany.email" type="text"  >
+			</md-input-container>
+		</div>
+		<div layout="row" >
+			<md-input-container flex class="md-block">
+				<label> Architect Name</label>
+				<input name="architectName"  
+					ng-model="basic.architect.name"
+					ng-init="basic.architect.name=null">
+			</md-input-container>
+			<div flex="5" >
+			</div>
+			<md-input-container flex md-no-float class="md-block" >
+				<label> Architect Website/Email</label>
+				<input name="architectEmail" 
+					ng-model="basic.architect.email" 
+					ng-init="basic.architect.email=null" type="text"  >
+			</md-input-container>
+		</div>
+		<div layout="row">
+			<md-input-container flex class="md-block">
+				<label> Landscape Designer Name</label>
+				<input  name="landscapeDesingName"  
+					ng-model="basic.landscapeDesign.name" 
+					ng-init="basic.landscapeDesign.name=null">
+			</md-input-container>
+			<div flex="5" >
+
+			</div>
+			<md-input-container flex md-no-float class="md-block" >
+				<label>Landscpae Desinger Website/Email</label>
+				<input name="landscapeDesingEmail" 
+					ng-model="basic.landscapeDesign.email" 
+					ng-init="basic.landscapeDesign.email=null" type="text" >
+			</md-input-container>
+		</div>
+		<md-toolbar class="md-primary">
+	        <div class="md-toolbar-tools">
+	            <h2 class="md-flex">
+	              
+	            </h2>
+	        </div>
+	    </md-toolbar>
+		<div layout="row">
+			<div flex layout="column">
+				<p>Other Relevant Details</p>
+				<md-checkbox 
+					ng-init="basic.carParking=null" 
+					ng-model="basic.carParking" 
+					ng-false-value="null"
+					aria-label="Car Parking">
+					Car Parking
+				</md-checkbox>
+				<md-checkbox 
+					ng-init="basic.visitorCarParking=null" 
+					ng-model="basic.visitorCarParking" 
+					ng-false-value="null"
+					aria-label="Visitor Car Parking">
+					Visitor Car Parking
+				</md-checkbox>
+				<md-checkbox 
+					ng-init="basic.vastuCompliant=null" 
+					ng-model="basic.vastuCompliant"
+					ng-false-value="null" 
+					aria-label="Vastu Compliant">
+					Vastu Compliant
+				</md-checkbox>
+			</div>
+			<div flex=5></div>
+			<div flex>
+				<p> Select Project Type :</p>
+				<md-checkbox layout="row"
+					ng-init="basic.projectType.apartment=null"
+					ng-false-value="null"
+					ng-model="basic.projectType.apartment" >
+					Apartment
+				</md-checkbox>
+				<md-checkbox layout="row" 
+					ng-init="basic.projectType.villa=null" 
+					ng-false-value="null"
+					ng-model="basic.projectType.villa" >
+					Villa
+				</md-checkbox>
+				<md-checkbox layout="row" 
+					ng-init="basic.projectType.rowHouse=null" 
+					ng-false-value="null"
+					ng-model="basic.projectType.rowHouse" >
+					Row House
+				</md-checkbox>
+				<md-checkbox layout="row" 
+					ng-init="basic.projectType.serviceApartment=null" 
+					ng-false-value="null"
+					ng-model="basic.projectType.serviceAprtment" >
+					Serviced Apartment
+				</md-checkbox>
+				<md-checkbox layout="row" 
+					ng-init="basic.projectType.studio=null" 
+					ng-false-value="null"
+					ng-model="basic.projectType.studio" >
+					Studio
+				</md-checkbox>
+			</div>
+		</div>	
+		<md-toolbar class="md-primary">
+	        <div class="md-toolbar-tools">
+	            <h2 class="md-flex">
+					Approved Bank Loans
+			    </h2>
+	        </div>
+	    </md-toolbar>
+	    <div layout="row" style="padding: 15px;">
+	    	<md-checkbox 
+					ng-init="basic.appBankLoans.hdfc=null" 
+					ng-false-value="null"
+					ng-model="basic.appBankLoans.hdfc" 
+					aria-label="HDFC">
+					HDFC
+				</md-checkbox>
+				<md-checkbox 
+					ng-init="basic.appBankLoans.axis=null" 
+					ng-false-value="null"
+					ng-model="basic.appBankLoans.axis" 
+					aria-label="Axis">
+					Axis Bank
+				</md-checkbox>
+	    </div>
+		<md-toolbar class="md-primary">
+	        <div class="md-toolbar-tools">
+	            <h2 class="md-flex">
+	              Other Details
+	            </h2>
+	        </div>
+	    </md-toolbar>
+		<div layout="row" >
+			<md-input-container flex class="md-block">
+				<label>Total Units</label>
+				<input 
+					name="totalUnits" 
+					ng-init="basic.totalUnits=null" 
+					ng-model="basic.totalUnits"
+					type="number">
+			</md-input-container>
+		<div flex="5" >
+		<!-- Spacer //-->
+		</div>
+			<md-input-container flex class="md-block">
+				<label>Total Towers</label>
+				<input  name="totalTowers"
+					ng-init="basic.totalTowers=null" 
+					ng-model="basic.totalTowers"
+					type="number">
+			</md-input-container>
+		</div>
+		<div layout="row" >
+			<md-input-container flex class="md-block">
+				<label>Total Green Area</label>
+				<input  name="greenArea" 
+					ng-init="basic.greenArea=null" 
+					ng-model="basic.greenArea"
+					type="number">
+			</md-input-container>
+			<div flex="5" >
+			<!-- Spacer //-->
+			</div>
+			<md-input-container flex class="md-block">
+				<label>Total Land Area</label>
+				<input  name="landArea" 
+					ng-init="basic.landArea=null" 
+					ng-model="basic.landArea"
+					type="number">
+			</md-input-container>
+		</div>
+		<div layout="row" >
+			<md-input-container flex class="md-block">
+				<label>Maximum Floors</label>
+				<input  name="max-floors" 
+					ng-init="basic.floors.max=null" 
+					ng-model="basic.floors.max"
+					type="number">
+			</md-input-container>
+			<div flex="5" >
+			<!-- Spacer //-->
+			</div>
+			<md-input-container flex class="md-block">
+				<label>Minimum Floors</label>
+				<input  name="min-floors" 
+					ng-init="basic.floors.min=null" 
+					ng-model="basic.floors.min"
+					type="number">
+			</md-input-container>
+		</div>
+		<div layout="row" >
+			<md-input-container flex class="md-block">
+				<label>Maximum Lifts</label>
+				<input  name="max-lifts" 
+					ng-init="basic.lifts.max=null" 
+					ng-model="basic.lifts.max"
+					type="number">
+			</md-input-container>
+			<div flex="5" >
+			<!-- Spacer //-->
+			</div>
+			<md-input-container flex class="md-block">
+				<label>Minimum Lifts</label>
+				<input  name="min-lifts" 
+					ng-init="basic.lifts.min=null" 
+					ng-model="basic.lifts.min"
+					type="number">
+			</md-input-container>
+		</div>
+		<md-button class="md-raised md-primary" type="submit" >Submit</md-button>
+	</form>
+</md-card>
+
+
+
+
+<!-- <div layout="row"  style="margin-top:-30px;">
+		<md-input-container flex md-no-float class="md-block" >
+			<input 
+				ng-model="basic.long"  
+				ng-init="basic.long=null" 
+				type="text" placeholder="Longitude" >
+		</md-input-container>
+		<div flex="5" >
+		</div>
+		<md-input-container flex md-no-float class="md-block" >
+			<input 
+				ng-model="basic.lat" 
+				type="text" 
+				ng-init="basic.lat=null" placeholder="Lattitude" >
+		</md-input-container>
+	</div> -->

@@ -1,0 +1,16 @@
+<md-sidenav class="md-sidenav-right" md-component-id="add-project-menu" md-whiteframe="4dp">
+   <md-toolbar class="md-theme-light" layout="row">
+      <md-button
+         ng-click="toggleAddProjectRight()"
+         class="md-icon-button">
+         <md-icon>arrow_back</md-icon>
+      </md-button>
+   </md-toolbar>
+   <md-content>
+      <md-list class="menuClass">
+         <md-list-item ng-repeat="item in sideNavItems">
+            <a ui-sref="{{item.link}}">{{item.title}}</a>
+         </md-list-item>		
+      </md-list>
+   </md-content>
+</md-sidenav>

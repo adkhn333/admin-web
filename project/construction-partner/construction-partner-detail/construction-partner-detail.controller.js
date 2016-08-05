@@ -1,4 +1,4 @@
-app.controller("detailConstructionPartnerCtrl", ['$scope', '$http', '$stateParams', '$mdToast', '$mdDialog', '$location', '$timeout', function($scope, $http, $stateParams, $mdToast, $mdDialog, $location, $timeout){
+app.controller("detailConstructionPartnerCtrl", ['$scope', '$rootScope', 'ErrorMessage', '$http', '$stateParams', '$mdToast', '$mdDialog', '$location', '$timeout', function($scope, $rootScope, ErrorMessage, $http, $stateParams, $mdToast, $mdDialog, $location, $timeout){
    $scope.id = $stateParams.partnerId;
 
    $scope.compTypeList = [
@@ -13,31 +13,48 @@ app.controller("detailConstructionPartnerCtrl", ['$scope', '$http', '$stateParam
          console.log(snapshot.val());
          $scope.partner = snapshot.val();
       },0);
-   }, function(errorObject){
-      console.log(errorObject);
-      $mdDialog.show(
-         $mdDialog.alert()
-         .clickOutsideToClose(false)
-         .title('Something went wrong!')
-         .textContent('Please refresh the page.')
-         .ariaLabel('Something went wrong.')
-         .ok('OK!')
-      );
+   }, function(error) {
+      if(error) {
+         var msg = 'Unhandled Exception';
+         $rootScope.isLoading = false;
+         ErrorMessage.showMessage('Something Went Wrong', msg);
+         console.error(error);
+      }
+      // $mdDialog.show(
+      //    $mdDialog.alert()
+      //    .clickOutsideToClose(false)
+      //    .title('Something went wrong!')
+      //    .textContent('Please refresh the page.')
+      //    .ariaLabel('Something went wrong.')
+      //    .ok('OK!')
+      // );
    });
 
-   $scope.updatePartner = function(form){
-      $scope.noTouchBuilder = true;
-      if(form.$invalid){
-         return;
-      }
+   $scope.updatePartner = function(form) {
+      try {
+         $scope.noTouchBuilder = true;
+         if(form.$invalid) return;
 
-      var partnerUpdateObject = {
-         name: $scope.partner.name,
-         companyType: $scope.partner.companyType,
-         website: $scope.partner.website,
+         var partnerUpdateObject = {
+            name: $scope.partner.name,
+            companyType: $scope.partner.companyType,
+            website: $scope.partner.website,
+         }
+         console.log(partnerUpdateObject);
+         ref.update(partnerUpdateObject, function(error) {
+            if(error) {
+               var msg = 'Unhandled Exception';
+               $rootScope.isLoading = false;
+               ErrorMessage.showMessage('Something Went Wrong', msg);
+               console.error(error);
+            }
+         });
+         // TODO: error handling
       }
-      console.log(partnerUpdateObject);
-      ref.update(partnerUpdateObject);
-      // TODO: error handling
+      catch(error) {
+         $rootScope.isLoading = false;
+         ErrorMessage.showMessage('Something Went Wrong', 'Unhandled Exception');
+         console.log(error);
+      }
    }
 }]);

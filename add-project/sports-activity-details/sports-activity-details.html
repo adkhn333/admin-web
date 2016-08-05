@@ -1,0 +1,111 @@
+<md-card class="addProjectFormCard">
+    <md-toolbar>
+      <md-toolbar-title>
+        <md-toolbar-title-text>
+          <h2 align="center"><span>Sports Activity Details</span></h2>
+        </md-toolbar-title-text>
+      </md-toolbar-title>
+    </md-toolbar>
+    <md-card-content>
+      <form action="">
+        <div layout="col" layout-align="space-between">
+            <div flex>
+
+                <md-checkbox layout="row" ng-model="sportsActivities.cricket"
+                ng-init="sportsActivities.cricket=null">
+                    Cricket
+                </md-checkbox>
+                <md-checkbox layout="row" ng-model="sportsActivities.football"
+                ng-init="sportsActivities.football=null">
+                    Football
+                </md-checkbox>
+                <md-checkbox ng-model="sportsActivities.tennis"
+                ng-init="sportsActivities.tennis=null">
+                    Tennis
+                </md-checkbox>
+                <md-checkbox layout="row" ng-model="sportsActivities.poolTable"
+                ng-init="sportsActivities.poolTable=null">
+                    Pool Table
+                </md-checkbox>
+
+                <md-checkbox layout="row" ng-model="sportsActivities.basketball"
+                ng-init="sportsActivities.basketball=null">
+                    Basketball
+                </md-checkbox>
+                <md-checkbox layout="row" ng-model="sportsActivities.multiPurposeCourt"
+                ng-init="sportsActivities.multiPurposeCourt=null">
+                    Multipurposecourt
+                </md-checkbox>
+
+                <md-checkbox layout="row" ng-model="sportsActivities.pitchAndPutt"
+                ng-init="sportsActivities.pitchAndPutt=null">
+                    Pitch And Putt
+                </md-checkbox>
+            </div>
+            <div flex>
+
+                <md-checkbox layout="row" ng-model="sportsActivities.skatingRink"
+                ng-init="sportsActivities.skatingRink=null">
+                    Skating Rink
+                </md-checkbox>
+
+                <md-checkbox layout="row" ng-model="sportsActivities.volleyball"
+                ng-init="sportsActivities.volleyball=null">
+                    Volleyball
+                </md-checkbox>
+                <md-checkbox layout="row" ng-model="sportsActivities.amphitheatre"
+                ng-init="sportsActivities.amphitheatre=null">
+                    Amphitheatre
+                </md-checkbox>
+
+                <md-checkbox layout="row" ng-model="sportsActivities.badminton"
+                ng-init="sportsActivities.badminton=null">
+                    Badminton
+                </md-checkbox>
+                <md-checkbox layout="row" ng-model="sportsActivities.tableTennis"
+                ng-init="sportsActivities.tableTennis=null">
+                    TableTennis
+                </md-checkbox>
+
+                <md-checkbox layout="row" ng-model="sportsActivities.squash"
+                ng-init="sportsActivities.squash=null">
+                    Squash
+                </md-checkbox>
+            </div>
+            <div flex>
+
+                <md-checkbox layout="row" ng-model="sportsActivities.swimmingPool"
+                ng-init="sportsActivities.swimmingPool=null">
+                    Swimming Pool
+                </md-checkbox>
+
+                <md-checkbox layout="row" ng-model="sportsActivities.kidsSwimmingPool"
+                ng-init="sportsActivities.kidsSwimmingPool=null">
+                    Kids Swimming Pool
+                </md-checkbox>
+                <md-checkbox layout="row" ng-model="sportsActivities.kidsPlayAreas"
+                ng-init="sportsActivities.kidsPlayAreas=null">
+                    Kids Play Areas
+                </md-checkbox>
+
+                <md-checkbox layout="row" ng-model="sportsActivities.snookerTable"
+                ng-init="sportsActivities.snookerTable=null">
+                    Snooker Table
+                </md-checkbox>
+
+                <md-checkbox layout="row" ng-model="sportsActivities.bowlingAlley"
+                ng-init="sportsActivities.bowlingAlley=null">
+                    Bowling Alley
+                </md-checkbox>
+
+                <md-checkbox layout="row" ng-model="sportsActivities.joggingTrack"
+                ng-init="sportsActivities.joggingTrack=null">
+                    Jogging Track
+                </md-checkbox>
+            </div>
+        </div>
+        <md-button class="md-raised md-primary md-block"
+        ng-click="submit(sportsActivities)">Submit</md-button>
+      </form>
+    </md-card-content>
+</md-card>

@@ -1,0 +1,101 @@
+<md-card class="addProjectFormCard">
+    <md-toolbar>
+        <md-toolbar-title>
+            <md-toolbar-title-text>
+                <h2 align="center"><span>New Project</span></h2>
+            </md-toolbar-title-text>
+        </md-toolbar-title>
+    </md-toolbar>
+    <md-card-content>
+        <form name="addProjectForm" ng-submit="uploadProject(project, $event)">
+            <div layout="row">
+                <md-select 
+						flex 
+						placeholder="Select Your City"
+						ng-model="addProject.city"
+						style="min-width: 200px;"
+						required>
+                    <md-option ng-click="loadZone()" ng-value="c" ng-repeat="c in cities">
+                        {{c.cityName}}
+                    </md-option>
+                </md-select>
+                <div flex="5">
+                    <!-- Spacer //-->
+                </div>
+                <md-select 
+					 	flex 
+						placeholder="Select Your Zone"
+                	ng-model="addProject.zone"
+                	ng-init="zone = null" 
+						style="min-width: 200px;">
+                    <md-option ng-value="z" ng-repeat="z in zones">
+                        {{z.zoneName}}
+                    </md-option>
+                </md-select>
+            </div>
+
+            <md-input-container class="md-block">
+                <label>Project Name</label>
+                <input required name="projectName" ng-model="addProject.projectName">
+                <div 
+					 	ng-show="addProjectForm.projectName.$touched"
+                	ng-messages="addProjectForm.projectName.$error">
+                    <div ng-message="required" class="my-message">Project Name is required</div>
+                </div>
+            </md-input-container>
+            <div layout="row">
+                <div flex>
+                    <p>Select Project Status:
+                        <span class="radioValue">{{ addProject.projectStatus | camelCaseToHuman }}</span>
+                    </p>
+                    <md-radio-group 
+						  		ng-model="addProject.projectStatus"
+                    		ng-init="addProject.projectStatus = null"
+                    		layout="row">
+
+                        <md-radio-button 
+									value="underConstruction"
+                        	class="md-primary">
+                            Under Construction
+                        </md-radio-button>
+
+                        <md-radio-button 
+									value="readyToMove" 
+									class="md-primary">
+                            Ready To Move
+                        </md-radio-button>
+                    </md-radio-group>
+                </div>
+                <div>
+                    <p>Enter Project Landmark</p>
+                    <md-input-container flex md-no-float class="md-block">
+                        <input 
+									ng-model="addProject.landmark"
+                        	type="text" ng-init="landmark = null" 
+									placeholder="Landmark">
+                        <md-icon style="color:#8a8aff">room</md-icon>
+                    </md-input-container>
+                </div>
+            </div>
+
+            <div class="md-toolbar-tools">Builder</div>
+
+            <div layout="row">
+                <md-autocomplete 
+					 	ng-init = "addProject.builder = null"
+					 	flex ng-disabled="false"
+						md-selected-item="addProject.builder"
+						md-search-text="searchText"
+						md-min-length="0" md-items="item in getMatches(searchText) | filter : searchText"
+						ng-model="searchText" md-item-text="item.builderName"
+						placeholder="Enter name of Builder">
+                    <span md-highlight-text="searchText">{{item.builderName}} </span>
+                </md-autocomplete>
+
+            </div>
+            <md-button type="submit" class="md-raised md-primary">Create Project</md-button>
+            <md-button type="reset" ng-click="clearForm()"
+            class="md-raised md-warn">Clear Data</md-button>
+        </form>
+    </md-card-content>
+</md-card>

@@ -88,7 +88,11 @@
             </div>
          </md-input-container>
          <section layout="row" layout-align="space-around start">
-            <md-button type="submit" class="md-raised md-primary" ng-click="updateBuilder(updatebuilderform)">Update</md-button>
+            <md-button 
+                type="submit" 
+                class="md-raised md-primary" 
+                ng-disabled="updatebuilderform.$invalid || updatebuilderform.$pristine"
+                ng-click="updateBuilder(updatebuilderform)">Update</md-button>
             <md-button type="submit" class="md-raised md-primary" ui-sref="builder.list">Cancel</md-button>
          </section>
       </md-card-content>

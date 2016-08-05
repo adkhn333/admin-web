@@ -1,0 +1,94 @@
+<md-card class="addProjectFormCard">
+  <md-toolbar>
+      <md-toolbar-title>
+        <md-toolbar-title-text>
+          <h2 align="center"><span>Club House Details</span></h2>
+        </md-toolbar-title-text>
+      </md-toolbar-title>
+    </md-toolbar>
+    <md-card-content>
+      <form> 
+        <div layout="col" layout-align="space-around">
+          <md-input-container>
+            <label>Start Time</label>
+            <input ng-click="showTimePicker($event, 'start')" ng-model="clubhouse.operatingTimes.start" ng-init="clubhouse.operatingTimes.start=null">
+          </md-input-container>
+          <md-input-container>
+            <label>End Time</label>
+            <input ng-click="showTimePicker($event, 'end')" ng-model="clubhouse.operatingTimes.end" ng-init="clubhouse.operatingTimes.end=null">
+          </md-input-container>
+          <md-input-container>
+            <label>Holiday</label>
+            <input ng-model="clubhouse.operatingTimes.holiday" ng-init="clubhouse.operatingTimes.holiday=null">
+          </md-input-container>
+        </div>
+        <div layout="col" layout-align="space-between">
+          <div flex>
+            <md-checkbox layout="row" ng-model="clubhouse.multiPurposeHall" ng-init="clubhouse.multiPurposeHall=null" >
+            Multi Purpose Hall
+            </md-checkbox>
+            <md-checkbox layout="row" ng-model="clubhouse.restaurant" ng-init="clubhouse.restaurant=null" >
+            Restaurant
+            </md-checkbox>
+            <md-checkbox ng-model="clubhouse.yogaRoom" ng-init="clubhouse.yogaRoom=null" >
+            Yoga Room
+            </md-checkbox>
+            <md-checkbox layout="row" ng-model="clubhouse.aerobicsRooms" ng-init="clubhouse.aerobicsRooms=null">
+            Aerobics Room
+            </md-checkbox>
+            <md-checkbox layout="row" ng-model="clubhouse.danceRoom" ng-init="clubhouse.danceRoom=null" >
+            Dance Room
+            </md-checkbox>
+            <md-checkbox layout="row" ng-model="clubhouse.musicRoom"  ng-init="clubhouse.musicRoom=null">
+            Music Room
+            </md-checkbox>
+            <md-checkbox layout="row" ng-model="clubhouse.salon" ng-init="clubhouse.salon=null" >
+            Salon
+            </md-checkbox>
+          </div>
+          <div flex>
+            <md-checkbox layout="row" ng-model="clubhouse.spa" ng-init="clubhouse.spa=null" >
+            Spa
+            </md-checkbox>
+            <md-checkbox layout="row" ng-model="clubhouse.gym" ng-init="clubhouse.gym=null" >
+            Gym
+            </md-checkbox>
+            <md-checkbox layout="row" ng-model="clubhouse.videoGames" ng-init="clubhouse.videoGames=null">
+            Video Games
+            </md-checkbox>
+            <md-checkbox layout="row" ng-model="clubhouse.miniTheatre" ng-init="clubhouse.miniTheatre=null">
+            Mini Theatre
+            </md-checkbox>
+            <md-checkbox layout="row" ng-model="clubhouse.kidsZone" ng-init="clubhouse.kidsZone=null" >
+            Kids Zone
+            </md-checkbox>
+            <md-checkbox layout="row" ng-model="clubhouse.bar" ng-init="clubhouse.bar=null" >
+            Bar
+            </md-checkbox>
+          </div> 
+          <div flex>
+          <md-checkbox layout="row" ng-model="clubhouse.cafe" ng-init="clubhouse.cafe=null" >
+          Cafe
+          </md-checkbox>
+          <md-checkbox layout="row" ng-model="clubhouse.businessCentre"  ng-init="clubhouse.businessCentre=null">
+          Business Centre
+          </md-checkbox>
+          <md-checkbox layout="row" ng-model="clubhouse.guestrooms" ng-init="clubhouse.guestrooms=null" >
+          Guest Rooms
+          </md-checkbox>
+          <md-checkbox layout="row" ng-model="clubhouse.steamRoom" ng-init="clubhouse.steamRoom=null">
+          Steam Room
+          </md-checkbox>
+          <md-checkbox layout="row" ng-model="clubhouse.saunaRoom" ng-init="clubhouse.saunaRoom=null">
+          Sauna Room
+          </md-checkbox>
+          <md-checkbox layout="row" ng-model="clubhouse.jacuzzi" ng-init="clubhouse.jacuzzi=null" >
+          Jacuzzi
+          </md-checkbox>
+          </div>
+        </div>
+        <md-button  class="md-raised md-primary md-block" ng-click="submit(clubhouse)">Submit</md-button>
+      </form>
+    </md-card-content>
+</md-card>
+

@@ -1,11 +1,12 @@
-app.factory("ConstructionPartnerService", ['$http', '$localStorage', '$mdToast', '$mdDialog', '$q', function($http, $localStorage, $mdToast, $mdDialog, $q){
+app.factory("ConstructionPartnerService", ['$http', '$rootScope', 'ErrorMessage', '$localStorage', '$mdToast', '$mdDialog', '$q', function($http, $rootScope, ErrorMessage, $localStorage, $mdToast, $mdDialog, $q){
    var service = {};
 
    service.getAllConstructionPartnersRequest = getAllConstructionPartnersRequest;
 
    return service;
 
-   function getAllConstructionPartnersRequest(){
+   function getAllConstructionPartnersRequest() {
+      try {
       var deferred = $q.defer();
       var ref = db.ref().child("constructionPartners");
       ref.on('value', function(snapshot){
@@ -20,9 +21,21 @@ app.factory("ConstructionPartnerService", ['$http', '$localStorage', '$mdToast',
               .hideDelay(3000)
          );
          deferred.resolve(partnerList);
-      }, function(errorObject){
-         console.log("error");
+      }, function(error){
+          if(error) {
+            var msg = 'Unhandled Exception';
+            $rootScope.isLoading = false;
+            ErrorMessage.showMessage('Something Went Wrong', msg);
+            console.error(error);
+         }
       });
       return deferred.promise;
+      }
+      catch(error) {
+        var msg = 'Unhandled Exception';
+        $rootScope.isLoading = false;
+        ErrorMessage.showMessage('Something Went Wrong', msg);
+        console.error(error);
+      }
    }
 }]);

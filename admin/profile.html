@@ -46,20 +46,34 @@
                <label>City</label>
                <input type="text" ng-model="admin.city">
             </md-input-container>
-            <md-datepicker ng-model="admin.dob" md-placeholder="Enter date"></md-datepicker>
+            <md-datepicker ng-model="admin.dob" md-placeholder="Enter date" ng-change="showDate()"></md-datepicker>
          </div>
          <div layout="row">
             <md-input-container flex>
                <label>Primary Contact</label>
-               <input type="text" ng-model="admin.mobile">
+               <input name="mobile" ng-pattern="/^[0-9]{10}$/" ng-model="admin.mobile">
+               <div ng-messages="profileForm.mobile.$error" role="alert" multiple>
+                  <div ng-message="pattern" class="my-message">
+                        Not Valid Mobile Number
+                  </div>
+               </div>
             </md-input-container>
             <md-input-container flex>
                <label>Alternate Contact</label>
-               <input type="text" ng-model="admin.altMob">
+               <input name="altMob" ng-pattern="/^[0-9]{10}$/" ng-model="admin.altMob">
+               <div ng-messages="profileForm.altMob.$error" role="alert" multiple>
+                  <div ng-message="pattern" class="my-message">
+                        Not Valid Mobile Number
+                  </div>
+               </div>
             </md-input-container><br>
          </div>
          <section>
-            <md-button class="md-raised md-primary" type="submit" ng-click="updateDetails()">Update</md-button>
+            <md-button 
+               class="md-raised md-primary" 
+               type="submit" 
+               ng-click="updateDetails()"
+               ng-disabled="profileForm.$invalid || profileForm.$pristine">Update</md-button>
          </section>
       </md-content>
    </md-card>

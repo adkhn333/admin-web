@@ -1,0 +1,50 @@
+<md-card class="addProjectFormCard">
+		<md-toolbar>
+			<md-toolbar-title>
+				<md-toolbar-title-text>
+					<h2 align="center"><span>Residential Welfare Association</span></h2>
+				</md-toolbar-title-text>
+			</md-toolbar-title>
+		</md-toolbar>
+		<md-card-content>
+			<form name="rwaForm" ng-submit="addRWAToProject(rwa)">
+				<md-input-container class="md-block">
+					<label>Contact Name</label>
+					<input name="contactName" ng-model="rwa.contactName" ng-init="rwa.contactName=null" required>
+			<div ng-messages="rwaForm.contactName.$error">
+				<div ng-message="required">Contact Name is required</div>
+			</div>
+			</md-input-container>
+			<md-input-container class="md-block">
+					<label>Email Address</label>
+					<input 
+				name="emailAddress" 
+				ng-model="rwa.emailAddress" 
+				ng-init="rwa.emailAddress=null"
+				ng-pattern="/^.+@.+\..+$/">
+			<div ng-messages="rwaForm.emailAddress.$error">
+				<div ng-message="pattern">Invalid Email</div>
+			</div>
+			</md-input-container>
+			<md-input-container class="md-block">
+					<label>Contact Number</label>
+					<input 
+				name="contactNumber" 
+				ng-model="rwa.contactNumber" 
+				ng-init="rwa.contactNumber=null"
+				ng-pattern="/^[0-9]{10}$/">
+			<div ng-messages="rwaForm.contactNumber.$error">
+				<div ng-message="pattern">Invalid Mobile Number( Must contain 10 digits only. )</div>
+			</div>
+			</md-input-container>
+			<md-input-container class="md-block">
+					<label>Rules</label>
+					<input name="rules" ng-model="rwa.rules" ng-init="rwa.rules=null">
+			</md-input-container>
+			<md-button 
+			class="md-raised md-primary" 
+			type="submit"
+			ng-disabled="rwaForm.$invalid">Done</md-button>
+			</form>
+		</md-card-content>
+</md-card>
